@@ -1,0 +1,30 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+# Book settings
+# -------------
+title: Differentiaaliyhtälöt
+author: LUMA-tiimi, Lapin AMK / Minna Korhonen
+copyright: "2022"
+logo: logo.png
+
+# Execution settings
+# -------------------
+execute:
+  execute_notebooks: cache
+
+# GitHub-settings
+# ----------------
+repository:
+  url: https://github.com/luma-lapinamk/minna-diff
+  branch: master
+
+# HTML-settings
+# --------------
+html:
+  use_issues_button: false
+  use_repository_button: true
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"
+  thebe: true

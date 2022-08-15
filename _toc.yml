@@ -1,0 +1,27 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: kasite
+- file: separoituvat
+- file: lineaariset
+- file: yritteet
+- file: numeeriset
+- file: euler
+- file: rungekutta
+- file: toisen
+- file: ryhmat
+- file: testaus2
+
+
+# malli
+# format: jb-book
+# root: intro
+# parts: 
+#  - caption: Perusteita
+#    chapters:
+#    - file: potenssit
+#    - file: juuret
+#    - file: polynomit

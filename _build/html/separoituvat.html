@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Separoituvat differentiaaliyhtälöt &#8212; Differentiaaliyhtälöt</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lineaarinen differentiaaliyhtälö" href="lineaariset.html" />
+    <link rel="prev" title="Differentiaaliyhtälö" href="kasite.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Differentiaaliyhtälöt</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Alkusanat
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kasite.html">
+   Differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Separoituvat differentiaaliyhtälöt
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lineaariset.html">
+   Lineaarinen differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="yritteet.html">
+   Ratkaisu yritteellä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euler.html">
+   Eulerin menetelmä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rungekutta.html">
+   Runge-Kutta -menetelmä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="toisen.html">
+   Toisen kertaluvun differentiaaliyhtälöt
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ryhmat.html">
+   Differentiaaliyhtälöryhmät
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testaus2.html">
+   Tekstiä
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/separoituvat.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/luma-lapinamk/minna-diff"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo">
+   Osamäärämuotoinen separoituva differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tulomuotoinen-separoituva-differentiaaliyhtalo">
+   Tulomuotoinen separoituva differentiaaliyhtälö
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Separoituvat differentiaaliyhtälöt</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo">
+   Osamäärämuotoinen separoituva differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tulomuotoinen-separoituva-differentiaaliyhtalo">
+   Tulomuotoinen separoituva differentiaaliyhtälö
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <!-- #region -->
+<div class="tex2jax_ignore mathjax_ignore section" id="separoituvat-differentiaaliyhtalot">
+<h1>Separoituvat differentiaaliyhtälöt<a class="headerlink" href="#separoituvat-differentiaaliyhtalot" title="Permalink to this headline">¶</a></h1>
+<p>Separoituvat differentiaaliyhtälöt ovat muotoa <span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)}\)</span> tai <span class="math notranslate nohighlight">\(y'=f(x)g(y)\)</span>. Yhtälötyypin nimi johtuu siitä, että yhtälön muuttujista <span class="math notranslate nohighlight">\(x\)</span> ja <span class="math notranslate nohighlight">\(y\)</span> riippuvat osat on mahdollista erottaa eli separoida toisistaan.</p>
+<p>Ratkaisu hahmottuu helposti, kun kirjoitetaan derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span> muodossa <span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}\)</span>. Tässä muodossa derivaattaa voi käsitellä kuten murtolukua.</p>
+<div class="section" id="osamaaramuotoinen-separoituva-differentiaaliyhtalo">
+<h2>Osamäärämuotoinen separoituva differentiaaliyhtälö<a class="headerlink" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo" title="Permalink to this headline">¶</a></h2>
+<p>Kun kirjoitetaan derivaatta edellä kuvatulla tavalla, yhtälö muuttuu seuraavasti:</p>
+<p><span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)} \leftrightarrow \frac{\text{d}y}{\text{d}x} = \frac{f(x)}{g(y)}\)</span>.</p>
+<p>Kerrotaan molemmat puolet luvuilla <span class="math notranslate nohighlight">\({\text{d}x}\)</span> ja <span class="math notranslate nohighlight">\({g(y)}\)</span>, jolloin saadaan <span class="math notranslate nohighlight">\(g(y) \text{d}y = f(x)\text{d}x\)</span></p>
+<p>Nyt ratkaisu saadaan integroimalla yhtälö puolittain, toisin sanoen</p>
+<p><span class="math notranslate nohighlight">\(\int g(y)~\text{d}y + C_1 = \int f(x)~\text{d}x + C_2\)</span>,</p>
+<p>missä reaaliluvut <span class="math notranslate nohighlight">\(C_1\)</span> ja <span class="math notranslate nohighlight">\(C_2\)</span> ovat integroimisvakioita. Vakiot voidaan yhdistää yhdeksi vakioksi <span class="math notranslate nohighlight">\(C\)</span>. Tällöin ratkaisu voidaan kirjoittaa muodossa</p>
+<p><span class="math notranslate nohighlight">\(g(y) = \int f(x) \text{d}x + C\)</span>,</p>
+<p>josta lopulta voidaan selvittää kysytty funktio <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p><strong>Esim.</strong> Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=\frac{4x}{y}\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Yhtälö voidaan muokata muotoon</p>
+<p><span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}=\frac{4x}{y}\)</span></p>
+<p>ja edelleen muotoon</p>
+<p><span class="math notranslate nohighlight">\(y~\text{d}y = 4x~\text{d}x\)</span>.</p>
+<p>Integroimalla puolittain saadaan</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{2} y^2 = \int 4x~\text{d}x\)</span></p>
+<p>josta selviää, että</p>
+<p><span class="math notranslate nohighlight">\(y=\sqrt{2 \cdot(2x^2 + C)}\)</span>.</p>
+<p>Myös ratkaisu <span class="math notranslate nohighlight">\(y=-\sqrt{2 \cdot (2x^2 + C)}\)</span> toteuttaa alkuperäisen yhtälön.</p>
+</div>
+</div>
+<div class="section" id="tulomuotoinen-separoituva-differentiaaliyhtalo">
+<h2>Tulomuotoinen separoituva differentiaaliyhtälö<a class="headerlink" href="#tulomuotoinen-separoituva-differentiaaliyhtalo" title="Permalink to this headline">¶</a></h2>
+<p>Vastaavasti jos yhtälö on muotoa <span class="math notranslate nohighlight">\(y'=f(x)g(y)\)</span>, sitä voidaan muokata seuraavasti:</p>
+<p><span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x} = f(x) g(y) \leftrightarrow \frac{\text{d}y}{g(y)} = f(x) {\text{d}x}\)</span></p>
+<p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)}~\text{d}y + C_1 = \int f(x)~\text{d}x + C_2\)</span></p>
+<p>ja vastaavasti kuin edellä, <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)}~\text{d}y = \int f(x)~\text{d}x + C\)</span></p>
+<p>josta voidaan lopulta ratkaista <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Laskukaavan perustelu toisella tavalla</p>
+<p>Johdetaan yhtälötyypille <span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)}\)</span> ratkaisumenetelmä seuraavasti. Olkoon funktion <span class="math notranslate nohighlight">\(f(x)\)</span> integraalifunktio <span class="math notranslate nohighlight">\(F(x)\)</span> ja funktion <span class="math notranslate nohighlight">\(g(y)\)</span> integraalifunktio <span class="math notranslate nohighlight">\(G(y)\)</span>. Kumpikin voidaan laskea integroimalla:</p>
+<p><span class="math notranslate nohighlight">\(F(x)= \int f(x) \,dx +C, G(y) = \int g(y) \,dx + D\)</span>, missä <span class="math notranslate nohighlight">\(C \in \Re, D \in \Re\)</span>.</p>
+<p>Funktioille pätee <span class="math notranslate nohighlight">\(F'(x)=f(x)\)</span> ja <span class="math notranslate nohighlight">\(G'(x)=g(x)\)</span>.</p>
+<p>Seuraavaksi lähestytään ratkaisua takaperin: kokeillaan, mitä tapahtuu, kun derivoidaan puolittain yhtälö <span class="math notranslate nohighlight">\(G(y)=F(x)\)</span>. Yhtälön vasen puoli täytyy derivoida yhdistetyn funktion derivointikaavalla, sillä funktiossa <span class="math notranslate nohighlight">\(G(y)\)</span> muuttuja <span class="math notranslate nohighlight">\(y\)</span> riippuu muuttujasta <span class="math notranslate nohighlight">\(x\)</span>, siis <span class="math notranslate nohighlight">\(G(y)=G(y(x))\)</span>.</p>
+<p>Yhdistetyn funktion derivointikaava: <span class="math notranslate nohighlight">\(\frac{\text{d}}{\text{d}x} G(y(x)) = G'(y(x)) \cdot y'(x)\)</span></p>
+<p>Yhtälö <span class="math notranslate nohighlight">\(G(y)=F(x)\)</span> muuttuu siis muotoon</p>
+<p><span class="math notranslate nohighlight">\(G'(y(x)) \cdot y'(x) = F'(x)\)</span></p>
+<p>Tästä saadaan ratkaistua</p>
+<p><span class="math notranslate nohighlight">\(y'(x) = \frac{F'(x)}{G'(y(x))}\)</span></p>
+<p>eli</p>
+<p><span class="math notranslate nohighlight">\(y'(x) = \frac{f(x)}{g(y)}\)</span>.</p>
+<p>Päättelyketjua takaisinpäin lukemalla voidaan siis todeta, että <span class="math notranslate nohighlight">\(y'(x) = \frac{f(x)}{g(y)}\)</span> on yhtäpitävä yhtälön <span class="math notranslate nohighlight">\(G'(y)=F'(x)\)</span> kanssa ja siten ratkeaa puolittain integroimalla.</p>
+</div>
+<p><strong>Esim.</strong> Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=4xy\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Kirjoitetaan yhtälö muodossa <span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}=4xy\)</span>.</p>
+<p>Kerrotaan molemmat puolet luvulla <span class="math notranslate nohighlight">\(\text{d}x\)</span>, jolloin yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(\text{d}y=4xy~\text{d}x\)</span>.</p>
+<p>Edelleen jakamalla tekijällä <span class="math notranslate nohighlight">\(y\)</span> yhtälö saadaan muotoon <span class="math notranslate nohighlight">\(\frac{\text{d}y}{y}=4x~\text{dx}\)</span>.</p>
+<p>Puolittain integroimalla saadaan</p>
+<p><span class="math notranslate nohighlight">\(\int \frac{1}{y}~\text{d}y = \int 4x~\text{d}x\)</span>,</p>
+<p>josta ratkeaa <span class="math notranslate nohighlight">\(\ln{y} = 2x^2 + C\)</span>.</p>
+<p>Funktio <span class="math notranslate nohighlight">\(y\)</span> ratkeaa ylläolevasta yhtälöstä potenssiinkorotuksella:</p>
+<p><span class="math notranslate nohighlight">\(e^{\ln{y}}=e^{2x^2+C}\)</span> eli <span class="math notranslate nohighlight">\(y=e^{2x^2+C}\)</span>.</p>
+</div>
+<p>Separoituvia differentiaaliyhtälöitä esiintyy monenlaisissa fysiikan sovelluksissa. Tällöin hankalaa on differentiaaliyhtälön muodostaminen, ei niinkään ratkaiseminen.</p>
+<p><strong>Esim.</strong> Vene työnnetään liikkeelle alkunopeudella <span class="math notranslate nohighlight">\(v_0=5\)</span> m/s. Ajassa <span class="math notranslate nohighlight">\(t_1=5\)</span> s vene on siirtynyt matkan <span class="math notranslate nohighlight">\(x_1=12.5\)</span> m. Kuinka pitkän matkan vene enintään liikkuu eli mikä on <span class="math notranslate nohighlight">\(\lim_{t\to \infty} x\)</span>, kun oletetaan ainoan liikkeen suuntaisen voiman, väliainevastuksen <span class="math notranslate nohighlight">\(F\)</span>, olevan suoraan verrannollinen nopeuteen?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Newtonin 2. lain mukaan voima <span class="math notranslate nohighlight">\(F\)</span> aiheuttaa kappaleelle, jonka massa on <span class="math notranslate nohighlight">\(m\)</span>, kiihtyvyyden <span class="math notranslate nohighlight">\(a\)</span> siten, että <span class="math notranslate nohighlight">\(F=ma\)</span>, missä <span class="math notranslate nohighlight">\(a=\frac{\text{d}v}{\text{d}t}\)</span>. Siis <span class="math notranslate nohighlight">\(F=m \frac{\text{d}v}{\text{d}t}\)</span>. Lisäksi tehtävänannon perusteella tiedetään, että <span class="math notranslate nohighlight">\(F=-kv\)</span>.</p>
+<p>Kirjoittamalla voimien määritelmät yhtä suuriksi saadaan yhtälö <span class="math notranslate nohighlight">\(m \frac{\text{d}v}{\text{d}t}=-kv\)</span></p>
+<p>Yhtälö on separoituva ja muokkaantuu muotoon <span class="math notranslate nohighlight">\(\frac{\text{d}v}{v}=-\frac{k}{m}~\text{d}t\)</span></p>
+<p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\ln{v}=-\frac{k}{m} t + C_1\)</span> ja edelleen <span class="math notranslate nohighlight">\(v(t)=Ce^{-\frac{k}{m}t}\)</span>.</p>
+<p>Sijoittamalla <span class="math notranslate nohighlight">\(v(0)=v_0\)</span> saadaan ratkaistua vakio <span class="math notranslate nohighlight">\(C=v_0\)</span>, siis  <span class="math notranslate nohighlight">\(v(t)=v_0 e^{-\frac{k}{m}t}\)</span>.</p>
+<p>Veneen nopeus <span class="math notranslate nohighlight">\(v(t)\)</span> kuvaa paikan <span class="math notranslate nohighlight">\(x\)</span> muutosta ajan <span class="math notranslate nohighlight">\(t\)</span> suhteen, siis <span class="math notranslate nohighlight">\(v(t)=\frac{\text{d}x}{\text{d}t}\)</span>.</p>
+<p>Tästä saadaan ratkaistua <span class="math notranslate nohighlight">\(v(t)~\text{d}t=1~\text{d}x\)</span> eli <span class="math notranslate nohighlight">\(x=\int v(t)~\text{d}t = \int v_0 e^{-\frac{kt}{m}}~\text{d}t\)</span>.</p>
+<p>Integroinnin jälkeen ratkaisu on <span class="math notranslate nohighlight">\(x(t)=-\frac{v_0 m}{k} (e^{-\frac{kt}{m}}+C_2)\)</span>.</p>
+<p>Sijoittamalla alkuehto <span class="math notranslate nohighlight">\(x(0)=0\)</span> saadaan <span class="math notranslate nohighlight">\(C_2=-1\)</span>, joten yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(x(t)=\frac{v_0 m}{k} (1-e^{-\frac{kt}{m}})\)</span>.</p>
+<p>Massan <span class="math notranslate nohighlight">\(m\)</span> ja vakion <span class="math notranslate nohighlight">\(k\)</span> arvoja ei voida määrittää pelkästään tästä yhtälöstä, mutta voidaan merkitä <span class="math notranslate nohighlight">\(b=\frac{m}{k}\)</span> ja laskea tälle arvo yhtälöstä <span class="math notranslate nohighlight">\(x(t)=v_0 b (1-e^{-\frac{t}{b}})\)</span>.</p>
+<p>Sijoittamalla annetut lukuarvot saadaan yhtälö <span class="math notranslate nohighlight">\(12.5=5\cdot b (1-e^{-\frac{5}{b}})\)</span> josta voidaan esim. WolframAlphalla selvittää <span class="math notranslate nohighlight">\(b=3.14\)</span>.</p>
+<p>Nyt voidaan laskea <span class="math notranslate nohighlight">\(\lim_{t\to \infty} x(t) = \lim_{t\to \infty} 5\cdot 3.14 (1-e^{-\frac{t}{3.14}}) = 5\cdot 3.14 = 15.7\)</span>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "luma-lapinamk/minna-diff",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="kasite.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Differentiaaliyhtälö</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lineaariset.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lineaarinen differentiaaliyhtälö</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
