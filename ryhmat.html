@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Differentiaaliyhtälöryhmät &#8212; Differentiaaliyhtälöt</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tekstiä" href="testaus2.html" />
+    <link rel="prev" title="Toisen kertaluvun differentiaaliyhtälöt" href="toisen.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Differentiaaliyhtälöt</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Alkusanat
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kasite.html">
+   Differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="separoituvat.html">
+   Separoituvat differentiaaliyhtälöt
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lineaariset.html">
+   Lineaarinen differentiaaliyhtälö
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="yritteet.html">
+   Ratkaisu yritteellä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euler.html">
+   Eulerin menetelmä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rungekutta.html">
+   Runge-Kutta -menetelmä
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="toisen.html">
+   Toisen kertaluvun differentiaaliyhtälöt
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Differentiaaliyhtälöryhmät
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testaus2.html">
+   Tekstiä
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ryhmat.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/luma-lapinamk/minna-diff"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#yhtaloryhman-ratkaisu">
+   Yhtälöryhmän ratkaisu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sovelluksia">
+   Sovelluksia
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu">
+   Korkeamman kertaluvun differentiaaliyhtälön ratkaisu
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Differentiaaliyhtälöryhmät</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#yhtaloryhman-ratkaisu">
+   Yhtälöryhmän ratkaisu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sovelluksia">
+   Sovelluksia
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu">
+   Korkeamman kertaluvun differentiaaliyhtälön ratkaisu
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="differentiaaliyhtaloryhmat">
+<h1>Differentiaaliyhtälöryhmät<a class="headerlink" href="#differentiaaliyhtaloryhmat" title="Permalink to this headline">¶</a></h1>
+<p>Differentiaaliyhtälöistä voidaan muodostaa yhtälöryhmiä samaan tapaan kuin muunkinlaisista yhtälöistä. Esimerkiksi kemianteollisuuden prosesseissa on mukana monta yhtä aikaa muuttuvaa osaa, kuten paine, lämpötila, aineiden konsentraatio ja muut olosuhteet. Jonkin tekijän muutos vaikuttaa muihin tekijöihin. Niinpä prosessin kuvaamiseen tarvitaan useampaa kuin yhtä differentiaaliyhtälöä.</p>
+<div class="section" id="yhtaloryhman-ratkaisu">
+<h2>Yhtälöryhmän ratkaisu<a class="headerlink" href="#yhtaloryhman-ratkaisu" title="Permalink to this headline">¶</a></h2>
+<p>Tarkastellaan yksinkertaisena esimerkkinä ilmiötä, johon liittyy ajasta <span class="math notranslate nohighlight">\(t\)</span> riippuvat funktiot <span class="math notranslate nohighlight">\(y(t)\)</span> ja <span class="math notranslate nohighlight">\(x(t)\)</span>. Tässä on tärkeää huomata, että <span class="math notranslate nohighlight">\(x\)</span> on nyt funktion eikä muuttujan nimi. Funktiot vaikuttavat toisiinsa siten, että</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation} \)</span></p>
+<p>Yhtälöryhmän voi ratkaista eliminointimenetelmällä. Ratkaisun ideana on eliminoida yhtälöistä joko <span class="math notranslate nohighlight">\(x\)</span> tai <span class="math notranslate nohighlight">\(y\)</span> käyttäen apuna puolittain derivoimista. Erään mahdollisen ratkaisun yksityiskohdat ova alla.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Ratkaisemalla alempi yhtälö funktion <span class="math notranslate nohighlight">\(y\)</span> suhteen saadaan <span class="math notranslate nohighlight">\(y=-x'+3x\)</span>. Kun tämä yhtälö derivoidaan molemmin puolin, niin saadaan <span class="math notranslate nohighlight">\(y'=-x''+3x'\)</span>. Sijoittamalla nämä kaksi yhtälöä yhtälöparin ylempään yhtälöön päädytään sellaiseen differentiaaliyhtälöön, jossa on vain yksi tuntematon funktio:</p>
+<p><span class="math notranslate nohighlight">\(-x''+3x'=2(-x'+3x)-2x \)</span></p>
+<p><span class="math notranslate nohighlight">\(-x''+3x'=-2x'+6x-2x \)</span></p>
+<p><span class="math notranslate nohighlight">\(-x''+5x'-4x=0 \)</span></p>
+<p>Nyt kyseessä on homogeeninen toisen kertaluvun differentiaaliyhtälö. Sitä vastaavan karakteristisen yhtälön <span class="math notranslate nohighlight">\(-m^2+5m-4=0\)</span> juuret ovat <span class="math notranslate nohighlight">\(1\)</span> ja <span class="math notranslate nohighlight">\(4\)</span>, joten differentiaaliyhtälön ratkaisuksi tulee <span class="math notranslate nohighlight">\(x(t)=C_1 e^t + C_2 e^{4t}\)</span>.</p>
+<p>Yhtälö <span class="math notranslate nohighlight">\(y(t)\)</span> saadaan ratkaistua sijoittamalla ratkaisu <span class="math notranslate nohighlight">\(x(t)\)</span> ja sen derivaatta <span class="math notranslate nohighlight">\(x'(t)=C_1 e^t + 4 C_2 e^{4t}\)</span> yhtälöön <span class="math notranslate nohighlight">\(y=-x'+3x\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(t)= -C_1 e^t -4 C_2 e^{4t} +3 C_1 e^t +3 C_2 e^{4t}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(t)= 2C_1 e^t - C_2 e^{4t}\)</span></p>
+</div>
+<p>Yksinkertaisia differentiaaliyhtälöryhmiä voidaan ratkaista tietokoneella samaan tapaan kuin tavallisiakin yhtälöryhmiä. Tehokas tapa on ilmaista yhtälöryhmä tietokoneelle matriisimuodossa. Ensimmäisen kertaluvun lineaariselle vakiokertoimiselle differentiaaliyhtälölle muodostetaan tällöin matriisiyhtälöt</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{x}'(t)=\mathbf{A}\mathbf{x}(t)+\mathbf{f}(t), \mathbf{x}(0)=\mathbf{x_0}\)</span>,</p>
+<p>missä <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> sisältää tuntemattomien funktioiden derivaatat, <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> yhtälöissä olevat funktioiden kertoimet ja <span class="math notranslate nohighlight">\(\mathbf{f}(t)\)</span> yhtälöiden epähomogeeniset termit. Mahdolliset alkuarvot ovat vektorissa <span class="math notranslate nohighlight">\(\mathbf{x_0}\)</span>.</p>
+<p><strong>Esim.</strong> Muunna matriisimuotoon yhtälöryhmä</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Yhtälöryhmää <span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}\)</span> vastaa matriisiyhtälö</p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix} x_1' \\ x_2' \\\ x_3' \end{bmatrix} = \begin{bmatrix}-2 &amp; 3 &amp; 0 \\ 0 &amp; -4 &amp; 0 \\ 1 &amp; 0 &amp; 4 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} + \begin{bmatrix} t \\ 5t\\ t^2\end{bmatrix}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="sovelluksia">
+<h2>Sovelluksia<a class="headerlink" href="#sovelluksia" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu">
+<h2>Korkeamman kertaluvun differentiaaliyhtälön ratkaisu<a class="headerlink" href="#korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu" title="Permalink to this headline">¶</a></h2>
+<p>Laskentaohjelmat muuttavat korkeamman kertaluvun differentiaaliyhtälöt useaksi ensimmäisen kertaluvun differentiaaliyhtälöksi. Menetelmä tällaiseen muunnokseen on seuraava:</p>
+<ul class="simple">
+<li><p>Määrittele apumuuttujat <span class="math notranslate nohighlight">\(x_1, x_2, \ldots x_n\)</span> siten, että <span class="math notranslate nohighlight">\(x_1=y, x_2=y', \ldots x_n=y^{(n-1)}\)</span></p></li>
+<li><p>Muodosta apumuuttujien derivaatat: <span class="math notranslate nohighlight">\(x_1'=y', x_2'=y'', \ldots x_n' = y^{(n)}\)</span></p></li>
+<li><p>Ratkaise alkuperäinen yhtälö derivaatan <span class="math notranslate nohighlight">\(y^{(n)}\)</span> suhteen: <span class="math notranslate nohighlight">\(y^{(n)}=x_n=f(x_1, \ldots , x_n)\)</span></p></li>
+<li><p>Muodosta differentiaaliyhtälöryhmä <span class="math notranslate nohighlight">\(x_1'=x_2, x_2'=x_3, \ldots x_n'=f(x_1, \ldots , x_n)\)</span></p></li>
+</ul>
+<p>Muodostunut differentiaaliyhtälöryhmä voidaan jälleen ratkaista eliminaatiomenetelmällä. Siten yhtälöryhmästä katoaa funktioita, kunnes jäljellä on vain yhden tuntemattoman funktion sisältävä differentiaaliyhtälö.</p>
+<p><strong>Esim.</strong> Muunna differentiaaliyhtälö <span class="math notranslate nohighlight">\(y''+2y'-3y= 2\sin t\)</span> ryhmäksi ensimmäisen kertaluvun differentiaaliyhtälöitä.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Määritellään apumuuttujat <span class="math notranslate nohighlight">\(x_1=y\)</span> ja <span class="math notranslate nohighlight">\(x_2=y'\)</span>. Näiden derivaatat ovat <span class="math notranslate nohighlight">\(x_1'=y'\)</span> ja <span class="math notranslate nohighlight">\(x_2'=y''\)</span>. Nyt alkuperäinen yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(x_2'=-2 x_2+x_1+\sin t\)</span> ja lisäksi voidaan muodostaa yhtälö <span class="math notranslate nohighlight">\(x_1'=x_2\)</span>. Saadaan siis yhtälöpari</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} x_1'=x_2 \\ x_2' = -2x_2 -3x_1 +2 \sin t\end{cases} \end{equation}\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "luma-lapinamk/minna-diff",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="toisen.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Toisen kertaluvun differentiaaliyhtälöt</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="testaus2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tekstiä</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
