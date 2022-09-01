@@ -1,6 +1,16 @@
 # Lineaarinen differentiaaliyhtälö
 
-Lineaariseksi differentiaaliyhtälöksi sanotaan yhtälöä, joka voidaan kirjoittaa muodossa $y'=fy+g$ missä $f=f(x)$ ja $g=g(x)$. Lineaarinen differentiaaliyhtälö on
+Lineaariseksi differentiaaliyhtälöksi sanotaan yhtälöä, joka voidaan kirjoittaa muodossa $y'=fy+g$, missä $f=f(x)$ ja $g=g(x)$ ovat muuttujasta $x$ riippuvia tai vakioarvoisia funktioita.
+
+Esimerkkejä:
+
+- $y'=3x^2 y+2x$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=3x^2$ ja $gx(x)=2x$
+
+- $y'=-2xy+4$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=-2x$ ja $gx(x)=4$
+
+- $y'=2y$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=2$ ja $gx(x)=0$
+
+Lineaarinen differentiaaliyhtälö on
 
 - homogeeninen, jos $g(x)=0$,
 
@@ -69,7 +79,7 @@ Ratkaisukaavaan sijoittamalla saadaan $y(x)=Ce^{\frac{3}{2}x^2}$.
 
 ## Vakiokertoiminen lineaarinen yhtälö
 
-Vakiokertoimisessa lineaarisessa differentiaaliyhtälössä kerroinfunktio $f(x)$ on vakio. Vakiofunktion $f(x)=a$ integraalifunktio on $F(x)=ax$ joten ratkaisukaava sievenee muotoon
+Vakiokertoimisessa lineaarisessa differentiaaliyhtälössä kerroinfunktio $f(x)$ on vakio. Vakiofunktion $f(x)=a$ integraalifunktio on $F(x)=ax$, joten ratkaisukaava sievenee muotoon
 
 $y(x)=e^{ax}\left(\int e^{-ax} g(x) ~\text{d}x + C \right)$.
 
@@ -82,7 +92,7 @@ Tässä yhtälössä $f(x)=2$, $a=2$ ja $g(x)=3x$, joten ratkaisuksi saadaan
 
 $y(x)=e^{2x}\left(\int e^{-2x} 3x ~\text{d}x + C \right)$.
 
-Integraalin $\int e^{-2x} 3x ~\text{d}x$ saadaan (WolframAlphalla) $-\frac{3}{4} e^{-2 x} (1 + 2 x)$, joten differentiaaliyhtälön ratkaisuksi muodostuu
+Integraalin $\int e^{-2x} 3x ~\text{d}x$ tulokseksi saadaan (WolframAlphalla) $-\frac{3}{4} e^{-2 x} (1 + 2 x)$, joten differentiaaliyhtälön ratkaisuksi muodostuu
 
 $y(x)=e^{2x}\left(-\frac{3}{4} e^{-2x} (1 + 2 x) + C \right) = -\frac{3}{4}(1+2x)+Ce^{2x}$.
 
