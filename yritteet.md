@@ -13,7 +13,7 @@ Yritettä ei tarvitse joka ongelmassa arvata erikseen. Yritteen valinta perustuu
 | $g(x)$ | Yrite |
 |--------|-------|
 | vakio  | $A$   |
-|polynomi $a+bx+cx^2+ \ldots$| saman asteluvun polynomi $A+Bx^2+Cx^2+\ldots$|
+|polynomi $a+bx+cx^2+ \ldots$| saman asteluvun polynomi $A+Bx+Cx^2+\ldots$|
 |$e^{ax}$  | $Ae^{ax}$ |
 |$\sin{ax}$ tai $\cos{ax}$ | $A \sin{ax} + B \cos{ax}$|
 

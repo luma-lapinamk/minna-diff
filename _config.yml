@@ -17,7 +17,7 @@ execute:
 # ----------------
 repository:
   url: https://github.com/luma-lapinamk/minna-diff
-  branch: master
+  branch: main
 
 # HTML-settings
 # --------------
@@ -25,6 +25,5 @@ html:
   use_issues_button: false
   use_repository_button: true
 launch_buttons:
-  colab_url: "https://colab.research.google.com"
-  binderhub_url: "https://mybinder.org"
+  binderhub_url: "https://mybinder.org/"
   thebe: true

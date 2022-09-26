@@ -16,7 +16,7 @@ Yhtälöstä on helppo ratkaista $y(t+h)$:
 
 $y(t+h)=y(t)+hf(t,y(t))$.
 
-Merkitään funktion arvoja eri ajan hetkillä seuraavasti: $y_0=y(0), y_1=h(h), y_2=y(2h), \ldots y_n=y(nh)$. Ajan arvoja merkitään vastaavasti $t_0=0, t_1=h, t_2=2h, \ldots t_n=nh$.
+Merkitään funktion arvoja eri ajan hetkillä seuraavasti: $y_0=y(0), y_1=y(h), y_2=y(2h), \ldots y_n=y(nh)$. Ajan arvoja merkitään vastaavasti $t_0=0, t_1=h, t_2=2h, \ldots t_n=nh$.
 
 Tehtävä ratkaistaan laskemalla funktion arvoja perustuen aiempien hetkien arvoihin:
 
@@ -28,7 +28,7 @@ $\ldots$
 
 $y_n = y_{n-1}+ hf(t_{n-1},y_{n-1})$
 
-Askelpituuden $h$ valintaan ei ole mitään sääntöä. Pieni askelpituus ei välttämättä aina ole parempi kuin suurempi askelpituus.
+Askelpituuden $h$ valintaan ei ole mitään yleistä sääntöä. Usein pieni askelpituus on parempi kuin suurempi askelpituus.
 
 **Esim.** Funktio $y=y(t)$ on differentiaaliyhtälön $y'=\sqrt{t+y}$ yksittäisratkaisu, joka toteuttaa ehdon $y(0)=1$. Selvitä, mikä on funktion $y(t)$ arvo, kun $t=2$.
 
@@ -59,6 +59,6 @@ Pisteessä $t=0$ funktion arvo on $y(0)=1$, ja funktion kasvunopeus on $y'(0)=\s
 
 Näin ollen päästiin pisteeseen $y(0.5)=y(0)+\Delta y = 1+0.5 = 1.5$. Derivaatan arvo tässä pisteessä on $y'(0.5)=\sqrt{0.5+1.5}=\sqrt{2} \approx 1.414$. Funktion arvon muutos on siis seuraavaan pisteeseen siirryttäessä $\Delta y = 1.414\cdot 0.5 \approx 0.707$.
 
-Seuraava piste on siis $y(1)=y(0.5)+y'(0.5)\cdot \Delta x = 1.5+0.707 = 2.207$. Tässä pisteessä derivaatta on $y'(1)=sqrt{1+2.207} \approx 1.791$.
+Seuraava piste on siis $y(1)=y(0.5)+y'(0.5)\cdot \Delta x = 1.5+0.707 = 2.207$. Tässä pisteessä derivaatta on $y'(1)=\sqrt{1+2.207} \approx 1.791$.
 
 Seuraava piste on $y(1.5)=2.207+0.5\cdot 1.791 = 3.103$. Jälleen lasketaan derivaatta $y'(1.5) = \sqrt{1.5+3.103} \approx 2.145$. Viimeinen piste on $y(2)=3.103+0.5\cdot 2.145 \approx 4.176$.
