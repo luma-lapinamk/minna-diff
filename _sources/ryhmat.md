@@ -31,6 +31,8 @@ $y(t)= 2C_1 e^t - C_2 e^{4t}$
 
 :::
 
+## Yhtälöryhmät matriisimuodossa
+
 Yksinkertaisia differentiaaliyhtälöryhmiä voidaan ratkaista tietokoneella samaan tapaan kuin tavallisiakin yhtälöryhmiä. Tehokas tapa on ilmaista yhtälöryhmä tietokoneelle matriisimuodossa. Ensimmäisen kertaluvun lineaariselle vakiokertoimiselle differentiaaliyhtälölle muodostetaan tällöin matriisiyhtälöt
 
 $\mathbf{x}'(t)=\mathbf{A}\mathbf{x}(t)+\mathbf{f}(t), \mathbf{x}(0)=\mathbf{x_0}$,
