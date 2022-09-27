@@ -4,11 +4,11 @@ Lineaariseksi differentiaaliyhtälöksi sanotaan yhtälöä, joka voidaan kirjoi
 
 Esimerkkejä:
 
-- $y'=3x^2 y+2x$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=3x^2$ ja $gx(x)=2x$
+- $y'=3x^2 y+2x$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=3x^2$ ja $g(x)=2x$
 
-- $y'=-2xy+4$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=-2x$ ja $gx(x)=4$
+- $y'=-2xy+4$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=-2x$ ja $g(x)=4$
 
-- $y'=2y$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=2$ ja $gx(x)=0$
+- $y'=2y$ on lineaarinen differentiaaliyhtälö, jossa $f(x)=2$ ja $g(x)=0$
 
 Lineaarinen differentiaaliyhtälö on
 
@@ -111,7 +111,7 @@ $y(x)=e^{5x}\left(\int e^{-5x}\cdot 0 ~\text{d}x + C \right) = Ce^{5x}$.
 
 Toisaalta yhtälö on myös separoituva: 
 
-$\frac{\text{d}y}{text{d}x}=5y$
+$\frac{\text{d}y}{\text{d}x}=5y$
 
 $\frac{1}{y}\text{d}y=5~\text{d}x$
 
