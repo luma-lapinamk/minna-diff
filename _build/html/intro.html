@@ -50,9 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Differentiaaliyhtälö" href="kasite.html" />
+    <link rel="next" title="Mikä on differentiaaliyhtälö?" href="kasite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +117,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
-   Differentiaaliyhtälö
+   Mikä on differentiaaliyhtälö?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integroituvat.html">
+   Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,8 +309,18 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="alkusanat">
 <h1>Alkusanat<a class="headerlink" href="#alkusanat" title="Permalink to this headline">#</a></h1>
-<p>Tämä oppimateriaali on tarkoitettu Differentiaaliyhtälöt-opintojaksolle. Opintojakso kuuluu Lapin AMK:N insinöörikoulutusten laajan matematiikan kokonaisuuteen.</p>
-<p>Materiaali päivittyy ja täydentyy vielä! Lisämateriaalia ja runsaasti tehtäviä opintojaksoa suorittaville opiskelijoille löytyy ajankohtaisen kurssitoteutuksen Moodle-työtilasta.</p>
+<p>Tämä oppimateriaali on tarkoitettu tueksi differentiaaliyhtälöiden opiskeluun. Materiaali päivittyy ja täydentyy vielä!</p>
+<p>Sivustolla esiintyvät matemaattiset merkinnät saa näkymään suurempana (ainakin Chrome- ja Edge- selaimilla) seuraavasti:</p>
+<ul class="simple">
+<li><p>klikkaa merkintää hiiren 2. napilla</p></li>
+<li><p>valitse Math Settings tai Matematiikan asetukset</p></li>
+<li><p>valitse Zoom Trigger tai Loitonnustapa</p></li>
+<li><p>valitse Click tai Napsautus</p></li>
+<li><p>tämän jälkeen hiiren 1. nappulan klikkaus näyttää merkinnät suurennettuina</p></li>
+</ul>
+<p>Kokeile esimerkiksi tällä kaavalla: <span class="math notranslate nohighlight">\(f(x)=\frac{3x^2+4x+5}{2x^3+7x-3}\)</span></p>
+<p>Materiaali on käytössä Lapin AMK:n tekniikan koulutusten laajan matematiikan Differentiaaliyhtälöt-opintojaksolla. Sitä parhaillaan suorittaville opiskelijoille löytyy lisää esimerkkejä ja paljon harjoitustehtäviä toteutuksen Moodle-työtilasta.</p>
+<p>Tämän materiaalin on tehnyt Lapin AMK:n LUMA-tiimi. Kaikki LUMA-tiimin digitaaliset oppikirjat löytyvät LUMA-tiimin <a class="reference external" href="https://luma-lapinamk.pub">materiaalipankista</a>.</p>
 <p>Opiskelun iloa!</p>
 <div class="toctree-wrapper compound">
 </div>
@@ -339,7 +356,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="kasite.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Differentiaaliyhtälö</p>
+        <p class="prev-next-title">Mikä on differentiaaliyhtälö?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

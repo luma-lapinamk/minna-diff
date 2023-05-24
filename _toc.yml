@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: kasite
+- file: integroituvat
 - file: separoituvat
 - file: lineaariset
 - file: yritteet

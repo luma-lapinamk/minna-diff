@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Eulerin menetelmä &#8212; Differentiaaliyhtälöt</title>
+    <title>Eri tyyppiset differentiaaliyhtälöt &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,14 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Muita menetelmiä" href="rungekutta.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="numeeriset.html" />
+    <link rel="next" title="Separoituvat differentiaaliyhtälöt" href="separoituvat.html" />
+    <link rel="prev" title="Mikä on differentiaaliyhtälö?" href="kasite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,8 +121,8 @@ const thebe_selector_output = ".output, .cell_output"
    Mikä on differentiaaliyhtälö?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="integroituvat.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
@@ -143,8 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
    Ratkaisu yritteellä
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="euler.html">
    Eulerin menetelmä
   </a>
  </li>
@@ -249,7 +247,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/euler.md"
+        <a href="_sources/integroituvat.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -309,8 +307,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eulerin-menetelma-ja-derivaatta">
-   Eulerin menetelmä ja derivaatta
+  <a class="reference internal nav-link" href="#perustyyppi-ratkeaa-integroimalla">
+   Perustyyppi ratkeaa integroimalla
   </a>
  </li>
 </ul>
@@ -322,7 +320,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Eulerin menetelmä</h1>
+                <h1>Eri tyyppiset differentiaaliyhtälöt</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -333,8 +331,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eulerin-menetelma-ja-derivaatta">
-   Eulerin menetelmä ja derivaatta
+  <a class="reference internal nav-link" href="#perustyyppi-ratkeaa-integroimalla">
+   Perustyyppi ratkeaa integroimalla
   </a>
  </li>
 </ul>
@@ -347,41 +345,85 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="eulerin-menetelma">
-<h1>Eulerin menetelmä<a class="headerlink" href="#eulerin-menetelma" title="Permalink to this headline">#</a></h1>
-<p>Tarkastellaan yhtälöä <span class="math notranslate nohighlight">\(y'=f(t,y), y(0)=y_0\)</span>. Eulerin menetelmä on algoritmi, jolla yhtälön arvolle voidaan löytää likiarvo, joka vastaa haluttua muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoa, vaikka varsinaista funktion <span class="math notranslate nohighlight">\(y(t)\)</span> lauseketta ei saataisi selville. Tiedossa on oltava jokin alkuarvo <span class="math notranslate nohighlight">\(y_0\)</span>, josta lähtien funktion muita arvoja aletaan arvioida.</p>
-<p>Eulerin menetelmässä derivaatta ilmastaan erotusosamäärällä:</p>
-<p><span class="math notranslate nohighlight">\(y'(t)\approx\frac{y(t+h)-y(t)}{h}\)</span></p>
-<p>Tarkalleenhan derivaatta on erotusosamäärän raja-arvo, jossa <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
-<p>Sijoitetaan äskeinen derivaatan lauseke yhtälöön:</p>
-<p><span class="math notranslate nohighlight">\(\frac{y(t+h)-y(t)}{h}=f(t,y(t))\)</span></p>
-<p>Yhtälöstä on helppo ratkaista <span class="math notranslate nohighlight">\(y(t+h)\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(y(t+h)=y(t)+hf(t,y(t))\)</span>.</p>
-<p>Merkitään funktion arvoja eri ajan hetkillä seuraavasti: <span class="math notranslate nohighlight">\(y_0=y(0), y_1=y(h), y_2=y(2h), \ldots y_n=y(nh)\)</span>. Ajan arvoja merkitään vastaavasti <span class="math notranslate nohighlight">\(t_0=0, t_1=h, t_2=2h, \ldots t_n=nh\)</span>.</p>
-<p>Tehtävä ratkaistaan laskemalla funktion arvoja perustuen aiempien hetkien arvoihin:</p>
-<p><span class="math notranslate nohighlight">\(y_1 = y_0 + hf(t_0, y_0)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_2 = y_1 + hf(t_1, y_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(\ldots\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+ hf(t_{n-1},y_{n-1})\)</span></p>
-<p>Askelpituuden <span class="math notranslate nohighlight">\(h\)</span> valintaan ei ole mitään yleistä sääntöä. Usein pieni askelpituus on parempi kuin suurempi askelpituus.</p>
-<p><strong>Esim.</strong> Funktio <span class="math notranslate nohighlight">\(y=y(t)\)</span> on differentiaaliyhtälön <span class="math notranslate nohighlight">\(y'=\sqrt{t+y}\)</span> yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>. Selvitä, mikä on funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvo, kun <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="eri-tyyppiset-differentiaaliyhtalot">
+<h1>Eri tyyppiset differentiaaliyhtälöt<a class="headerlink" href="#eri-tyyppiset-differentiaaliyhtalot" title="Permalink to this headline">#</a></h1>
+<p>Differentiaaliyhtälöistä on olemassa muutamaa erilaista tyyppiä, jotka on helppoa tai ainakin mahdollista ratkaista itse laskemalla:</p>
+<ul class="simple">
+<li><p>“perustyyppi” eli integroituva differentiaaliyhtälö</p></li>
+<li><p>separoituva differentiaaliyhtälö</p></li>
+<li><p>lineaarinen differentiaaliyhtälö</p>
+<ul>
+<li><p>homogeeninen differentiaaliyhtälö</p></li>
+<li><p>vakiokertoiminen differentiaaliyhtälö</p></li>
+</ul>
+</li>
+</ul>
+<p>Erityyppisten yhtälöiden ratkaisumenetelmiin perehdytään seuraavissa luvuissa. On olemassa sellaisiakin differentiaaliyhtälöitä, joita ei voi ratkaista analyyttisesti. Tällöin funktiolle <span class="math notranslate nohighlight">\(y(x)\)</span> ei ole mahdollista johtaa lauseketta, ja laskun lopputuloksena on likiarvo eikä tarkka arvo. Opintojaksolla perehdytään erilaisiin numeerisiin menetelmiin, joilla tällaisia ratkaisuja voi etsiä.</p>
+<section id="perustyyppi-ratkeaa-integroimalla">
+<h2>Perustyyppi ratkeaa integroimalla<a class="headerlink" href="#perustyyppi-ratkeaa-integroimalla" title="Permalink to this headline">#</a></h2>
+<p>Yksinkertaisimmillaan differentiaaliyhtälön toisella puolella on etsittävän funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span> ja toisella puolella pelkästään muuttujasta ja vakioista koostuva lauseke, jota voidaan merkitä <span class="math notranslate nohighlight">\(f(x)\)</span>. Tällöin funktio <span class="math notranslate nohighlight">\(y(x)\)</span> saadaan selville integroimalla, siis <span class="math notranslate nohighlight">\(y(x)=\int f(x) \,dx +C\)</span>.</p>
+<p>Tällaista yhtälöä kutsutaan differentiaaliyhtälön perustapaukseksi. Toinen nimitys on <strong>integroituva</strong> differentiaaliyhtälö. Yhtälössä esiintyy siis vain funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta, ei itse funktiota <span class="math notranslate nohighlight">\(y(x)\)</span>.</p>
+<p>Integroimalla saadaan differentiaaliyhtälön yleinen ratkaisu. Jos halutaan yksittäinen ratkaisu, pitää tietää jokin ehto <span class="math notranslate nohighlight">\(y(x_0)=y_0\)</span>.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Etsi differentiaaliyhtälölle <span class="math notranslate nohighlight">\(y'=4x\)</span></p>
+<p>a) yleinen ratkaisu,</p>
+<p>b) yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(1)=8\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Funktiosta tiedetään alkuarvo <span class="math notranslate nohighlight">\(y_0 = 1\)</span>. Valitaan askelpituudeksi esim. <span class="math notranslate nohighlight">\(h=0.5\)</span>. Lasketaan funktion arvoja:</p>
-<p><span class="math notranslate nohighlight">\(y(0.5) = y_1 = y_0+h\sqrt{t_0 + y_0} = 1 + 0.5\cdot \sqrt{0+1} =1 + 0.5 = 1.5\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(1) = y_2 = y_1 + h\sqrt{t_1 + y_1} = 1.5 + 0.5\sqrt{0.5+1.5} = 1.5+0.5\sqrt{2} \approx 2.20711\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(1.5) = y_3 = 2.20711 + 0.5 \sqrt{1+2.20711} \approx 3.10253\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(2) = y_4 = 3.10253 + 0.5 \sqrt{1.5+3.10253} \approx 4.17521\)</span>.</p>
+<p>a) Integroidaan: <span class="math notranslate nohighlight">\(y(x)=\int 4x \,dx +C = 2x^2 + C\)</span></p>
+<p>b) Ratkaistaan vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(2\cdot 1^2+C=8 \leftrightarrow C=8-6 \leftrightarrow C=6\)</span>. Kysytty yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=2x^2+6\)</span>.</p>
 </div>
-<section id="eulerin-menetelma-ja-derivaatta">
-<h2>Eulerin menetelmä ja derivaatta<a class="headerlink" href="#eulerin-menetelma-ja-derivaatta" title="Permalink to this headline">#</a></h2>
-<p>Eulerin menetelmän avulla voi myös arvioida funktion kulkua sen derivaatan avulla. Differentiaaliyhtälössähän tuntematon <span class="math notranslate nohighlight">\(y'\)</span> kertoo jokaisessa pisteessä funktion muutosnopeuden. Pienillä askelväleillä voidaan ajatella, että funktio hetkellisesti käyttäytyy kuten suora, jonka kulmakerroin on <span class="math notranslate nohighlight">\(y'\)</span>. Tällöin funktion arvon muutos saadaan laskemalla kulmakertoimen määritelmästä lähtien: <span class="math notranslate nohighlight">\(y'=\frac{\Delta y}{\Delta t}\)</span>, joten <span class="math notranslate nohighlight">\(\Delta y = y' \Delta t\)</span>.</p>
-<p>Tarkastellaan edellistä esimerkkiä hieman toisella tavalla, välittämättä edellä esitellystä Eulerin algorismista, tarkastellen pelkästään funktion muutosnopeutta.</p>
-<p><strong>Esim.</strong> Funktio <span class="math notranslate nohighlight">\(y=y(t)\)</span> on differentiaaliyhtälön <span class="math notranslate nohighlight">\(y'=\sqrt{t+y}\)</span> yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>. Selvitä, mikä on funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvo, kun <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
-<p>Pisteessä <span class="math notranslate nohighlight">\(t=0\)</span> funktion arvo on <span class="math notranslate nohighlight">\(y(0)=1\)</span>, ja funktion kasvunopeus on <span class="math notranslate nohighlight">\(y'(0)=\sqrt{0+1}=1\)</span>. Toisin sanoen kun siirrytään seuraavaan pisteeseen <span class="math notranslate nohighlight">\(t=0.5\)</span>, funktion arvon muutos <span class="math notranslate nohighlight">\(\Delta y\)</span> on kasvunopeuden ja muutoksen <span class="math notranslate nohighlight">\(\Delta t\)</span> tulo <span class="math notranslate nohighlight">\(1 \cdot 0.5=0.5\)</span>.</p>
-<p>Näin ollen päästiin pisteeseen <span class="math notranslate nohighlight">\(y(0.5)=y(0)+\Delta y = 1+0.5 = 1.5\)</span>. Derivaatan arvo tässä pisteessä on <span class="math notranslate nohighlight">\(y'(0.5)=\sqrt{0.5+1.5}=\sqrt{2} \approx 1.414\)</span>. Funktion arvon muutos on siis seuraavaan pisteeseen siirryttäessä <span class="math notranslate nohighlight">\(\Delta y = 1.414\cdot 0.5 \approx 0.707\)</span>.</p>
-<p>Seuraava piste on siis <span class="math notranslate nohighlight">\(y(1)=y(0.5)+y'(0.5)\cdot \Delta x = 1.5+0.707 = 2.207\)</span>. Tässä pisteessä derivaatta on <span class="math notranslate nohighlight">\(y'(1)=\sqrt{1+2.207} \approx 1.791\)</span>.</p>
-<p>Seuraava piste on <span class="math notranslate nohighlight">\(y(1.5)=2.207+0.5\cdot 1.791 = 3.103\)</span>. Jälleen lasketaan derivaatta <span class="math notranslate nohighlight">\(y'(1.5) = \sqrt{1.5+3.103} \approx 2.145\)</span>. Viimeinen piste on <span class="math notranslate nohighlight">\(y(2)=3.103+0.5\cdot 2.145 \approx 4.176\)</span>.</p>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Kappaleen nopeus <span class="math notranslate nohighlight">\(v\)</span> noudattaa ajan <span class="math notranslate nohighlight">\(t\)</span> suhteen yhtälöä <span class="math notranslate nohighlight">\(v(t)=5~\frac{\text{m}}{\text{s}}+0.1 ~\frac{\text{m}}{\text{s}^2} t\)</span>. Hetkellä <span class="math notranslate nohighlight">\(t=0\)</span> s kappaleen sijainti oli <span class="math notranslate nohighlight">\(x=10\)</span> m. Nopeus on sijainnin derivaatta. Millä funktiolla kappaleen sijaintia ajan funktiona voidaan yleisesti kuvata?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Tiedetään, että <span class="math notranslate nohighlight">\(x'(t)=v(t)\)</span>. Näin ollen <span class="math notranslate nohighlight">\(x(t)=\int v(t)~dt + C\)</span>. Suoritaan integrointi (suureiden yksiköt on jätetty pois yksinkertaisuuden vuoksi):</p>
+<p><span class="math notranslate nohighlight">\(x(t)=\int 5+0.1t \,dt + C\)</span></p>
+<p><span class="math notranslate nohighlight">\(x(t)=5t+0.05t^2+C\)</span></p>
+<p>Vakion <span class="math notranslate nohighlight">\(C\)</span> arvo saadaan selville ehdosta <span class="math notranslate nohighlight">\(x(0)=10\)</span>, siis</p>
+<p><span class="math notranslate nohighlight">\(5\cdot 0 + 0.05\cdot 0^2+C=10 \Leftrightarrow C=10\)</span>.</p>
+<p>Kappaleen sijaintia kuvaa siis funktio <span class="math notranslate nohighlight">\(x(t)=5t+0.05t^2+10\)</span>.</p>
+</div>
+</div>
+<p>Integroituvassa differentiaaliyhtälössä voi esiintyä myös toista derivaattaa <span class="math notranslate nohighlight">\(y''\)</span>. Jos tällöin halutaan selville yksittäisratkaisu, pitää tietää ehdon <span class="math notranslate nohighlight">\(y(x_0)=y_0\)</span> lisäksi jokin toinen ehto <span class="math notranslate nohighlight">\(y'(x_1)=y_1'\)</span>. Kaksi ehtoa tarvitaan, koska ratkaisu tapahtuu kaksi kertaa peräkkäin integroimalla. Ensimmäisellä integroinnilla saadaan toisesta derivaatasta <span class="math notranslate nohighlight">\(y''\)</span> selville derivaatta <span class="math notranslate nohighlight">\(y'\)</span>, ja toisella integroinnilla funktio <span class="math notranslate nohighlight">\(y'\)</span>. Kummastakin integroinnista tulee mukaan oma vakionsa.</p>
+<p>Toista derivaattaa sisältävän differentiaaliyhtälön ratkaisu onnistuu suoraviivaisesti integroimalla kahteen kertaan vain, jos yhtälössä ei esiinny derivaattaa <span class="math notranslate nohighlight">\(y'\)</span> eikä itse funktiota <span class="math notranslate nohighlight">\(y\)</span>. Muulloin kyseessä ei ole integroituva differentiaaliyhtälö, vaan yleisempi toisen kertaluvun differentiaaliyhtälö. Näitä hankalampia tapauksia käsitellään luvussa “Toisen kertaluvun differentiaaliyhtälöt”.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'=2x+3\)</span> ehdolla <span class="math notranslate nohighlight">\(y(1)=6\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Integroimalla saadaan yleinen ratkaisu:</p>
+<p><span class="math notranslate nohighlight">\(y=\int 2x+3 \,dx+C=x^2+3x+C\)</span></p>
+<p>Selvitetään vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(y(1)=6\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(1^2+3\cdot 1 + C = 6 \Leftrightarrow C=6-1-3 \Leftrightarrow C=2\)</span></p>
+<p>Yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=x^2+3x+2\)</span>.</p>
+</div>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(y''=x^3+x\)</span>, kun tiedetään, että <span class="math notranslate nohighlight">\(y(1)=3\)</span> ja <span class="math notranslate nohighlight">\(y'(0)=4\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Derivaatta <span class="math notranslate nohighlight">\(y'\)</span> saadaan selville integroimalla <span class="math notranslate nohighlight">\(y''\)</span>. Merkitään tästä integroinnista saatavaa vakiota <span class="math notranslate nohighlight">\(C_1\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(y'=\int x^3 + x \,dx+C_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(y'=\frac{1}{4}x^4+\frac{1}{2}x^2 + C_1\)</span></p>
+<p>Selvitetään vakion <span class="math notranslate nohighlight">\(C_1\)</span> arvo ehdosta <span class="math notranslate nohighlight">\(y'(0)=4\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{4}\cdot 0^4+\frac{1}{2}\cdot 0^2 + C_1 = 4 \Leftrightarrow C_1=4\)</span></p>
+<p>Derivaatta on siis <span class="math notranslate nohighlight">\(y'=\frac{1}{4}x^4+\frac{1}{2}x^2 + 4\)</span>. Näin muodostunut ensimmäisen kertaluvun differentiaaliyhtälöä ratkeaa jälleen integroimalla. Vakiota on nyt merkitty <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(y=\int \frac{1}{4}x^4+\frac{1}{2}x^2 + 4 \,dx + C_2\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=\frac{1}{4\cdot 5} x^5 + \frac{1}{2\cdot 3} x^3 + 4x + C_2\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=\frac{1}{20} x^5 + \frac{1}{6} x^3 + 4x + C_2\)</span></p>
+<p>Ratkaistaan vielä vakio <span class="math notranslate nohighlight">\(C_2\)</span> yhtälöstä <span class="math notranslate nohighlight">\(y(1)=3\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{20} \cdot 1^5 + \frac{1}{6} \cdot 1^3 + 4\cdot 1 + C_2 = 3\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{20} + \frac{1}{6} + 4+ C_2 = 3\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_2=3-4-\frac{1}{20}-\frac{1}{6}\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_2=-\frac{73}{60}\)</span></p>
+<p>Ehdot toteuttava yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=\frac{1}{20} x^5 + \frac{1}{6} x^3 + 4x-\frac{73}{60}\)</span>.</p>
+</div>
+</div>
 </section>
 </section>
 
@@ -412,17 +454,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="numeeriset.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="kasite.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title">Mikä on differentiaaliyhtälö?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="rungekutta.html" title="next page">
+    <a class='right-next' id="next-link" href="separoituvat.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Muita menetelmiä</p>
+        <p class="prev-next-title">Separoituvat differentiaaliyhtälöt</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

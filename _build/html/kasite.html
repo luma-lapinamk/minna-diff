@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Differentiaaliyhtälö &#8212; Differentiaaliyhtälöt</title>
+    <title>Mikä on differentiaaliyhtälö? &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Separoituvat differentiaaliyhtälöt" href="separoituvat.html" />
+    <link rel="next" title="Eri tyyppiset differentiaaliyhtälöt" href="integroituvat.html" />
     <link rel="prev" title="Alkusanat" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,7 +118,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Differentiaaliyhtälö
+   Mikä on differentiaaliyhtälö?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integroituvat.html">
+   Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,13 +307,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differentiaaliyhtalon-perustapaus">
-   Differentiaaliyhtälön perustapaus
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-yleinen-muoto">
+   Differentiaaliyhtälön yleinen muoto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differentiaaliyhtalon-perustyypit">
-   Differentiaaliyhtälön perustyypit
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-kertaluku">
+   Differentiaaliyhtälön kertaluku
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-ratkaisut">
+   Differentiaaliyhtälön ratkaisut
   </a>
  </li>
 </ul>
@@ -320,7 +330,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Differentiaaliyhtälö</h1>
+                <h1>Mikä on differentiaaliyhtälö?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -331,13 +341,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differentiaaliyhtalon-perustapaus">
-   Differentiaaliyhtälön perustapaus
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-yleinen-muoto">
+   Differentiaaliyhtälön yleinen muoto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#differentiaaliyhtalon-perustyypit">
-   Differentiaaliyhtälön perustyypit
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-kertaluku">
+   Differentiaaliyhtälön kertaluku
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differentiaaliyhtalon-ratkaisut">
+   Differentiaaliyhtälön ratkaisut
   </a>
  </li>
 </ul>
@@ -350,36 +365,63 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="differentiaaliyhtalo">
-<h1>Differentiaaliyhtälö<a class="headerlink" href="#differentiaaliyhtalo" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mika-on-differentiaaliyhtalo">
+<h1>Mikä on differentiaaliyhtälö?<a class="headerlink" href="#mika-on-differentiaaliyhtalo" title="Permalink to this headline">#</a></h1>
 <p>Differentiaaliyhtälöt ovat tärkeitä, kun tarkastellaan tilanteita, joissa jokin asia muuttuu. Esimerkkejä muuttuvista asioista ovat lämpötila (vaikkapa huonosti eristetyn talon sisällä kovalla pakkasella), väestön määrä (alueella, jonne pitäisi mahdollisesti kaavoittaa uusi asuinalue) ja kondensaattorista purkautuva sähköjännite (tietokoneen sisällä).</p>
-<p>Aiemmin muutoksia ollaan tarkasteltu funktion derivaatan avulla. Differentiaaliyhtälöt ovatkin yhtälöitä, joissa esiintyy funktion derivaattoja. Esimerkiksi yhtälö <span class="math notranslate nohighlight">\(y'+6=4x\)</span> on differentiaaliyhtälö, jossa esiintyy funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span> tai lyhyemmin merkittynä <span class="math notranslate nohighlight">\(y'\)</span>. Differentiaaliyhtälöistä ei ole tarkoitus ratkaista muuttujaa <span class="math notranslate nohighlight">\(x\)</span>, vaan funktio <span class="math notranslate nohighlight">\(y(x)\)</span>. Funktio itse voi myös esiintyä differentiaaliyhtälössä, esimerkiksi <span class="math notranslate nohighlight">\(y^2=4y'-6y\)</span>.</p>
-<section id="differentiaaliyhtalon-perustapaus">
-<h2>Differentiaaliyhtälön perustapaus<a class="headerlink" href="#differentiaaliyhtalon-perustapaus" title="Permalink to this headline">#</a></h2>
-<p>Differentiaaliyhtälöiden ratkaisu perustuu integroimiseen. Integrointilaskuissa saadaan aina useampi kuin yksi ratkaisu. Esimerkiksi funktion <span class="math notranslate nohighlight">\(f(x)=2x+3\)</span> integraalifunktioita ovat kaikki funktiot <span class="math notranslate nohighlight">\(F(x)=x^2+3x+C\)</span>, missä <span class="math notranslate nohighlight">\(C \in \Re\)</span>. Vastaavasti differentiaaliyhtälöille voidaan löytää tällainen ns. yleinen ratkaisu, jossa vakiolle <span class="math notranslate nohighlight">\(C\)</span> ei ole määrätty tiettyä arvoa. Jokainen <span class="math notranslate nohighlight">\(C\)</span>:n arvo vastaa yhtä yksittäisratkaisua. Haluttu yksittäisratkaisu löydetään jonkin funktiolle määrätyn ehdon perusteella. Lisäksi differentiaaliyhtälöllä voi olla erikoisratkaisuja, jotka eivät löydy yleisen ratkaisun perusteella.</p>
-<p>Yksinkertaisessa tapauksessa differentiaaliyhtälön ratkaisu tapahtuu aivan samalla tavalla kuin integrointi. Tämä onnistuu silloin, kun differentiaaliyhtälö on muotoa <span class="math notranslate nohighlight">\(y'=f(x)\)</span>. Yhtälössä esiintyy vain funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta, ei itse funktiota <span class="math notranslate nohighlight">\(y(x)\)</span>. Yleinen ratkaisu löytyy laskemalla <span class="math notranslate nohighlight">\(y(x)=\int f(x) \, dx\)</span>.</p>
-<p><strong>Esim.</strong> Etsi differentiaaliyhtälölle <span class="math notranslate nohighlight">\(y'=4x\)</span></p>
-<p>a) yleinen ratkaisu,</p>
-<p>b) yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(1)=8\)</span>.</p>
+<p>Aiemmin muutoksia ollaan tarkasteltu funktion derivaatan avulla. Differentiaaliyhtälöt ovatkin yhtälöitä, joissa esiintyy funktion derivaattoja. Funktiota merkitään usein <span class="math notranslate nohighlight">\(y\)</span> tai <span class="math notranslate nohighlight">\(y(x)\)</span> ja sen derivaattaa <span class="math notranslate nohighlight">\(y'\)</span> tai <span class="math notranslate nohighlight">\(y'(x)\)</span>. Differentiaaliyhtälöistä ei ole tarkoitus ratkaista muuttujaa <span class="math notranslate nohighlight">\(x\)</span>, vaan funktio <span class="math notranslate nohighlight">\(y(x)\)</span>.</p>
+<p>Differentiaaliyhtälössä voi esiintyä funktion derivaatan lisäksi funktio itse, funktion muuttuja ja vielä vakioitakin. Esimerkiksi yhtälö <span class="math notranslate nohighlight">\(y'+6=4x\)</span> on differentiaaliyhtälö, jossa esiintyy funktion <span class="math notranslate nohighlight">\(y\)</span> derivaatta <span class="math notranslate nohighlight">\(y'\)</span>, muuttuja <span class="math notranslate nohighlight">\(x\)</span> ja vakiotermi <span class="math notranslate nohighlight">\(6\)</span>.  Esimerkki differentiaaliyhtälöstä, jossa on mukana myös itse funktio <span class="math notranslate nohighlight">\(y\)</span>, on <span class="math notranslate nohighlight">\(y^2=4y'-6y\)</span>.</p>
+<section id="differentiaaliyhtalon-yleinen-muoto">
+<h2>Differentiaaliyhtälön yleinen muoto<a class="headerlink" href="#differentiaaliyhtalon-yleinen-muoto" title="Permalink to this headline">#</a></h2>
+<p>Yleisesti differentiaaliyhtälöitä voidaan merkitä muodossa <span class="math notranslate nohighlight">\(y'=f(x)\)</span> tai <span class="math notranslate nohighlight">\(y'=f(y)\)</span> tai <span class="math notranslate nohighlight">\(y'=f(x,y)\)</span> . Toisin sanoen derivaatta <span class="math notranslate nohighlight">\(y'\)</span> esitetään funktiona <span class="math notranslate nohighlight">\(f\)</span>, jonka lausekkeessa voi esiintyä muuttujaa <span class="math notranslate nohighlight">\(x\)</span>, funktiota <span class="math notranslate nohighlight">\(y\)</span> tai molempia. Lausekkeessa voi esiintyä muuttujien summia, tuloja ja muitakin laskutoimituksia. Kaikkiin näihin tapauksiin kelpaa myös sellainen differentiaaliyhtälö, jossa derivaatan <span class="math notranslate nohighlight">\(y'\)</span> esiintyy pelkkiä vakioita.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Keksi kolme esimerkkiä differentiaaliyhtälöistä, jotka ovat muotoa</p>
+<p>a) <span class="math notranslate nohighlight">\(y'=f(x)\)</span>, b) <span class="math notranslate nohighlight">\(y'=f(y)\)</span>, c) <span class="math notranslate nohighlight">\(y'=f(x,y)\)</span></p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>a) Integroidaan: <span class="math notranslate nohighlight">\(y(x)=\int 4x \, dx = 2x^2 + C\)</span></p>
-<p>b) Ratkaistaan vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(2\cdot 1^2+C=8 \leftrightarrow C=8-6 \leftrightarrow C=6\)</span>. Kysytty yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=2x^2+6\)</span>.</p>
+<p>a) Esim. <span class="math notranslate nohighlight">\(y'=4x\)</span>, <span class="math notranslate nohighlight">\(y'=3\)</span>, <span class="math notranslate nohighlight">\(y'=4x^2+3\)</span></p>
+<p>b) Esim. <span class="math notranslate nohighlight">\(y'=3y\)</span>, <span class="math notranslate nohighlight">\(y'=4y+3\)</span>, <span class="math notranslate nohighlight">\(y'=3y^2+5\)</span></p>
+<p>c) Esim. <span class="math notranslate nohighlight">\(y'=3xy\)</span>, <span class="math notranslate nohighlight">\(y'=2x+5y\)</span>, <span class="math notranslate nohighlight">\(y'=3x+y^2\)</span></p>
+</div>
 </div>
 </section>
-<section id="differentiaaliyhtalon-perustyypit">
-<h2>Differentiaaliyhtälön perustyypit<a class="headerlink" href="#differentiaaliyhtalon-perustyypit" title="Permalink to this headline">#</a></h2>
-<p>Differentiaaliyhtälöstä on edellisen perustapauksen lisäksi olemassa muutamaa erilaista perustyyppiä, jotka on helppo ratkaista itse laskemalla:</p>
+<section id="differentiaaliyhtalon-kertaluku">
+<h2>Differentiaaliyhtälön kertaluku<a class="headerlink" href="#differentiaaliyhtalon-kertaluku" title="Permalink to this headline">#</a></h2>
+<p>Differentiaaliyhtälön <strong>kertaluku</strong> on korkein differentiaaliyhtälössä esiintyvä <span class="math notranslate nohighlight">\(y\)</span>:n derivaatta. Ensimmäisen kertaluvun differentiaaliyhtälö sisältää siis derivaatan <span class="math notranslate nohighlight">\(y'\)</span> ja mahdollisesti itse funktion <span class="math notranslate nohighlight">\(y\)</span>, jonka voi ajatella “nollantena derivaattana”. Toisen kertaluvun differentiaaliyhtälö sisältää toisen derivaatan <span class="math notranslate nohighlight">\(y''\)</span> ja lisäksi se voi sisältää tai olla sisältämättä derivaatan <span class="math notranslate nohighlight">\(y'\)</span> ja funktion <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>On tärkeää erottaa kertaluku potenssiinkorotuksesta. Yhtälössä voi olla mukana <span class="math notranslate nohighlight">\(y^2, y^3\)</span> jne. mutta nämä eivät vaikuta differentiaaliyhtälön kertalukuun. Myös derivaattaa voidaan korottaa potenssiin, esimerkiksi <span class="math notranslate nohighlight">\((y')^2\)</span>.</p>
+<p>Ensimmäisen kertaluvun differentiaaliyhtälöitä ovat esimerkiksi</p>
 <ul class="simple">
-<li><p>separoituva yhtälö</p></li>
-<li><p>lineaarinen yhtälö</p>
-<ul>
-<li><p>homogeeninen yhtälö</p></li>
-<li><p>vakiokertoiminen yhtälö</p></li>
+<li><p><span class="math notranslate nohighlight">\(y'+2x=4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y ^2+3y'=5x+4\)</span> ja</p></li>
+<li><p><span class="math notranslate nohighlight">\((y')^2+=2x+3y\)</span>.</p></li>
 </ul>
-</li>
+<p>Toisen kertaluvun differentiaaliyhtälöitä ovat esimerkiksi</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y''+2y'+3yx=6\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(3y''+2y=4x\)</span> ja</p></li>
+<li><p><span class="math notranslate nohighlight">\(y''=4\)</span>.</p></li>
 </ul>
-<p>On olemassa sellaisiakin differentiaaliyhtälöitä, joita ei voi ratkaista analyyttisesti. Funktiolle <span class="math notranslate nohighlight">\(y(x)\)</span> ei ole mahdollista johtaa lauseketta, ja laskun lopputuloksena on likiarvo eikä tarkka arvo. Opintojaksolla perehdytään erilaisiin numeerisiin menetelmiin, joilla tällaisia ratkaisuja voi etsiä.</p>
+</section>
+<section id="differentiaaliyhtalon-ratkaisut">
+<h2>Differentiaaliyhtälön ratkaisut<a class="headerlink" href="#differentiaaliyhtalon-ratkaisut" title="Permalink to this headline">#</a></h2>
+<p>Differentiaaliyhtälöiden ratkaisu perustuu integroimiseen. Integrointilaskuissa saadaan aina useampi kuin yksi ratkaisu. Esimerkiksi funktion <span class="math notranslate nohighlight">\(f(x)=2x+3\)</span> integraalifunktioita ovat kaikki funktiot <span class="math notranslate nohighlight">\(F(x)=x^2+3x+C\)</span>, missä <span class="math notranslate nohighlight">\(C \in \Re\)</span>.</p>
+<p>Vastaavasti differentiaaliyhtälöille voidaan löytää tällainen ns. <strong>yleinen ratkaisu</strong>, jossa vakiolle <span class="math notranslate nohighlight">\(C\)</span> ei ole määrätty tiettyä arvoa. Jokainen <span class="math notranslate nohighlight">\(C\)</span>:n arvo vastaa yhtä <strong>yksittäisratkaisua</strong>. Haluttu yksittäisratkaisu löydetään jonkin funktiolle määrätyn ehdon perusteella. Lisäksi differentiaaliyhtälöllä voi olla <strong>erikoisratkaisuja</strong>, jotka eivät löydy yleisen ratkaisun perusteella. Niitä tarkastellaan myöhemmin tässä materiaalissa.</p>
+<p>Differentiaaliyhtälön ratkaisu yhtälön tyypistä, joita tarkastellaan seuraavalla sivulla. Seuraavissa esimerkeissä riittää todeta sijoittamalla, että annettu ratkaisu toteuttaa differentiaaliyhtälön.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Osoita, että funktio <span class="math notranslate nohighlight">\(y=2x^2-6x+3\)</span> toteuttaa differentiaaliyhtälön <span class="math notranslate nohighlight">\(y'+6=4x\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Muodostetaan funktion derivaatta: <span class="math notranslate nohighlight">\(y'=4x-6\)</span></p>
+<p>Sijoitetaan derivaatta annettuun yhtälöön ja sievennetään:</p>
+<p><span class="math notranslate nohighlight">\(4x-6+6=4x \Leftrightarrow 4x=4x \Leftrightarrow 0 = 0 \)</span></p>
+<p>Yhtälö on tosi millä tahansa arvolla <span class="math notranslate nohighlight">\(x\)</span>, joten annettu funktio toteuttaa differentiaaliyhtälön.</p>
+</div>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Osoita, että funktio <span class="math notranslate nohighlight">\(y=Ce^{2x^2}-\frac{5}{4}\)</span> on yleinen ratkaisu differentiaaliyhtälölle <span class="math notranslate nohighlight">\(y'=4xy+5x\)</span>. Selvitä lisäksi, mikä yksittäisratkaisu toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</p>
+</div>
 </section>
 </section>
 
@@ -417,10 +459,10 @@ title="Print to PDF"
             <p class="prev-next-title">Alkusanat</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="separoituvat.html" title="next page">
+    <a class='right-next' id="next-link" href="integroituvat.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Separoituvat differentiaaliyhtälöt</p>
+        <p class="prev-next-title">Eri tyyppiset differentiaaliyhtälöt</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
