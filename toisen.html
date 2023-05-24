@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -118,7 +120,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
-   Differentiaaliyhtälö
+   Mikä on differentiaaliyhtälö?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integroituvat.html">
+   Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,6 +313,16 @@ title="Print to PDF"
    Homogeeniset toisen kertaluvun yhtälöt
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erilaisia-varahtelyja">
+   Erilaisia värähtelyjä
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#varahtely-sinifunktiona">
+   Värähtely sinifunktiona
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -330,6 +347,16 @@ title="Print to PDF"
    Homogeeniset toisen kertaluvun yhtälöt
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erilaisia-varahtelyja">
+   Erilaisia värähtelyjä
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#varahtely-sinifunktiona">
+   Värähtely sinifunktiona
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -342,18 +369,18 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="toisen-kertaluvun-differentiaaliyhtalot">
 <h1>Toisen kertaluvun differentiaaliyhtälöt<a class="headerlink" href="#toisen-kertaluvun-differentiaaliyhtalot" title="Permalink to this headline">#</a></h1>
-<p>Toisen kertaluvun differentiaaliyhtälö sisältää myös funktion <span class="math notranslate nohighlight">\(y\)</span> toista derivaattaa <span class="math notranslate nohighlight">\(y''\)</span>. Vakiokertoiminen toisen kertaluvun differentiaaliyhtälö on muotoa <span class="math notranslate nohighlight">\(y''+ay'+by=f(t)\)</span>. Tässä tarkastelu rajoitetaan pelkästään homogeenisiin yhtälöihin, jotka ovat siis muotoa <span class="math notranslate nohighlight">\(y''+ay'+by=0\)</span>. Yleisesti toisen kertaluvun vakiokertoimisen differentiaaliyhtälön ratkaisu on homogeenisen ja epähomogeenisen yhtälön ratkaisujen summa, siis <span class="math notranslate nohighlight">\(y=y_h+y_t\)</span>.</p>
+<p>Toisen kertaluvun differentiaaliyhtälö sisältää funktion <span class="math notranslate nohighlight">\(y\)</span> toista derivaattaa <span class="math notranslate nohighlight">\(y''\)</span>. Vakiokertoiminen toisen kertaluvun differentiaaliyhtälö on muotoa <span class="math notranslate nohighlight">\(y''+ay'+by=f(x)\)</span>. Tässä tarkastelu rajoitetaan pelkästään homogeenisiin yhtälöihin, jotka ovat siis muotoa <span class="math notranslate nohighlight">\(y''+ay'+by=0\)</span>. Yleisesti toisen kertaluvun vakiokertoimisen differentiaaliyhtälön ratkaisu on homogeenisen ja epähomogeenisen yhtälön ratkaisujen summa, siis <span class="math notranslate nohighlight">\(y=y_h+y_t\)</span>.</p>
 <section id="homogeeniset-toisen-kertaluvun-yhtalot">
 <h2>Homogeeniset toisen kertaluvun yhtälöt<a class="headerlink" href="#homogeeniset-toisen-kertaluvun-yhtalot" title="Permalink to this headline">#</a></h2>
 <p>Homogeenisille yhtälölle <span class="math notranslate nohighlight">\(y''+ay'+by=0\)</span> ratkaisu <span class="math notranslate nohighlight">\(y_h\)</span> löytyy seuraavasti:</p>
 <ul class="simple">
-<li><p>valitaan yritteeksi ratkaisu <span class="math notranslate nohighlight">\(y_h=e^{mt}\)</span></p></li>
-<li><p>lasketaan yritteelle derivaatat <span class="math notranslate nohighlight">\(y_h'=me^{mt}\)</span> ja <span class="math notranslate nohighlight">\(y_h''=m^2 e^{mt}\)</span></p></li>
-<li><p>kirjoitetaan alkuperäinen yhtälö yritteen avulla: <span class="math notranslate nohighlight">\(m^2 e^{mt} + am e^{mt} + be^{mt} = 0\)</span></p></li>
-<li><p>sievennetään yhtälöä valitsemalla yhteiseksi tekijäksi <span class="math notranslate nohighlight">\(e^{mt}\)</span>: <span class="math notranslate nohighlight">\(e^{mt}(m^2 + am + b) =0\)</span></p></li>
+<li><p>valitaan yritteeksi ratkaisu <span class="math notranslate nohighlight">\(y_h=e^{mx}\)</span></p></li>
+<li><p>lasketaan yritteelle derivaatat <span class="math notranslate nohighlight">\(y_h'=me^{mx}\)</span> ja <span class="math notranslate nohighlight">\(y_h''=m^2 e^{mx}\)</span></p></li>
+<li><p>kirjoitetaan alkuperäinen yhtälö yritteen avulla: <span class="math notranslate nohighlight">\(m^2 e^{mx} + am e^{mx} + be^{mx} = 0\)</span></p></li>
+<li><p>sievennetään yhtälöä valitsemalla yhteiseksi tekijäksi <span class="math notranslate nohighlight">\(e^{mx}\)</span>: <span class="math notranslate nohighlight">\(e^{mx}(m^2 + am + b) =0\)</span></p></li>
 <li><p>tulon nollasäännön perusteella riittää nyt ratkaista yhtälö <span class="math notranslate nohighlight">\(m^2 + am + b = 0\)</span></p></li>
 </ul>
-<p>Edellisen prosessin viimeistä yhtälöä <span class="math notranslate nohighlight">\(m^2 + am + b= 0\)</span> kutsutaan differentiaaliyhtälön karakteristiseksi yhtälöksi. Koska kyseessä on toisen asteen yhtälö, sille voidaan löytää useampi kuin yksi ratkaisu. Reaaliluvuarvoisia ratkaisuja löytyy yksi kappale, <span class="math notranslate nohighlight">\(m\)</span>, tai kaksi kappaletta, <span class="math notranslate nohighlight">\(m_1\)</span> ja <span class="math notranslate nohighlight">\(m_2\)</span>. Lisäksi kun otetaan käyttöön kompleksiluvut, voidaan saada ratkaisut <span class="math notranslate nohighlight">\(m=a\pm bi\)</span>. Kompleksiarvoisia ratkaisuja saadaan silloin, kun reaalilukujen matematiikassa “yhtälölle ei löyty ratkaisua”.</p>
+<p>Edellisen prosessin viimeistä yhtälöä <span class="math notranslate nohighlight">\(m^2 + am + b= 0\)</span> kutsutaan differentiaaliyhtälön <strong>karakteristiseksi yhtälöksi</strong>. Koska kyseessä on toisen asteen yhtälö, sille voidaan löytää useampi kuin yksi ratkaisu. Reaaliluvuarvoisia ratkaisuja löytyy yksi kappale, <span class="math notranslate nohighlight">\(m\)</span>, tai kaksi kappaletta, <span class="math notranslate nohighlight">\(m_1\)</span> ja <span class="math notranslate nohighlight">\(m_2\)</span>. Lisäksi kun otetaan käyttöön kompleksiluvut, voidaan saada ratkaisut <span class="math notranslate nohighlight">\(m=a\pm bi\)</span>. Kompleksiarvoisia ratkaisuja saadaan silloin, kun reaalilukujen matematiikassa “yhtälölle ei löyty ratkaisua”.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Toisen asteen yhtälön ratkaisu</p>
 <p>Toisen asteen yhtälön <span class="math notranslate nohighlight">\(ax^2+bx+c=0\)</span> ratkaisukaavaksi voidaan johtaa <span class="math notranslate nohighlight">\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</span>.</p>
@@ -369,28 +396,137 @@ title="Print to PDF"
 <p>Kompleksiarvoinen juuri, jossa ei ole ollenkaan reaaliosaa, saadaan esimerkiksi tapauksessa <span class="math notranslate nohighlight">\(x^2+5=0\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(x=\frac{-0\pm\sqrt{0^2-4\cdot 1 \cdot 5}}{2\cdot 1}=\frac{\sqrt{-20}}{2}=\frac{\sqrt{20 i^2}}{2} = \frac{\sqrt{4\cdot 5 i^2}}{2} = \frac{2 \sqrt{5} i}{2} = \sqrt{5}i\)</span></p>
 </div>
-<p>Ratkaisujen lukumäärän perusteella differentiaaliyhtälölle saadaan seuraavat ratkaisut:</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Muodosta differentiaaliyhtälöä <span class="math notranslate nohighlight">\(3y''+2y'=5y\)</span> vastaava karakteristinen yhtälö.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Muokataan yhtälö muotoon <span class="math notranslate nohighlight">\(y''+ay'+by=0\)</span> vähentämällä ensin termi <span class="math notranslate nohighlight">\(5y\)</span> yhtälön molemmilta puolilta:</p>
+<p><span class="math notranslate nohighlight">\(3y''+2y'-5y=0\)</span></p>
+<p>Jotta termin <span class="math notranslate nohighlight">\(y''\)</span> kertoimeksi saadaan 1, niin yhtälön kumpikin puoli pitää jakaa luvulla <span class="math notranslate nohighlight">\(3\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(y''+\frac{2}{3}y'-\frac{5}{3}y=0\)</span></p>
+<p>Differentiaaliyhtälöstä muodostuu karakteristinen yhtälö <span class="math notranslate nohighlight">\(m^2+\frac{2}{3}m-\frac{5}{3}=0\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="erilaisia-varahtelyja">
+<h2>Erilaisia värähtelyjä<a class="headerlink" href="#erilaisia-varahtelyja" title="Permalink to this headline">#</a></h2>
+<p>Toisen kertaluvun homogeenisen differentiaaliyhtälön ratkaisu riippuu siitä, mitkä ovat karakteristien yhtälön ratkaisut. Oleellista on, että kaikissa kolmessa tapauksessa ratkaisu muodostuu kahden yhtälön <span class="math notranslate nohighlight">\(y_1\)</span> ja <span class="math notranslate nohighlight">\(y_2\)</span> summasta. Ratkaisujen lukumäärän perusteella differentiaaliyhtälölle saadaan seuraavat ratkaisut:</p>
 <ul class="simple">
-<li><p>Yksi reaaliarvoinen juuri <span class="math notranslate nohighlight">\(m\)</span>: <span class="math notranslate nohighlight">\(y=(C_1 t + C_2) e^{mt}\)</span></p></li>
-<li><p>Kaksi reaaliarvoista juurta <span class="math notranslate nohighlight">\(m_1\)</span> ja <span class="math notranslate nohighlight">\(m_2\)</span>: <span class="math notranslate nohighlight">\(y=C_1 e^{m_1 t} + C_2 e^{m_2} t\)</span></p></li>
-<li><p>Kompleksiset juuret <span class="math notranslate nohighlight">\(m=a+ bi\)</span>: <span class="math notranslate nohighlight">\(y=e^{at}(C_1 \cos(bt) + C_2 \sin(bt))\)</span></p></li>
+<li><p>Kaksi reaaliarvoista juurta <span class="math notranslate nohighlight">\(m_1\)</span> ja <span class="math notranslate nohighlight">\(m_2\)</span>: <span class="math notranslate nohighlight">\(y=C_1 e^{m_1 x} + C_2 e^{m_2 x}\)</span></p></li>
 </ul>
-<p>Juurten lukumäärä ja laatu vaikuttavat siihen, millainen funktio ratkaisusta muodostuu. Tarkastellaan aluksi reaaliarvoisia juuria. Jos ainoa reaalinen juuri <span class="math notranslate nohighlight">\(m\)</span> tai molemmat reaaliset juuret <span class="math notranslate nohighlight">\(m_1, m_2\)</span> ovat negatiivisia, niin funktiosta tulee vähenevä, eli sen arvot pienenevät kun muuttujat arvot kasvavat. Jos taas ainoa juuri <span class="math notranslate nohighlight">\(m\)</span> tai vähintään toinen juurista <span class="math notranslate nohighlight">\(m_1, m_2\)</span> on positiivinen, funktio on kasvava.</p>
-<p>Kompleksiarvoiset juuret aiheuttavat sen, että funktion arvo ei lähesty mitään tiettyä arvoa sitä mukaa kun muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvo kasvaa, vaan arvot heilahtelevat edestakaisin. Tällöin kyseessä on värähtely. Se voi olla vaimenevaa tai kasvavaa tai pysyä samanlaisena. Jos kompleksiluvun reaaliosa on positiivinen, niin värähtely on voimistuvaa, ja jos reaaliosa on negatiivinen, niin vaimeneminen on värähtelevää. Jos juuri on kuitenkin kokonaan imaginaarinen, värähtelyn amplitudi ei muutu. Värähtelyä tapahtuu esimerkiksi kulkuneuvojen jousituksessa, heilureissa ja virtapiireissä.</p>
-<p><strong>Esim.</strong> Ratkaise differentiaaliyhtälöt</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Perustelu</p>
+<p>Merkitään ratkaisuja <span class="math notranslate nohighlight">\(y_1=C_1 e^{m_1 x}\)</span> ja <span class="math notranslate nohighlight">\(y_2=C_2 e^{m_2 x}\)</span>.</p>
+<p>Muodostetaan aluksi ratkaisun <span class="math notranslate nohighlight">\(y_1\)</span> ensimmäinen ja toinen derivaatta:</p>
+<p><span class="math notranslate nohighlight">\(y_1'=C_1 m_1 e^{m_1 x}, y_1''=C_1 m_1^2  e^{m_1 x}\)</span></p>
+<p>Sijoitetaan nämä sekä ratkaisu <span class="math notranslate nohighlight">\(y_1\)</span> differentiaaliyhtälöön:</p>
+<p><span class="math notranslate nohighlight">\(C_1 m_1^2 e^{m_1 x}+aC_1 m_1 e^{m_1 x}+ b C_1 e^{m_1 x}=0\)</span></p>
+<p>Kaikissa termeissä esiintyy kertoimena <span class="math notranslate nohighlight">\(C_1 e^{m_1 x}\)</span>, joten yhtälö voidaan jakaa sillä puolittain ja se sievenee seuraavaan muotoon:</p>
+<p><span class="math notranslate nohighlight">\(m_1^2+am_1+ b =0\)</span></p>
+<p>Koska <span class="math notranslate nohighlight">\(m_1\)</span>:n tiedetään olevan yhtälön ratkaisu, niin yhtälön vasen puoli on nolla ja tällöin yhtälö on tosi.</p>
+<p>Vastaavasti voidaan muodostaa ratkaisun <span class="math notranslate nohighlight">\(y_2=C_2 e^{m_2 x}\)</span> ensimmäinen ja toinen derivaatta, ja todeta että nekin toteuttavat differentiaaliyhtälön. Tällöin myös ratkaisujen summa toteuttaa differentiaaliyhtälön.</p>
+</div>
+<ul class="simple">
+<li><p>Yksi reaaliarvoinen juuri <span class="math notranslate nohighlight">\(m\)</span>: <span class="math notranslate nohighlight">\(y=(C_1 x + C_2) e^{mx}\)</span></p></li>
+</ul>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Perustelu</p>
+<p>Merkitään ratkaisuja <span class="math notranslate nohighlight">\(y_1=C_1 x e^{mx}\)</span> ja <span class="math notranslate nohighlight">\(y_2=C_2 e^{mx}\)</span>.</p>
+<p>Muodostetaan ratkaisun <span class="math notranslate nohighlight">\(y_1\)</span> ensimmäinen ja toinen derivaatta:</p>
+<p><span class="math notranslate nohighlight">\(y_1'=C_1 e^{mx}+C_1 mx e^{mx}=C_1(1+mx)e^{mx}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y_1''= D (C_1 (1+mx)) e^{mx} + C_1 (1+mx) D e^{mx}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y_1''=C_1 m e^{mx} + C_1 (1+mx) m e^{mx}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y_1''=C_1 m e^{mx} + C_1 m e^{mx} + C_1 m^2 x e^{mx}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y_1''=C_1 e^{mx} (m+m+m^2 x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(y_1''=C_1 e^{mx} (2m+m^2x)\)</span></p>
+<p>Sijoitetaan ratkaisu ja sen derivaatat differentiaaliyhtälöön:</p>
+<p><span class="math notranslate nohighlight">\(C_1 e^{mx} (2m+m^2x) + a C_1(1+mx)e^{mx} + b C_1 x e^{mx} = 0\)</span></p>
+<p>Kaikissa termeissä esiintyy <span class="math notranslate nohighlight">\(C_1 e^{mx}\)</span>, joten yhtälön voi jakaa sillä puolittain:</p>
+<p><span class="math notranslate nohighlight">\(2m+m^2x + a (1+mx) + bx  = 0\)</span></p>
+<p>Sievennetään yhtälön vasen puoli avaamalla sulut:</p>
+<p><span class="math notranslate nohighlight">\(2m+m^2x+a+amx+bx=0\)</span></p>
+<p>Ryhmitellään termejä uudelleen:</p>
+<p><span class="math notranslate nohighlight">\((m^2+am+b)x + 2m+a = 0\)</span></p>
+<p>Tekijä <span class="math notranslate nohighlight">\((m^2+am+b)\)</span> on nolla, sillä <span class="math notranslate nohighlight">\(m\)</span> on luku, jolla karakteristinen yhtälö saa arvon nolla. Lisäksi termi <span class="math notranslate nohighlight">\(2m+a\)</span> on nolla, sillä koska ratkaisuja tiedetään olevan vain yksi, niin toisen asteen yhtälön ratkaisukaavalla saadaan</p>
+<p><span class="math notranslate nohighlight">\(m=\frac{-a\pm \sqrt{a^2-4\cdot 1 \cdot b}}{2\cdot 1}=-\frac{a}{2}\)</span></p>
+<p>Näin ollen differentiaaliyhtälö sievenee muotoon <span class="math notranslate nohighlight">\(0=0\)</span> eli tosi kaikilla <span class="math notranslate nohighlight">\(x\)</span>:n arvoilla.</p>
+<p>Edellisen kohdan perusteella myös ratkaisu <span class="math notranslate nohighlight">\(y_2\)</span> toteuttaa differentiaaliyhtälön. Näin ollen näiden ratkaisujen summakin toteuttaa differentiaaliyhtälön.</p>
+</div>
+<ul class="simple">
+<li><p>Kompleksiset juuret <span class="math notranslate nohighlight">\(m=a+bi\)</span>: <span class="math notranslate nohighlight">\(y=e^{ax}(C_1 \cos(bx) + C_2 \sin(bx))\)</span></p></li>
+</ul>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Perustelu</p>
+<p>Jos juuret olisivat reaalisia, niin ensimmäisen kohdan perusteella ratkaisu olisi <span class="math notranslate nohighlight">\(y=D_1 e^{(a+bi) x}+D_2 e^{(a-bi) x}\)</span>. Tässä vakioiksi on valittu <span class="math notranslate nohighlight">\(D_1\)</span> ja <span class="math notranslate nohighlight">\(D_2\)</span>, jotta kirjaimet <span class="math notranslate nohighlight">\(C_1\)</span> ja <span class="math notranslate nohighlight">\(C_2\)</span> säilyvät käytettäväksi lopullisessa ratkaisussa.</p>
+<p>Sievennetään termejä hieman:</p>
+<p><span class="math notranslate nohighlight">\(y=D_1 e^{ax + bix}+D_2 e^{ax-bix}\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=D_1 e^{ax} e^{bix}+D_2 e^{ax} e^{-bix}\)</span></p>
+<p>Kompleksiluvuista tutun Eulerin kaavan mukaisesti <span class="math notranslate nohighlight">\(e^{i\phi}=\cos{\phi}+i\sin{\phi}\)</span>. Näin ollen voidaan kirjoittaa:</p>
+<p><span class="math notranslate nohighlight">\(y=D_1 e^{ax} (\cos{bx}+i\sin{bx}) +D_2 e^{ax} (\cos{-bx}+i\sin{-bx})\)</span></p>
+<p>Trigonometrisille funktioille pätee yleisesti <span class="math notranslate nohighlight">\(\cos{\alpha}=-\cos{\alpha}\)</span> ja <span class="math notranslate nohighlight">\(\sin{-\alpha}=-\sin{\alpha}\)</span>, joten yhtälö sievenee muotoon</p>
+<p><span class="math notranslate nohighlight">\(y=D_1 e^{ax} (\cos{bx}+i\sin{bx}) +D_2 e^{ax} (\cos{bx}-i\sin{bx})\)</span></p>
+<p>Avataan sulut:</p>
+<p><span class="math notranslate nohighlight">\(y=D_1 e^{ax} \cos{bx}+ i D_1 e^{ax} \sin{bx} +D_2 e^{ax} \cos{bx}-i D_2 e^{ax} \sin{bx}\)</span></p>
+<p>Järjestellään termejä uudelleen:</p>
+<p><span class="math notranslate nohighlight">\(y=e^{ax}\left((D_1 +D_2) \cos{bx}+ i (D_1-D_2) \sin{bx}\right)\)</span></p>
+<p>Vakiokertoimet voidaan esittää lyhyemmin  muodossa <span class="math notranslate nohighlight">\(D_1+D_2=C_1\)</span> ja <span class="math notranslate nohighlight">\(D_1-D_2=C_2\)</span>.</p>
+</div>
+<p>Kaikki vaihtoehdot vastaavat jonkinlaista voimistumista tai vaimenemista. Kompleksiarvoisiin juuriin liittyy lisäksi värähtelyä.</p>
+<p>Tarkastellaan aluksi reaaliarvoisia juuria. Jos ainoa reaalinen juuri <span class="math notranslate nohighlight">\(m\)</span> tai molemmat reaaliset juuret <span class="math notranslate nohighlight">\(m_1, m_2\)</span> ovat negatiivisia, niin funktiosta tulee vähenevä, eli sen arvot pienenevät kun muuttujat arvot kasvavat. Jos taas ainoa juuri <span class="math notranslate nohighlight">\(m\)</span> tai vähintään toinen juurista <span class="math notranslate nohighlight">\(m_1, m_2\)</span> on positiivinen, funktio on kasvava.</p>
+<p>Kompleksiarvoiset juuret aiheuttavat sen, että funktion arvot heilahtelevat edestakaisin. Tällöin kyseessä on värähtely. Se voi olla vaimenevaa tai kasvavaa tai pysyä samanlaisena. Jos kompleksiluvun reaaliosa on positiivinen, niin värähtely on voimistuvaa, ja jos reaaliosa on negatiivinen, niin värähtely on vaimenevaa. Jos juuri on kuitenkin kokonaan imaginaarinen, värähtelyn amplitudi ei muutu. Värähtelyä tapahtuu esimerkiksi kulkuneuvojen jousituksessa, heilureissa ja virtapiireissä.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise differentiaaliyhtälöt</p>
 <p>a) <span class="math notranslate nohighlight">\(y''-2y'-3y=0\)</span>, b) <span class="math notranslate nohighlight">\(y''-4y'+4y=0\)</span>, c) <span class="math notranslate nohighlight">\(y''-y'+\frac{5}{4}y=0\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
 <p>a) Ratkaistaan karakteristinen yhtälö <span class="math notranslate nohighlight">\(m^2 -2m-3=0\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(m=\frac{-(-2)\pm\sqrt{(-2)^2-4\cdot 1 \cdot (-3)}}{2\cdot 1} = \frac{2\pm\sqrt{16}}{2} = \frac{2\pm 4}{2}\)</span></p>
 <p><span class="math notranslate nohighlight">\(m_1 = \frac{2+4}{2}=3, m_2= \frac{2-4}{2}=-1\)</span></p>
-<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(t)=C_1 e^{-t}+C_2 e^{3t}\)</span>.</p>
+<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(x)=C_1 e^{-x}+C_2 e^{3x}\)</span>.</p>
 <p>b) Ratkaistaan karakteristinen yhtälö <span class="math notranslate nohighlight">\(m^2-4m+4=0\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(m=\frac{-(-4)\pm\sqrt{(-4)^2-4\cdot 1 \cdot 4}}{2\cdot 1} = \frac{4\pm 0}{2} = 2\)</span></p>
-<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(t)=(C_1 t+C_2)e^{2t}\)</span>.</p>
+<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(x)=(C_1 x+C_2)e^{2x}\)</span>.</p>
 <p>c) Ratkaistaan karakteristinen yhtälö <span class="math notranslate nohighlight">\(m^2-m+\frac{5}{4}=0\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(m=\frac{-(-1)\pm\sqrt{(-1)^2-4\cdot 1 \cdot \left(\frac{5}{4}\right)}}{2\cdot 1} = \frac{1\pm\sqrt{-4}}{2} = \frac{1\pm\sqrt{4i^2 }}{2} = \frac{1\pm 2i}{2} = \frac{1}{2}\pm i\)</span>.</p>
-<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(t)=e^{\frac{1}{2}t}(C_1 \cos{t}+C_2 \sin{t})\)</span>.</p>
+<p>Ratkaisu on siis <span class="math notranslate nohighlight">\(y(x)=e^{\frac{1}{2}t}(C_1 \cos{x}+C_2 \sin{x})\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="varahtely-sinifunktiona">
+<h2>Värähtely sinifunktiona<a class="headerlink" href="#varahtely-sinifunktiona" title="Permalink to this headline">#</a></h2>
+<p>Kun tarkastellaan värähteleviä tai jaksollisia ilmiöitä, ei värähtelyn ilmaisuun käytetä sekä kosini- että sinifunktiota, vaan pelkästään jompaakumpaa. Opetellaan tässä, mitä kosini- ja sinifunktion summa muutetaan pelkäksi sinifunktioksi. Funktion vakiokerroin muuttuu ja funktion argumenttiin lisätään vaihesiirto <span class="math notranslate nohighlight">\(\phi\)</span>. Toisin sanoen funktio <span class="math notranslate nohighlight">\(y=A \sin{cx} + B \cos{cx}\)</span> muuttuu muotoon <span class="math notranslate nohighlight">\(y=C\sin{(cx+\phi)}\)</span>. Vakiot <span class="math notranslate nohighlight">\(C\)</span> ja <span class="math notranslate nohighlight">\(\phi\)</span> määräytyvät seuraavasti:</p>
+<p><span class="math notranslate nohighlight">\(C=\sqrt{A^2+B^2}\)</span>, <span class="math notranslate nohighlight">\(\phi=\arctan{\frac{B}{A}}\)</span></p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Perustelu</p>
+<p>Muunnos perustuu erääseen trigonometristen funktioiden laskusääntöön <span class="math notranslate nohighlight">\(\sin{(x+y)}=\sin{x}\cos{y}+\sin{y}\cos{x}\)</span>. Tämän säännön mukaan siis <span class="math notranslate nohighlight">\(\sin{(cx+\phi)}=\sin{cx}\cos{\phi}+\sin{\phi}\cos{cx}\)</span>. Toisaalta tulee olla <span class="math notranslate nohighlight">\(A \sin{cx} + B \cos{cx}=C \sin{(cx+\phi)}\)</span>. Saadaan siis yhtälö:</p>
+<p><span class="math notranslate nohighlight">\(A \sin{cx} + B \cos{cx} = C \left(\sin{cx}\cos{\phi}+\sin{\phi}\cos{cx}\right)\)</span></p>
+<p>josta oikea puoli sieventämällä saadaa esitysmuoto</p>
+<p><span class="math notranslate nohighlight">\(A \sin{cx} + B \cos{cx} = C \sin{cx}\cos{\phi}+C \sin{\phi}\cos{cx}\)</span></p>
+<p>Muodostetaan yhtälön perusteella yhtälöpari, jossa ensimmäinen yhtälö vastaa <span class="math notranslate nohighlight">\(\sin{cx}\)</span>:n kertoimia ja toinen yhtälö <span class="math notranslate nohighlight">\(\cos{cx}\)</span>:n kertoimia. Niidenhän pitää olla samat. Yhtälöpari on siis</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation}\begin{cases} A=C \cos{\phi} \\ B=C\sin{\phi} \end{cases}\end{equation}\)</span></p>
+<p>Korotetaan molemmat yhtälöt puolittain toiseen potenssiin:</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation}\begin{cases} A^2=C^2 \cos^2{\phi} \\ B^2=C^2 \sin^2{\phi} \end{cases}\end{equation}\)</span></p>
+<p>Lasketaan yhtälöt yhteen:</p>
+<p><span class="math notranslate nohighlight">\(A^2+B^2=C^2(\cos^2 {\phi}+\sin^2 {\phi})\)</span></p>
+<p>Koska kaikille kulmille pätee <span class="math notranslate nohighlight">\(\cos^2{\phi}+\sin^2 {\phi}=1\)</span>, niin <span class="math notranslate nohighlight">\(A^2+B^2=C^2\)</span> ja edelleen <span class="math notranslate nohighlight">\(C=\pm \sqrt{A^2+B^2}\)</span>.</p>
+<p>Vaihe-ero <span class="math notranslate nohighlight">\(\phi\)</span> saadaan kun jaetaan yhtälöparin toinen yhtälö ensimmäisellä:</p>
+<p><span class="math notranslate nohighlight">\(\frac{B}{A}=\frac{\sin{\phi}}{\cos{\phi}}\)</span></p>
+<p>eli <span class="math notranslate nohighlight">\(\tan{\phi}=\frac{B}{A}\)</span> ja edelleen <span class="math notranslate nohighlight">\(\phi=\arctan{\frac{B}{A}}\)</span>. Kulmia, jotka toteuttavat ehdon, on äärettömän monta. Jos rajoitetutaan nollan ja suoran kulman välisiin kulmiin, tulee vakiolle <span class="math notranslate nohighlight">\(C\)</span> aina positiivinen arvo.</p>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Esitä funktio <span class="math notranslate nohighlight">\(y=3 \cos{(2x)} + 4 \sin{(2x)}\)</span> yhtenä sinifunktiona.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Funktio on muotoa <span class="math notranslate nohighlight">\(C \sin{(2x+\phi)}\)</span>.</p>
+<p>Kerroin <span class="math notranslate nohighlight">\(C\)</span> saadaan kosinin ja sinin kertoimien avulla: <span class="math notranslate nohighlight">\(C=\sqrt{3^2+4^2}=\sqrt{25}=5\)</span>.</p>
+<p>Vaihe-ero <span class="math notranslate nohighlight">\(\phi\)</span> saadaan kosinin ja sinin kertoimien suhteen avulla: <span class="math notranslate nohighlight">\(\phi=\arctan{\frac{3}{4}}\)</span> josta laskimella saadaan <span class="math notranslate nohighlight">\(\phi=0.6435\)</span> radiaania.</p>
+<p>Funktioksi saadaan siis <span class="math notranslate nohighlight">\(y=5 \sin{(2x+0.6435)}\)</span>.</p>
+<p>Tällaisten laskujen tuloksen voi aina tarkistaa piirtämällä kuvaajat kummastakin funktioista. Niiden tulisi tietenkin osua päällekkäin, kuten seuraavassa kuvassa. Pientä virhettä voi aiheutua desimaalilukujen pyöristyksestä.</p>
+<p><img alt="Saman funktion eri esitysmuodot" src="_images/muunnetut_funktiot.png" /></p>
+</div>
 </div>
 </section>
 </section>

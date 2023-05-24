@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -118,7 +120,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
-   Differentiaaliyhtälö
+   Mikä on differentiaaliyhtälö?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integroituvat.html">
+   Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
  <li class="toctree-l1">
@@ -355,7 +362,13 @@ title="Print to PDF"
 <p>Lineaariselle ensimmäisen kertaluvun differentiaaliyhtälölle esitetyt ratkaisukaava sisältävät integraalifunktioita, jotka voivat olla hankalia laskea. Vakiokertoimiselle differentiaaliyhtälölle, joka siis on muotoa <span class="math notranslate nohighlight">\(y'=ay+g(x)\)</span>, on mahdollista löytää ratkaisu myös ikään kuin arvaamalla. Valitaan siis jokin funktio, jonka arvellaan toteuttavan yhtälön, ja hienosäädetään funktion parametrejä laskemalla. Arvattua funktiota kutsutaan yritteeksi.</p>
 <section id="ratkaisun-periaate">
 <h2>Ratkaisun periaate<a class="headerlink" href="#ratkaisun-periaate" title="Permalink to this headline">#</a></h2>
-<p>Olkoon <span class="math notranslate nohighlight">\(y_h=Ce^{ax}\)</span> homogeenisen yhtälön <span class="math notranslate nohighlight">\(y'= ay\)</span> yleinen ratkaisu. Etsitään täydelliselle yhtälölle <span class="math notranslate nohighlight">\(y'=ay+g(x)\)</span> yritteen avulla jokin yksittäisratkaisu <span class="math notranslate nohighlight">\(y_t\)</span>. Täydellisen yhtälön <span class="math notranslate nohighlight">\(y'=ay+g(x)\)</span> ratkaisu saadaan muodossa <span class="math notranslate nohighlight">\(y_h+y_t\)</span>.</p>
+<p>Olkoon <span class="math notranslate nohighlight">\(y_h=Ce^{ax}\)</span> homogeenisen yhtälön <span class="math notranslate nohighlight">\(y'= ay\)</span> yleinen ratkaisu. Etsitään täydelliselle yhtälölle <span class="math notranslate nohighlight">\(y'=ay+g(x)\)</span> yritteen avulla jokin yksittäisratkaisu <span class="math notranslate nohighlight">\(y_t\)</span>. Täydellisen yhtälön <span class="math notranslate nohighlight">\(y'=ay+g(x)\)</span> ratkaisu saadaan muodossa <span class="math notranslate nohighlight">\(y_h+y_t\)</span>. Ratkaisun resepti on siis seuraava:</p>
+<ul class="simple">
+<li><p>Selvitä, mikä osa differentiaaliyhtälöstä muodostaa homogeenisen yhtälön</p></li>
+<li><p>Laske homogeenisen yhtälön ratkaisu <span class="math notranslate nohighlight">\(y_h\)</span></p></li>
+<li><p>Muodosta yritefunktio <span class="math notranslate nohighlight">\(y_t\)</span> alla olevien ohjeiden mukaan</p></li>
+<li><p>Sijoita funktio <span class="math notranslate nohighlight">\(y=y_h + y_t\)</span> ja sen derivaatta <span class="math notranslate nohighlight">\(y'=y_h'+y_t'\)</span> alkuperäiseen differentiaaliyhtälöön</p></li>
+</ul>
 </section>
 <section id="yritteet">
 <h2>Yritteet<a class="headerlink" href="#yritteet" title="Permalink to this headline">#</a></h2>
@@ -382,12 +395,14 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>Lisäksi jos funktio <span class="math notranslate nohighlight">\(g(x)\)</span> muodostuu taulukossa mainittujen funktioiden summasta tai tulosta, niin vastaavasti yritefunktio on samoja funktioita vastaavien yritefunktioiden summa tai tulo.</p>
-<p>Taulukossa tuntemattomia ovat kertoimet <span class="math notranslate nohighlight">\(A, B, \ldots\)</span>. Niille löydetään sopivat arvot sijoittamalla yritefunktio differentiaaliyhtälöön ja tutkimalla alkuehtoja.</p>
-<p><strong>Esim.</strong> Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'-4y=5x\)</span>.</p>
+<p>Taulukossa tuntemattomia ovat kertoimet <span class="math notranslate nohighlight">\(A, B, \ldots\)</span>. Niille löydetään sopivat arvot sijoittamalla yritefunktio ja sen derivaatta differentiaaliyhtälöön ja tutkimalla alkuehtoja.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'-4y=5x\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
 <p>Differentiaaliyhtälö voidaan muokata muotoon <span class="math notranslate nohighlight">\(y'=4y+5x\)</span> eli kyseessä on epähomogeeninen, vakiokertoiminen differentiaaliyhtälö.</p>
-<p>Ratkaistaan ensin vastaava homogeeninen differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'=4y\)</span>. Ratkaisu tälle löytyy kaavalla <span class="math notranslate nohighlight">\(y(x)=Ce^{ax}\)</span>. Kyseessä on nyt ratkaisu <span class="math notranslate nohighlight">\(y_h\)</span>.</p>
+<p>Ratkaistaan ensin vastaava homogeeninen differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'=4y\)</span>. Tälle löytyy ratkaisu <span class="math notranslate nohighlight">\(y(x)=Ce^{4x}\)</span>. Kyseessä on nyt ratkaisu <span class="math notranslate nohighlight">\(y_h\)</span>.</p>
 <p>Etsitään sitten ratkaisu <span class="math notranslate nohighlight">\(y_t\)</span> taulukon avulla. Nyt funktio <span class="math notranslate nohighlight">\(g(x)\)</span> on polynomi <span class="math notranslate nohighlight">\(5x\)</span>, joten sopiva yrite on ensimmäisen asteen polynomi <span class="math notranslate nohighlight">\(y_t=A+Bx\)</span>. Huomaa, että vaikka funktiossa <span class="math notranslate nohighlight">\(g(x)\)</span> ei ole vakiotermiä (se on siis muotoa <span class="math notranslate nohighlight">\(5x+0\)</span>), täytyy vakiotermi ottaa mukaan yritteeseen.</p>
 <p>Sijoitetaan yritefunktio <span class="math notranslate nohighlight">\(y_t\)</span> ja sen derivaatta <span class="math notranslate nohighlight">\(y_t'=B\)</span> alkuperäiseen yhtälöön:</p>
 <p><span class="math notranslate nohighlight">\(y'-4y=5x\)</span></p>
@@ -400,10 +415,13 @@ title="Print to PDF"
 <p>Yritteen perusteella saatu ratkaisu on siis <span class="math notranslate nohighlight">\(y_t=-\frac{5}{16}-\frac{5}{4}x\)</span>.</p>
 <p>Yhtälön täydellinen ratkaisu on <span class="math notranslate nohighlight">\(y=y_h+y_t=Ce^{4x}-\frac{5}{4}x-\frac{5}{16}\)</span>.</p>
 </div>
-<p><strong>Esim.</strong> Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'+4y=1+t+3e^{3t}\)</span>.</p>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'+4y=1+t+3e^{3t}\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Ratkaistaan ensin homogeeninen yhtälö <span class="math notranslate nohighlight">\(y'=-4y\)</span>. Kaavan mukaan ratkaisu tälle on <span class="math notranslate nohighlight">\(y_h=C_1e^{-4t}\)</span>.</p>
+<p>Ratkaistaan ensin homogeeninen yhtälö <span class="math notranslate nohighlight">\(y'=-4y\)</span>. Ratkaisukaavan mukaan ratkaisu tälle on <span class="math notranslate nohighlight">\(y_h=C_1e^{-4t}\)</span>.</p>
 <p>Muodostetaan yrite funktion <span class="math notranslate nohighlight">\(g(t)=1+t+3e^{3t}\)</span> avulla. Termit <span class="math notranslate nohighlight">\(1+t\)</span> muodostavat ensimmäisen asteen polynomifunktion, joten yritteeseen tulee osa <span class="math notranslate nohighlight">\(A+Bt\)</span>. Viimeistä termiä vastaava yritefunktio on <span class="math notranslate nohighlight">\(Ce^{3t}\)</span>. Yritteeksi sopii siis <span class="math notranslate nohighlight">\(A+Bt+Ce^{3t}\)</span>. Funktion derivaatta on <span class="math notranslate nohighlight">\(B+3Ce^{3t}\)</span>. Sijoitetaan nämä alkuperäiseen yhtälöön:</p>
 <p><span class="math notranslate nohighlight">\(B+3Ce^{3t}+4(A+Bt+Ce^{3t})=1+t+3e^{3t}\)</span></p>
 <p><span class="math notranslate nohighlight">\(B+3Ce^{3t}+4A+4Bt+4Ce^{3t}=1+t+3e^{3t}\)</span></p>
@@ -413,6 +431,7 @@ title="Print to PDF"
 <p>Toisesta yhtälöstä saadaan heti <span class="math notranslate nohighlight">\(B=\frac{1}{4}\)</span> ja kolmannesta yhtälöstä <span class="math notranslate nohighlight">\(C=\frac{3}{7}\)</span>.</p>
 <p>Ensimmäisestä yhtälöstä ratkeaa jo tiedossa olevan <span class="math notranslate nohighlight">\(B\)</span>:n avulla <span class="math notranslate nohighlight">\(A=\frac{1}{4}\left(1-\frac{1}{4}\right) = \frac{1}{4} \cdot \frac{3}{4} = \frac{3}{16}\)</span>.</p>
 <p>Differentiaaliyhtälön ratkaisu on siis <span class="math notranslate nohighlight">\(y=y_h+y_t=Ce^{-4t}+\frac{3}{7}e^{3t}+\frac{1}{4}t+\frac{3}{16}\)</span>.</p>
+</div>
 </div>
 </section>
 </section>

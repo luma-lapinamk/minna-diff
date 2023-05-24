@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Muita menetelmiä &#8212; Differentiaaliyhtälöt</title>
+    <title>Eri tyyppiset differentiaaliyhtälöt &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toisen kertaluvun differentiaaliyhtälöt" href="toisen.html" />
-    <link rel="prev" title="Eulerin menetelmä" href="euler.html" />
+    <link rel="next" title="Separoituvat differentiaaliyhtälöt" href="separoituvat.html" />
+    <link rel="prev" title="Mikä on differentiaaliyhtälö?" href="kasite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,8 +123,8 @@ const thebe_selector_output = ".output, .cell_output"
    Mikä on differentiaaliyhtälö?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="integroituvat.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
@@ -148,8 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
    Eulerin menetelmä
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="rungekutta.html">
    Muita menetelmiä
   </a>
  </li>
@@ -249,7 +249,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/rungekutta.md"
+        <a href="_sources/integroituvat.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -309,13 +309,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#muunneltu-eulerin-menetelma">
-   Muunneltu Eulerin menetelmä
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#runge-kutta-menetelma">
-   Runge-Kutta -menetelmä
+  <a class="reference internal nav-link" href="#perustyyppi-ratkeaa-integroimalla">
+   Perustyyppi ratkeaa integroimalla
   </a>
  </li>
 </ul>
@@ -327,7 +322,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Muita menetelmiä</h1>
+                <h1>Eri tyyppiset differentiaaliyhtälöt</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -338,13 +333,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#muunneltu-eulerin-menetelma">
-   Muunneltu Eulerin menetelmä
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#runge-kutta-menetelma">
-   Runge-Kutta -menetelmä
+  <a class="reference internal nav-link" href="#perustyyppi-ratkeaa-integroimalla">
+   Perustyyppi ratkeaa integroimalla
   </a>
  </li>
 </ul>
@@ -357,54 +347,84 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="muita-menetelmia">
-<h1>Muita menetelmiä<a class="headerlink" href="#muita-menetelmia" title="Permalink to this headline">#</a></h1>
-<p>Eulerin algoritmi ei välttämättä toimi kovin tarkasti kaikkien differentiaaliyhtälöiden ratkaisuissa. Siitä on kehitetty erilaisia muunnoksia, joista tässä esitellään kaksi. Muunnokset onnistuvat esimerkiksi Pythonin valmiilla toiminnoilla. Algoritmit eivät tosin ole hankalia ohjelmoida itsekään.</p>
-<section id="muunneltu-eulerin-menetelma">
-<h2>Muunneltu Eulerin menetelmä<a class="headerlink" href="#muunneltu-eulerin-menetelma" title="Permalink to this headline">#</a></h2>
-<p>Eulerin algoritmia voidaan käyttää myös siten, että käyrän tangentin kulmakerroin lasketaan välien alkupisteiden lisäksi myös pisteiden puolivälissä. Tangenteista lasketaan keskiarvo, ja siirtymän suuntana käytetään tätä keskiarvoa.</p>
-<p>Muunnellun Eulerin menetelmän askel kohdasta <span class="math notranslate nohighlight">\(t_{n-1}\)</span> kohtaan <span class="math notranslate nohighlight">\(t_n\)</span> lasketaan seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+hf(t_{n-1}+\frac{h}{2},y_{n-1}+\frac{h}{2}f(t_{n-1},y_{n-1}))\)</span></p>
-<p>Käytännössä laskukaava puretaan välivaiheisiin, joista saadut tulokset on helppo sijoittaa lopulliseen kaavaan.</p>
-<p><strong>Esim.</strong> Ratkaise alkuarvotehtävä <span class="math notranslate nohighlight">\(y'=-ty, y(0)=1\)</span> muunnellulla Eulerin menetelmällä. Laske funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvot, jotka vastaavat muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoja <span class="math notranslate nohighlight">\(t_1=0.05\)</span> ja <span class="math notranslate nohighlight">\(t_2=0.1\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="eri-tyyppiset-differentiaaliyhtalot">
+<h1>Eri tyyppiset differentiaaliyhtälöt<a class="headerlink" href="#eri-tyyppiset-differentiaaliyhtalot" title="Permalink to this headline">#</a></h1>
+<p>Differentiaaliyhtälöistä on olemassa muutamaa erilaista tyyppiä, jotka on helppoa tai ainakin mahdollista ratkaista itse laskemalla:</p>
+<ul class="simple">
+<li><p>“perustyyppi” eli integroituva differentiaaliyhtälö</p></li>
+<li><p>separoituva differentiaaliyhtälö</p></li>
+<li><p>lineaarinen differentiaaliyhtälö</p>
+<ul>
+<li><p>homogeeninen differentiaaliyhtälö</p></li>
+<li><p>vakiokertoiminen differentiaaliyhtälö</p></li>
+</ul>
+</li>
+</ul>
+<p>Erityyppisten yhtälöiden ratkaisumenetelmiin perehdytään seuraavissa luvuissa. On olemassa sellaisiakin differentiaaliyhtälöitä, joita ei voi ratkaista analyyttisesti. Tällöin funktiolle <span class="math notranslate nohighlight">\(y(x)\)</span> ei ole mahdollista johtaa lauseketta, ja laskun lopputuloksena on likiarvo eikä tarkka arvo. Opintojaksolla perehdytään erilaisiin numeerisiin menetelmiin, joilla tällaisia ratkaisuja voi etsiä.</p>
+<section id="perustyyppi-ratkeaa-integroimalla">
+<h2>Perustyyppi ratkeaa integroimalla<a class="headerlink" href="#perustyyppi-ratkeaa-integroimalla" title="Permalink to this headline">#</a></h2>
+<p>Yksinkertaisimmillaan differentiaaliyhtälön toisella puolella on etsittävän funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span> ja toisella puolella pelkästään muuttujasta ja vakioista koostuva lauseke, jota voidaan merkitä <span class="math notranslate nohighlight">\(f(x)\)</span>. Tällöin funktio <span class="math notranslate nohighlight">\(y(x)\)</span> saadaan selville integroimalla, siis <span class="math notranslate nohighlight">\(y(x)=\int f(x) \,dx +C\)</span>.</p>
+<p>Tällaista yhtälöä kutsutaan differentiaaliyhtälön perustapaukseksi. Toinen nimitys on <strong>integroituva</strong> differentiaaliyhtälö. Yhtälössä esiintyy siis vain funktion <span class="math notranslate nohighlight">\(y(x)\)</span> derivaatta, ei itse funktiota <span class="math notranslate nohighlight">\(y(x)\)</span>.</p>
+<p>Integroimalla saadaan differentiaaliyhtälön yleinen ratkaisu. Jos halutaan yksittäinen ratkaisu, pitää tietää jokin ehto <span class="math notranslate nohighlight">\(y(x_0)=y_0\)</span>.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Etsi differentiaaliyhtälölle <span class="math notranslate nohighlight">\(y'=4x\)</span></p>
+<p>a) yleinen ratkaisu,</p>
+<p>b) yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(1)=8\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Yhtälö voidaan esittää muodossa <span class="math notranslate nohighlight">\(f(t,y)=-ty\)</span>. Lasketaan arvo <span class="math notranslate nohighlight">\(y(0.05)\)</span> välivaiheiden kautta seuraavasti:</p>
-<p>Aluksi lasketaan <span class="math notranslate nohighlight">\(\frac{h}{2}f(t_0,y_0)=\frac{0.05}{2}\cdot (-0 \cdot 1) = 0\)</span>.</p>
-<p>Seuraava vaihe on laskea <span class="math notranslate nohighlight">\(f(t_0+\frac{h}{2},y(t_0)+\frac{h}{2}\cdot 0) = -(0+\frac{0.05}{2})\cdot 1 = -0.025.\)</span></p>
-<p>Lopuksi lasketaan <span class="math notranslate nohighlight">\(y(0.05) = 1 + 0.05\cdot(-0.025) = 0.99875\)</span>.</p>
-<p>Lasketaan vielä arvo seuraavassa pisteessä <span class="math notranslate nohighlight">\(t_2\)</span>:</p>
-<p>Ensin lasketaan <span class="math notranslate nohighlight">\(\frac{h}{2} f(t_1,y_1)= \frac{0.05}{2} \cdot (-0.05 \cdot 0.99875) = -0.00125\)</span>.</p>
-<p>Sitten lasketaan <span class="math notranslate nohighlight">\(f(t_1+\frac{h}{2},y(t_1)+\frac{h}{2}\cdot (-0.00125))\)</span></p>
-<p><span class="math notranslate nohighlight">\(= -(0.05+\frac{0.05}{2})\cdot (0.99875-0.00125\cdot\frac{0.05}{2}) = -0.07490\)</span>.</p>
-<p>Lopuksi lasketaan <span class="math notranslate nohighlight">\(y(0.1) = 0.99875 + 0.05\cdot(-0.07490) = 0.99501\)</span>.</p>
-<p>Käytännössä tällainen tehtävä suoritettaisiin tietokoneella, ja välivaiheiden tulokset tallennettaisiin useampien desimaalien tarkkuudella kuin tässä.</p>
+<p>a) Integroidaan: <span class="math notranslate nohighlight">\(y(x)=\int 4x \,dx +C = 2x^2 + C\)</span></p>
+<p>b) Ratkaistaan vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(2\cdot 1^2+C=8 \leftrightarrow C=8-6 \leftrightarrow C=6\)</span>. Kysytty yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=2x^2+6\)</span>.</p>
 </div>
-</section>
-<section id="runge-kutta-menetelma">
-<h2>Runge-Kutta -menetelmä<a class="headerlink" href="#runge-kutta-menetelma" title="Permalink to this headline">#</a></h2>
-<p>Runge-Kutta -menetelmä on muunnos Eulerin algoritmista. Menetelmästä on olemassa erilaisia muunnoksia. Tässä tarkastellaan menetelmän perusversiota. Idea on samanlainen kuin muunnellussa Eulerin menetelmässä, mutta jokaisella välillä lasketaankin nyt neljä tangentin kulmakerrointa <span class="math notranslate nohighlight">\(k_1, k_2, k_3\)</span> ja <span class="math notranslate nohighlight">\(k_4\)</span>, ja siirtymän suunta on näiden kulmakertoimien painotettu keskiarvo. Laskukaavat voidaan esittää seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(k_1=f(t_{n-1},y_{n-1})\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=f(t_{n-1}+h/2, y_{n-1}+(h/2) k_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=f(t_{n-1}+h/2, y_{n-1}+(h/2) k_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4=f(t_{n-1}+h, y_{n-1}+h k_3)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+ (h/6)(k_1+2k_2+2k_3+k_4)\)</span></p>
-<p><strong>Esim.</strong> Ratkaise alkuarvotehtävä <span class="math notranslate nohighlight">\(y'=-ty, y(0)=1\)</span> Runge-Kutta -menetelmällä. Laske funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvot, jotka vastaavat muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoja <span class="math notranslate nohighlight">\(0.05\)</span> ja <span class="math notranslate nohighlight">\(0.1\)</span>.</p>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Kappaleen nopeus <span class="math notranslate nohighlight">\(v\)</span> noudattaa ajan <span class="math notranslate nohighlight">\(t\)</span> suhteen yhtälöä <span class="math notranslate nohighlight">\(v(t)=5~\frac{\text{m}}{\text{s}}+0.1 ~\frac{\text{m}}{\text{s}^2} t\)</span>. Hetkellä <span class="math notranslate nohighlight">\(t=0\)</span> s kappaleen sijainti oli <span class="math notranslate nohighlight">\(x=10\)</span> m. Nopeus on sijainnin derivaatta. Millä funktiolla kappaleen sijaintia ajan funktiona voidaan yleisesti kuvata?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Yhtälö voidaan esittää muodossa <span class="math notranslate nohighlight">\(f(t,y)=-ty\)</span>. Tällöin Runge-Kutta -menetelmän laskukaavat ovat seuraavat:</p>
-<p><span class="math notranslate nohighlight">\(k_1=-t_{n-1}y_{n-1}\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=-(t_{n-1}+h/2)(y_{n-1}+(h/2) k_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=-(t_{n-1}+h/2) (y_{n-1}+(h/2) k_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4= -(t_{n-1}+h)(y_{n-1}+h k_3)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n=y_{n-1}+(h/6)(k_1+2k_2+2k_3+k_4)\)</span></p>
-<p>Lasketaan arvo <span class="math notranslate nohighlight">\(y(0.05)\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(k_1=-0\cdot 1 = 0\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=-(0+0.025)(1+0.025\cdot 0) = -0.025\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=-(0+0.025) (1+0.025\cdot(-0.025)) = -0.024984375\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4=-(0+0.05)(1+0.05\cdot(-0.024984375)) = -0.0499375390625\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_1=1+(0.05/6)(0+2\cdot(-0.025)+2\cdot(-0.024984375)-0.0499375390625) = 0.9987508\)</span></p>
-<p>Arvon <span class="math notranslate nohighlight">\(y(0.1)\)</span> laskeminen jää vapaaehtoiseksi harjoitustehtäväksi!</p>
+<p>Tiedetään, että <span class="math notranslate nohighlight">\(x'(t)=v(t)\)</span>. Näin ollen <span class="math notranslate nohighlight">\(x(t)=\int v(t)~dt + C\)</span>. Suoritaan integrointi (suureiden yksiköt on jätetty pois yksinkertaisuuden vuoksi):</p>
+<p><span class="math notranslate nohighlight">\(x(t)=\int 5+0.1t \,dt + C\)</span></p>
+<p><span class="math notranslate nohighlight">\(x(t)=5t+0.05t^2+C\)</span></p>
+<p>Vakion <span class="math notranslate nohighlight">\(C\)</span> arvo saadaan selville ehdosta <span class="math notranslate nohighlight">\(x(0)=10\)</span>, siis</p>
+<p><span class="math notranslate nohighlight">\(5\cdot 0 + 0.05\cdot 0^2+C=10 \Leftrightarrow C=10\)</span>.</p>
+<p>Kappaleen sijaintia kuvaa siis funktio <span class="math notranslate nohighlight">\(x(t)=5t+0.05t^2+10\)</span>.</p>
+</div>
+</div>
+<p>Integroituvassa differentiaaliyhtälössä voi esiintyä myös toista derivaattaa <span class="math notranslate nohighlight">\(y''\)</span>. Jos tällöin halutaan selville yksittäisratkaisu, pitää tietää ehdon <span class="math notranslate nohighlight">\(y(x_0)=y_0\)</span> lisäksi jokin toinen ehto <span class="math notranslate nohighlight">\(y'(x_1)=y_1'\)</span>. Kaksi ehtoa tarvitaan, koska ratkaisu tapahtuu kaksi kertaa peräkkäin integroimalla. Ensimmäisellä integroinnilla saadaan toisesta derivaatasta <span class="math notranslate nohighlight">\(y''\)</span> selville derivaatta <span class="math notranslate nohighlight">\(y'\)</span>, ja toisella integroinnilla funktio <span class="math notranslate nohighlight">\(y'\)</span>. Kummastakin integroinnista tulee mukaan oma vakionsa.</p>
+<p>Toista derivaattaa sisältävän differentiaaliyhtälön ratkaisu onnistuu suoraviivaisesti integroimalla kahteen kertaan vain, jos yhtälössä ei esiinny derivaattaa <span class="math notranslate nohighlight">\(y'\)</span> eikä itse funktiota <span class="math notranslate nohighlight">\(y\)</span>. Muulloin kyseessä ei ole integroituva differentiaaliyhtälö, vaan yleisempi toisen kertaluvun differentiaaliyhtälö. Näitä hankalampia tapauksia käsitellään luvussa “Toisen kertaluvun differentiaaliyhtälöt”.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'=2x+3\)</span> ehdolla <span class="math notranslate nohighlight">\(y(1)=6\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Integroimalla saadaan yleinen ratkaisu:</p>
+<p><span class="math notranslate nohighlight">\(y=\int 2x+3 \,dx+C=x^2+3x+C\)</span></p>
+<p>Selvitetään vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(y(1)=6\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(1^2+3\cdot 1 + C = 6 \Leftrightarrow C=6-1-3 \Leftrightarrow C=2\)</span></p>
+<p>Yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=x^2+3x+2\)</span>.</p>
+</div>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(y''=x^3+x\)</span>, kun tiedetään, että <span class="math notranslate nohighlight">\(y(1)=3\)</span> ja <span class="math notranslate nohighlight">\(y'(0)=4\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Derivaatta <span class="math notranslate nohighlight">\(y'\)</span> saadaan selville integroimalla <span class="math notranslate nohighlight">\(y''\)</span>. Merkitään tästä integroinnista saatavaa vakiota <span class="math notranslate nohighlight">\(C_1\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(y'=\int x^3 + x \,dx+C_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(y'=\frac{1}{4}x^4+\frac{1}{2}x^2 + C_1\)</span></p>
+<p>Selvitetään vakion <span class="math notranslate nohighlight">\(C_1\)</span> arvo ehdosta <span class="math notranslate nohighlight">\(y'(0)=4\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{4}\cdot 0^4+\frac{1}{2}\cdot 0^2 + C_1 = 4 \Leftrightarrow C_1=4\)</span></p>
+<p>Derivaatta on siis <span class="math notranslate nohighlight">\(y'=\frac{1}{4}x^4+\frac{1}{2}x^2 + 4\)</span>. Näin muodostunut ensimmäisen kertaluvun differentiaaliyhtälöä ratkeaa jälleen integroimalla. Vakiota on nyt merkitty <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(y=\int \frac{1}{4}x^4+\frac{1}{2}x^2 + 4 \,dx + C_2\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=\frac{1}{4\cdot 5} x^5 + \frac{1}{2\cdot 3} x^3 + 4x + C_2\)</span></p>
+<p><span class="math notranslate nohighlight">\(y=\frac{1}{20} x^5 + \frac{1}{6} x^3 + 4x + C_2\)</span></p>
+<p>Ratkaistaan vielä vakio <span class="math notranslate nohighlight">\(C_2\)</span> yhtälöstä <span class="math notranslate nohighlight">\(y(1)=3\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{20} \cdot 1^5 + \frac{1}{6} \cdot 1^3 + 4\cdot 1 + C_2 = 3\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{20} + \frac{1}{6} + 4+ C_2 = 3\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_2=3-4-\frac{1}{20}-\frac{1}{6}\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_2=-\frac{73}{60}\)</span></p>
+<p>Ehdot toteuttava yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=\frac{1}{20} x^5 + \frac{1}{6} x^3 + 4x-\frac{73}{60}\)</span>.</p>
+</div>
 </div>
 </section>
 </section>
@@ -436,17 +456,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="euler.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="kasite.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Eulerin menetelmä</p>
+            <p class="prev-next-title">Mikä on differentiaaliyhtälö?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="toisen.html" title="next page">
+    <a class='right-next' id="next-link" href="separoituvat.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Toisen kertaluvun differentiaaliyhtälöt</p>
+        <p class="prev-next-title">Separoituvat differentiaaliyhtälöt</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

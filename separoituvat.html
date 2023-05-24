@@ -50,12 +50,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lineaarinen differentiaaliyhtälö" href="lineaariset.html" />
-    <link rel="prev" title="Differentiaaliyhtälö" href="kasite.html" />
+    <link rel="prev" title="Eri tyyppiset differentiaaliyhtälöt" href="integroituvat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +120,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
-   Differentiaaliyhtälö
+   Mikä on differentiaaliyhtälö?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integroituvat.html">
+   Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -279,41 +286,12 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo">
-   Osamäärämuotoinen separoituva differentiaaliyhtälö
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tulomuotoinen-separoituva-differentiaaliyhtalo">
-   Tulomuotoinen separoituva differentiaaliyhtälö
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
@@ -325,24 +303,6 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo">
-   Osamäärämuotoinen separoituva differentiaaliyhtälö
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tulomuotoinen-separoituva-differentiaaliyhtalo">
-   Tulomuotoinen separoituva differentiaaliyhtälö
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -350,41 +310,52 @@ title="Print to PDF"
                 
               <div>
                 
-  <!-- #region -->
-<section class="tex2jax_ignore mathjax_ignore" id="separoituvat-differentiaaliyhtalot">
+  <section class="tex2jax_ignore mathjax_ignore" id="separoituvat-differentiaaliyhtalot">
 <h1>Separoituvat differentiaaliyhtälöt<a class="headerlink" href="#separoituvat-differentiaaliyhtalot" title="Permalink to this headline">#</a></h1>
-<p>Separoituvat differentiaaliyhtälöt ovat muotoa <span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)}\)</span> tai <span class="math notranslate nohighlight">\(y'=f(x)g(y)\)</span>. Yhtälötyypin nimi johtuu siitä, että yhtälön muuttujista <span class="math notranslate nohighlight">\(x\)</span> ja <span class="math notranslate nohighlight">\(y\)</span> riippuvat osat on mahdollista erottaa eli separoida toisistaan.</p>
-<p>Ratkaisu hahmottuu helposti, kun kirjoitetaan derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span> muodossa <span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}\)</span>. Tässä muodossa derivaattaa voi käsitellä kuten murtolukua.</p>
-<section id="osamaaramuotoinen-separoituva-differentiaaliyhtalo">
-<h2>Osamäärämuotoinen separoituva differentiaaliyhtälö<a class="headerlink" href="#osamaaramuotoinen-separoituva-differentiaaliyhtalo" title="Permalink to this headline">#</a></h2>
-<p>Kun kirjoitetaan derivaatta edellä kuvatulla tavalla, yhtälö muuttuu seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)} \leftrightarrow \frac{\text{d}y}{\text{d}x} = \frac{f(x)}{g(y)}\)</span>.</p>
-<p>Kerrotaan molemmat puolet luvuilla <span class="math notranslate nohighlight">\({\text{d}x}\)</span> ja <span class="math notranslate nohighlight">\({g(y)}\)</span>, jolloin saadaan <span class="math notranslate nohighlight">\(g(y) \text{d}y = f(x)\text{d}x\)</span></p>
-<p>Nyt ratkaisu saadaan integroimalla yhtälö puolittain, toisin sanoen</p>
-<p><span class="math notranslate nohighlight">\(\int g(y)~\text{d}y + C_1 = \int f(x)~\text{d}x + C_2\)</span>,</p>
-<p>missä reaaliluvut <span class="math notranslate nohighlight">\(C_1\)</span> ja <span class="math notranslate nohighlight">\(C_2\)</span> ovat integroimisvakioita. Vakiot voidaan yhdistää yhdeksi vakioksi <span class="math notranslate nohighlight">\(C\)</span>. Tällöin ratkaisu voidaan kirjoittaa muodossa</p>
-<p><span class="math notranslate nohighlight">\(g(y) = \int f(x) \text{d}x + C\)</span>,</p>
-<p>josta lopulta voidaan selvittää kysytty funktio <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p><strong>Esim.</strong> Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=\frac{4x}{y}\)</span>.</p>
+<p>Separoituvat differentiaaliyhtälöt ovat differentiaaliyhtälöitä, joissa derivaatta <span class="math notranslate nohighlight">\(y'\)</span> on mahdollista esittää pelkästään <span class="math notranslate nohighlight">\(x\)</span>:stä (ja vakioista) riippuvan lausekkeen <span class="math notranslate nohighlight">\(f(x)\)</span> ja pelkästään <span class="math notranslate nohighlight">\(y\)</span>:stä (ja vakioista) riippuvan lausekkeen <span class="math notranslate nohighlight">\(g(y)\)</span> tulona tai osamääränä. Yhtälötyypin nimi johtuu siitä, että yhtälön muuttujista <span class="math notranslate nohighlight">\(x\)</span> ja <span class="math notranslate nohighlight">\(y\)</span> riippuvat osat on mahdollista erottaa eli separoida toisistaan.</p>
+<p>Differentiaaliyhtälö on siis separoituva, jos <span class="math notranslate nohighlight">\(y'=f(x)g(y)\)</span> tai <span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)}\)</span>.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ovatko seuraavat differentiaaliyhtälöt separoituvia? Mitkä ovat näissä differentiaaliyhtälöissä <span class="math notranslate nohighlight">\(f(x)\)</span> ja <span class="math notranslate nohighlight">\(g(y)\)</span>?</p>
+<p>a) <span class="math notranslate nohighlight">\(y'=x+2y\)</span>, b) <span class="math notranslate nohighlight">\(y'=2xy\)</span>, c) <span class="math notranslate nohighlight">\(y'=\frac{x}{2y}\)</span>, d) <span class="math notranslate nohighlight">\(y'=2x+6xy\)</span></p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Yhtälö voidaan muokata muotoon</p>
-<p><span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}=\frac{4x}{y}\)</span></p>
-<p>ja edelleen muotoon</p>
-<p><span class="math notranslate nohighlight">\(y~\text{d}y = 4x~\text{d}x\)</span>.</p>
-<p>Integroimalla puolittain saadaan</p>
-<p><span class="math notranslate nohighlight">\(\frac{1}{2} y^2 = \int 4x~\text{d}x\)</span></p>
-<p>josta selviää, että</p>
-<p><span class="math notranslate nohighlight">\(y=\sqrt{2 \cdot(2x^2 + C)}\)</span>.</p>
+<p>a) Ei ole separoituva.</p>
+<p>b) On separoituva. Voidaan valita <span class="math notranslate nohighlight">\(f(x)=2x\)</span> ja <span class="math notranslate nohighlight">\(g(y)=y\)</span>. Myös funktiot <span class="math notranslate nohighlight">\(f(x)=x\)</span> ja <span class="math notranslate nohighlight">\(g(x)=2y\)</span> tuottavat saman differentiaaliyhtälön.</p>
+<p>c) On separoituva. Funktiot ovat <span class="math notranslate nohighlight">\(f(x)=x\)</span> ja <span class="math notranslate nohighlight">\(g(y)=2y\)</span>. Toisaalta differentiaaliyhtälön voi ajatella olevan myös muodossa <span class="math notranslate nohighlight">\(f(x)g(y)\)</span>, missä  <span class="math notranslate nohighlight">\(f(x)=x\)</span> ja <span class="math notranslate nohighlight">\(g(x)=\frac{1}{2y}\)</span> tuottavat saman differentiaaliyhtälön.</p>
+<p>d) On separoituva. Yhtälö voidaan sieventää muotoon <span class="math notranslate nohighlight">\(y'=2x(1+3y)\)</span>, jolloin <span class="math notranslate nohighlight">\(f(x)=2x\)</span> ja <span class="math notranslate nohighlight">\(g(y)=1+3y\)</span>.</p>
+</div>
+</div>
+<p>Separoituvan differentiaaliyhtälön ratkaisu perustuu siihen, että derivaatta <span class="math notranslate nohighlight">\(y'\)</span> kirjoitetaan muodossa <span class="math notranslate nohighlight">\(\frac{\,dy}{\,dx}\)</span>. Tässä muodossa derivaattaa voi käsitellä kuten murtolukua. Siirretään kumpaankin muuttujaan liittyvä differentiaali omalle puolelleen yhtälöä. Järjestellään yhtälön <span class="math notranslate nohighlight">\(y\)</span>:stä ja <span class="math notranslate nohighlight">\(x\)</span>:stä riippuvat termit omille puolilleen yhtälöä. Lopuksi integroidaan yhtälön molemmat puolet.</p>
+<p>Ratkaisun vaiheet ja lopputulos näyttävät hieman erilaiselta riippuen siitä, onko differentiaaliyhtälössä funktioiden <span class="math notranslate nohighlight">\(f(x)\)</span> ja <span class="math notranslate nohighlight">\(g(y)\)</span> tulo vai osamäärä. Valmista ratkaisukaavaa kumpaankaan tapaukseen ei kannata opetella ulkoa, sillä ratkaisuun päätyy tavallisella yhtälön muokkaamisella. Seuraavaksi kuitenkaan esitetään näiden kahden eri tapauksen ratkaisujen yleinen muoto.</p>
+<p><strong>1. Osamäärämuotoinen differentiaaliyhtälö <span class="math notranslate nohighlight">\(f(x)/g(y)\)</span></strong></p>
+<p>Kun kirjoitetaan derivaatta edellä kuvatulla tavalla, yhtälö muuttuu seuraavasti:</p>
+<p><span class="math notranslate nohighlight">\(y'=\frac{f(x)}{g(y)} \leftrightarrow \frac{\,dy}{\,dx} = \frac{f(x)}{g(y)}\)</span>.</p>
+<p>Kerrotaan molemmat puolet termeillä <span class="math notranslate nohighlight">\({\,dx}\)</span> ja <span class="math notranslate nohighlight">\({g(y)}\)</span>, jolloin saadaan <span class="math notranslate nohighlight">\(g(y) \,dy = f(x) \,dx\)</span></p>
+<p>Nyt ratkaisu saadaan integroimalla yhtälö puolittain, toisin sanoen</p>
+<p><span class="math notranslate nohighlight">\(\int g(y) \,dy + C_1 = \int f(x) \,dx + C_2\)</span>,</p>
+<p>missä reaaliluvut <span class="math notranslate nohighlight">\(C_1\)</span> ja <span class="math notranslate nohighlight">\(C_2\)</span> ovat integroimisvakioita. Vakiot voidaan yhdistää yhdeksi vakioksi <span class="math notranslate nohighlight">\(C\)</span>. Tällöin ratkaisu voidaan kirjoittaa muodossa</p>
+<p><span class="math notranslate nohighlight">\(g(y) = \int f(x) \,dx + C\)</span>,</p>
+<p>josta lopulta voidaan selvittää kysytty funktio <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=\frac{4x}{y}\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Yhtälö voidaan muokata muotoon <span class="math notranslate nohighlight">\(\frac{\,dy}{\,dx}=\frac{4x}{y}\)</span></p>
+<p>ja edelleen muotoon <span class="math notranslate nohighlight">\(y~\,dy = 4x \,dx\)</span>.</p>
+<p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\int y~\,dy = \int 4x \,dx +C\)</span></p>
+<p>eli <span class="math notranslate nohighlight">\(\frac{1}{2} y^2 = 2x^2 + C\)</span>.</p>
+<p>Tästä voidaan ratkaista <span class="math notranslate nohighlight">\(y^2 = 2\cdot(2x^2+C)\)</span></p>
+<p>ja edelleen <span class="math notranslate nohighlight">\(y=\sqrt{2 \cdot(2x^2 + C)}\)</span>.</p>
 <p>Myös ratkaisu <span class="math notranslate nohighlight">\(y=-\sqrt{2 \cdot (2x^2 + C)}\)</span> toteuttaa alkuperäisen yhtälön.</p>
 </div>
-</section>
-<section id="tulomuotoinen-separoituva-differentiaaliyhtalo">
-<h2>Tulomuotoinen separoituva differentiaaliyhtälö<a class="headerlink" href="#tulomuotoinen-separoituva-differentiaaliyhtalo" title="Permalink to this headline">#</a></h2>
+</div>
+<p><strong>2. Tulomuotoinen differentiaaliyhtälö <span class="math notranslate nohighlight">\(f(x)g(y)\)</span></strong></p>
 <p>Vastaavasti jos yhtälö on muotoa <span class="math notranslate nohighlight">\(y'=f(x)g(y)\)</span>, sitä voidaan muokata seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x} = f(x) g(y) \leftrightarrow \frac{\text{d}y}{g(y)} = f(x) {\text{d}x}\)</span></p>
-<p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)}~\text{d}y + C_1 = \int f(x)~\text{d}x + C_2\)</span></p>
-<p>ja vastaavasti kuin edellä, <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)}~\text{d}y = \int f(x)~\text{d}x + C\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x} = f(x) g(y) \leftrightarrow \frac{\,dy}{g(y)} = f(x) {\,dx}\)</span></p>
+<p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)} \,dy+ C_1 = \int f(x) \,dx + C_2\)</span></p>
+<p>ja vastaavasti kuin edellä, <span class="math notranslate nohighlight">\(\int \frac{1}{g(y)} \,dy = \int f(x) \,dx + C\)</span></p>
 <p>josta voidaan lopulta ratkaista <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Laskukaavan perustelu toisella tavalla</p>
@@ -393,44 +364,78 @@ title="Print to PDF"
 <p>Funktioille pätee <span class="math notranslate nohighlight">\(F'(x)=f(x)\)</span> ja <span class="math notranslate nohighlight">\(G'(x)=g(x)\)</span>.</p>
 <p>Seuraavaksi lähestytään ratkaisua takaperin: kokeillaan, mitä tapahtuu, kun derivoidaan puolittain yhtälö <span class="math notranslate nohighlight">\(G(y)=F(x)\)</span>. Yhtälön vasen puoli täytyy derivoida yhdistetyn funktion derivointikaavalla, sillä funktiossa <span class="math notranslate nohighlight">\(G(y)\)</span> muuttuja <span class="math notranslate nohighlight">\(y\)</span> riippuu muuttujasta <span class="math notranslate nohighlight">\(x\)</span>, siis <span class="math notranslate nohighlight">\(G(y)=G(y(x))\)</span>.</p>
 <p>Yhdistetyn funktion derivointikaava: <span class="math notranslate nohighlight">\(\frac{\text{d}}{\text{d}x} G(y(x)) = G'(y(x)) \cdot y'(x)\)</span></p>
-<p>Yhtälö <span class="math notranslate nohighlight">\(G(y)=F(x)\)</span> muuttuu siis muotoon</p>
-<p><span class="math notranslate nohighlight">\(G'(y(x)) \cdot y'(x) = F'(x)\)</span></p>
-<p>Tästä saadaan ratkaistua</p>
-<p><span class="math notranslate nohighlight">\(y'(x) = \frac{F'(x)}{G'(y(x))}\)</span></p>
-<p>eli</p>
-<p><span class="math notranslate nohighlight">\(y'(x) = \frac{f(x)}{g(y)}\)</span>.</p>
+<p>Yhtälö <span class="math notranslate nohighlight">\(G(y)=F(x)\)</span> muuttuu siis muotoon <span class="math notranslate nohighlight">\(G'(y(x)) \cdot y'(x) = F'(x)\)</span></p>
+<p>Tästä saadaan ratkaistua <span class="math notranslate nohighlight">\(y'(x) = \frac{F'(x)}{G'(y(x))}\)</span></p>
+<p>eli <span class="math notranslate nohighlight">\(y'(x) = \frac{f(x)}{g(y)}\)</span>.</p>
 <p>Päättelyketjua takaisinpäin lukemalla voidaan siis todeta, että <span class="math notranslate nohighlight">\(y'(x) = \frac{f(x)}{g(y)}\)</span> on yhtäpitävä yhtälön <span class="math notranslate nohighlight">\(G'(y)=F'(x)\)</span> kanssa ja siten ratkeaa puolittain integroimalla.</p>
 </div>
-<p><strong>Esim.</strong> Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=4xy\)</span>.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=4xy\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Kirjoitetaan yhtälö muodossa <span class="math notranslate nohighlight">\(\frac{\text{d}y}{\text{d}x}=4xy\)</span>.</p>
-<p>Kerrotaan molemmat puolet luvulla <span class="math notranslate nohighlight">\(\text{d}x\)</span>, jolloin yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(\text{d}y=4xy~\text{d}x\)</span>.</p>
-<p>Edelleen jakamalla tekijällä <span class="math notranslate nohighlight">\(y\)</span> yhtälö saadaan muotoon <span class="math notranslate nohighlight">\(\frac{\text{d}y}{y}=4x~\text{dx}\)</span>.</p>
-<p>Puolittain integroimalla saadaan</p>
-<p><span class="math notranslate nohighlight">\(\int \frac{1}{y}~\text{d}y = \int 4x~\text{d}x\)</span>,</p>
+<p>Kirjoitetaan yhtälö muodossa <span class="math notranslate nohighlight">\(\frac{\,dy}{\,dx}=4xy\)</span>.</p>
+<p>Kerrotaan molemmat puolet luvulla <span class="math notranslate nohighlight">\(\,dx\)</span>, jolloin yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(\,dy=4xy \,dx\)</span>.</p>
+<p>Edelleen jakamalla tekijällä <span class="math notranslate nohighlight">\(y\)</span> yhtälö saadaan muotoon <span class="math notranslate nohighlight">\(\frac{\,dy}{y}=4x \,dx\)</span>.</p>
+<p>Puolittain integroimalla saadaan <span class="math notranslate nohighlight">\(\int \frac{1}{y} \,dy = \int 4x \,dx\)</span>,</p>
 <p>josta ratkeaa <span class="math notranslate nohighlight">\(\ln{y} = 2x^2 + C\)</span>.</p>
 <p>Funktio <span class="math notranslate nohighlight">\(y\)</span> ratkeaa ylläolevasta yhtälöstä potenssiinkorotuksella:</p>
 <p><span class="math notranslate nohighlight">\(e^{\ln{y}}=e^{2x^2+C}\)</span> eli <span class="math notranslate nohighlight">\(y=e^{2x^2+C}\)</span>.</p>
 </div>
+</div>
 <p>Separoituvia differentiaaliyhtälöitä esiintyy monenlaisissa fysiikan sovelluksissa. Tällöin hankalaa on differentiaaliyhtälön muodostaminen, ei niinkään ratkaiseminen.</p>
-<p><strong>Esim.</strong> Vene työnnetään liikkeelle alkunopeudella <span class="math notranslate nohighlight">\(v_0=5\)</span> m/s. Ajassa <span class="math notranslate nohighlight">\(t_1=5\)</span> s vene on siirtynyt matkan <span class="math notranslate nohighlight">\(x_1=12.5\)</span> m. Kuinka pitkän matkan vene enintään liikkuu eli mikä on <span class="math notranslate nohighlight">\(\lim_{t\to \infty} x\)</span>, kun oletetaan ainoan liikkeen suuntaisen voiman, väliainevastuksen <span class="math notranslate nohighlight">\(F\)</span>, olevan suoraan verrannollinen nopeuteen?</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Vene työnnetään liikkeelle alkunopeudella <span class="math notranslate nohighlight">\(v_0=5\)</span> m/s. Ajassa <span class="math notranslate nohighlight">\(t_1=5\)</span> s vene on siirtynyt matkan <span class="math notranslate nohighlight">\(x_1=12.5\)</span> m. Kuinka pitkän matkan vene enintään liikkuu eli mikä on <span class="math notranslate nohighlight">\(\lim_{t\to \infty} x\)</span>, kun oletetaan ainoan liikkeen suuntaisen voiman, väliainevastuksen <span class="math notranslate nohighlight">\(F\)</span>, olevan suoraan verrannollinen nopeuteen?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
 <p>Newtonin 2. lain mukaan voima <span class="math notranslate nohighlight">\(F\)</span> aiheuttaa kappaleelle, jonka massa on <span class="math notranslate nohighlight">\(m\)</span>, kiihtyvyyden <span class="math notranslate nohighlight">\(a\)</span> siten, että <span class="math notranslate nohighlight">\(F=ma\)</span>, missä <span class="math notranslate nohighlight">\(a=\frac{\text{d}v}{\text{d}t}\)</span>. Siis <span class="math notranslate nohighlight">\(F=m \frac{\text{d}v}{\text{d}t}\)</span>. Lisäksi tehtävänannon perusteella tiedetään, että <span class="math notranslate nohighlight">\(F=-kv\)</span>.</p>
-<p>Kirjoittamalla voimien määritelmät yhtä suuriksi saadaan yhtälö <span class="math notranslate nohighlight">\(m \frac{\text{d}v}{\text{d}t}=-kv\)</span></p>
-<p>Yhtälö on separoituva ja muokkaantuu muotoon <span class="math notranslate nohighlight">\(\frac{\text{d}v}{v}=-\frac{k}{m}~\text{d}t\)</span></p>
+<p>Kirjoittamalla voimien määritelmät yhtä suuriksi saadaan yhtälö <span class="math notranslate nohighlight">\(m \frac{dv}{dt}=-kv\)</span></p>
+<p>Yhtälö on separoituva ja muokkaantuu muotoon <span class="math notranslate nohighlight">\(\frac{dv}{v}=-\frac{k}{m}~dt\)</span></p>
 <p>Integroimalla puolittain saadaan <span class="math notranslate nohighlight">\(\ln{v}=-\frac{k}{m} t + C_1\)</span> ja edelleen <span class="math notranslate nohighlight">\(v(t)=Ce^{-\frac{k}{m}t}\)</span>.</p>
 <p>Sijoittamalla <span class="math notranslate nohighlight">\(v(0)=v_0\)</span> saadaan ratkaistua vakio <span class="math notranslate nohighlight">\(C=v_0\)</span>, siis  <span class="math notranslate nohighlight">\(v(t)=v_0 e^{-\frac{k}{m}t}\)</span>.</p>
-<p>Veneen nopeus <span class="math notranslate nohighlight">\(v(t)\)</span> kuvaa paikan <span class="math notranslate nohighlight">\(x\)</span> muutosta ajan <span class="math notranslate nohighlight">\(t\)</span> suhteen, siis <span class="math notranslate nohighlight">\(v(t)=\frac{\text{d}x}{\text{d}t}\)</span>.</p>
-<p>Tästä saadaan ratkaistua <span class="math notranslate nohighlight">\(v(t)~\text{d}t=1~\text{d}x\)</span> eli <span class="math notranslate nohighlight">\(x=\int v(t)~\text{d}t = \int v_0 e^{-\frac{kt}{m}}~\text{d}t\)</span>.</p>
+<p>Veneen nopeus <span class="math notranslate nohighlight">\(v(t)\)</span> kuvaa paikan <span class="math notranslate nohighlight">\(x\)</span> muutosta ajan <span class="math notranslate nohighlight">\(t\)</span> suhteen, siis <span class="math notranslate nohighlight">\(v(t)=\frac{dx}{dt}\)</span>.</p>
+<p>Tästä saadaan ratkaistua <span class="math notranslate nohighlight">\(v(t)~\text{d}t=1~\text{d}x\)</span> eli <span class="math notranslate nohighlight">\(x=\int v(t)~dt = \int v_0 e^{-\frac{kt}{m}}~dt\)</span>.</p>
 <p>Integroinnin jälkeen ratkaisu on <span class="math notranslate nohighlight">\(x(t)=-\frac{v_0 m}{k} (e^{-\frac{kt}{m}}+C_2)\)</span>.</p>
 <p>Sijoittamalla alkuehto <span class="math notranslate nohighlight">\(x(0)=0\)</span> saadaan <span class="math notranslate nohighlight">\(C_2=-1\)</span>, joten yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(x(t)=\frac{v_0 m}{k} (1-e^{-\frac{kt}{m}})\)</span>.</p>
 <p>Massan <span class="math notranslate nohighlight">\(m\)</span> ja vakion <span class="math notranslate nohighlight">\(k\)</span> arvoja ei voida määrittää pelkästään tästä yhtälöstä, mutta voidaan merkitä <span class="math notranslate nohighlight">\(b=\frac{m}{k}\)</span> ja laskea tälle arvo yhtälöstä <span class="math notranslate nohighlight">\(x(t)=v_0 b (1-e^{-\frac{t}{b}})\)</span>.</p>
 <p>Sijoittamalla annetut lukuarvot saadaan yhtälö <span class="math notranslate nohighlight">\(12.5=5\cdot b (1-e^{-\frac{5}{b}})\)</span> josta voidaan esim. WolframAlphalla selvittää <span class="math notranslate nohighlight">\(b=3.14\)</span>.</p>
 <p>Nyt voidaan laskea <span class="math notranslate nohighlight">\(\lim_{t\to \infty} x(t) = \lim_{t\to \infty} 5\cdot 3.14 (1-e^{-\frac{t}{3.14}}) = 5\cdot 3.14 = 15.7\)</span>.</p>
 </div>
-</section>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Putoamisliikkeessä kappaleeseen vaikuttaa Maan vetovoima, josta kappale saa kiihtyvyyden <span class="math notranslate nohighlight">\(g\approx 9.81~\frac{\text{m}}{\text{s}
+2}\)</span>. Jos ilmanvastusta ei huomioida, niin kappaleen nopeus sen pudotessa on <span class="math notranslate nohighlight">\(v(t)=\int g~dt+C=gt+C\)</span>, missä <span class="math notranslate nohighlight">\(C\)</span> on kappaleen nopeus pudotuksen alussa.</p>
+<p>Todellisuudessa kuitenkin moniin kappaleisiin vaikuttaa ilmanvastus, joka vähentää kiihtyvyyttä. Merkitään ilmanvastuksen aiheuttamaa kiihtyvyyttä <span class="math notranslate nohighlight">\(-kv\)</span>, missä <span class="math notranslate nohighlight">\(k &gt; 0\)</span> on kappaleen muodosta ja ilman ominaisuuksista riippuva vakio. (Oikeasti riippuvuus ei ole lineaarista, vaan muotoa <span class="math notranslate nohighlight">\(-kv^2\)</span>, mutta pienillä putoamismatkoilla tämä yksinkertaistus helpottaa laskemista huomattavasti.)</p>
+<p>Kun ilmanvastus huomioidaan, kappaleen kokonaiskiihtyvyys on <span class="math notranslate nohighlight">\(v'(t)=g-kv\)</span>. Selvitä yleinen lauseke putoavan kappaleen nopeudelle <span class="math notranslate nohighlight">\(v(t)\)</span>. Selvitä myös yksittäisratkaisu erityistapauksessa, jossa <span class="math notranslate nohighlight">\(v(0)=0\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Yhtälö <span class="math notranslate nohighlight">\(v'(t)=g-kv\)</span> voidaan esittää tulomuodossa seuraavasti: <span class="math notranslate nohighlight">\(v'(t)=(g-kv)\cdot 1\)</span>. Nyt lauseke <span class="math notranslate nohighlight">\(g-kv\)</span> riippuu nopeudesta <span class="math notranslate nohighlight">\(v\)</span>, ja lausekkeen <span class="math notranslate nohighlight">\(1\)</span> voidaan ajatella liittyvän aikaan <span class="math notranslate nohighlight">\(t\)</span>, vaikka se ei lausekkeessa esiinnykään - tärkeintä on, että tässä lausekkeessa ei esiinny nopeutta <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p>Kirjoitetaan vielä <span class="math notranslate nohighlight">\(v'(t)\)</span> toisin: <span class="math notranslate nohighlight">\(\frac{dv}{dt}=(g-kv)\cdot 1\)</span></p>
+<p>Yhtälö saadaan nyt muotoon <span class="math notranslate nohighlight">\(\frac{dv}{g-kv}=1~dt\)</span></p>
+<p>Yhtälön molemmat puolet voidaan nyt integroida, vasen puoli nopeuden suhteen ja oikea puoli ajan suhteen. Integraali on hieman hankala, mutta ratkaistavissa osamäärän integroinnin peruskaavoilla.</p>
+<p><span class="math notranslate nohighlight">\(\int \frac{dv}{g-kv}= \int 1~dt + C\)</span></p>
+<p><span class="math notranslate nohighlight">\(-\frac{1}{k} \ln{(g-kv)}=t+C\)</span></p>
+<p>Ratkaistaan yhtälöstä aluksi $\ln{(g-kv)}:</p>
+<p><span class="math notranslate nohighlight">\(-\ln{(g-kv)}=kt+kC\)</span></p>
+<p><span class="math notranslate nohighlight">\(\ln{(g-kv)}=-kt-kC\)</span></p>
+<p>Logaritmin “sisällä” oleva tuntematon ratkeaa potenssiinkorotuksella:</p>
+<p><span class="math notranslate nohighlight">\(e^{\ln{(g-kv)}}=e^{-kt-kC}\)</span></p>
+<p>Vasemmalla puolella Neperin luku ja eksponenttina oleva logaritmi kumoavat toisensa:</p>
+<p><span class="math notranslate nohighlight">\(g-kv=e^{-kt-kC}\)</span></p>
+<p>Yhtälöstä ratkeaa</p>
+<p><span class="math notranslate nohighlight">\(v=-\frac{1}{k}e^{-kt-kC}+\frac{g}{k}\)</span></p>
+<p>Yksittäisratkaisu on helpompi selvittää, kun sievennetään yhtälöä:</p>
+<p><span class="math notranslate nohighlight">\(v=-\frac{1}{k}e^{-kt}e^{-kC}+\frac{g}{k}\)</span></p>
+<p>Edelleen lyhennysmerkinnällä <span class="math notranslate nohighlight">\(e^{-kC}=D\)</span> saadaan yhtälö muotoon</p>
+<p><span class="math notranslate nohighlight">\(v=-\frac{1}{k}De^{-kt}+\frac{g}{k}\)</span></p>
+<p>Sijoittamalla yhtälöön ehto <span class="math notranslate nohighlight">\(v(0)=0\)</span> saadaan</p>
+<p><span class="math notranslate nohighlight">\(0=-\frac{1}{k}D+\frac{g}{k}\)</span></p>
+<p>josta ratkeaa <span class="math notranslate nohighlight">\(D=g\)</span>.</p>
+<p>Kysytty yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(v(t)=-\frac{1}{k}ge^{-kt}+\frac{g}{k}\)</span>, joka voidaan vielä sieventää muotoon <span class="math notranslate nohighlight">\(v(t)=\frac{g}{k}(1-e^{-kt})\)</span>.</p>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -460,11 +465,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="kasite.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="integroituvat.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Differentiaaliyhtälö</p>
+            <p class="prev-next-title">Eri tyyppiset differentiaaliyhtälöt</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="lineaariset.html" title="next page">
