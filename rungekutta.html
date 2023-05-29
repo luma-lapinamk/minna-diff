@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Muita menetelmiä &#8212; Differentiaaliyhtälöt</title>
+    <title>Muita menetelmiä (KESKEN) &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toisen kertaluvun differentiaaliyhtälöt" href="toisen.html" />
-    <link rel="prev" title="Eulerin menetelmä" href="euler.html" />
+    <link rel="next" title="Kompleksiluvut" href="kompleksiluvut1.html" />
+    <link rel="prev" title="Eulerin menetelmä (KESKEN)" href="euler.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,7 +117,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Perusteita
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
    Mikä on differentiaaliyhtälö?
@@ -128,6 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
    Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Yhtälötyyppejä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="separoituvat.html">
    Separoituvat differentiaaliyhtälöt
@@ -143,14 +155,38 @@ const thebe_selector_output = ".output, .cell_output"
    Ratkaisu yritteellä
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numeerisia menetelmiä
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="euler.html">
-   Eulerin menetelmä
+   Eulerin menetelmä (KESKEN)
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Muita menetelmiä
+   Muita menetelmiä (KESKEN)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kompleksiset ratkaisut
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut1.html">
+   Kompleksiluvut
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut2.html">
+   Kompleksilukujen esitysmuotoja
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,9 +194,21 @@ const thebe_selector_output = ".output, .cell_output"
    Toisen kertaluvun differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Differentiaaliyhtälöryhmiä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
-   Differentiaaliyhtälöryhmät
+   Differentiaaliyhtälöryhmät (KESKEN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ryhmat_matriiseilla.html">
+   Yhtälöryhmät matriisimuodossa
   </a>
  </li>
 </ul>
@@ -327,7 +375,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Muita menetelmiä</h1>
+                <h1>Muita menetelmiä (KESKEN)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -357,8 +405,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="muita-menetelmia">
-<h1>Muita menetelmiä<a class="headerlink" href="#muita-menetelmia" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="muita-menetelmia-kesken">
+<h1>Muita menetelmiä (KESKEN)<a class="headerlink" href="#muita-menetelmia-kesken" title="Permalink to this headline">#</a></h1>
 <p>Eulerin algoritmi ei välttämättä toimi kovin tarkasti kaikkien differentiaaliyhtälöiden ratkaisuissa. Siitä on kehitetty erilaisia muunnoksia, joista tässä esitellään kaksi. Muunnokset onnistuvat esimerkiksi Pythonin valmiilla toiminnoilla. Algoritmit eivät tosin ole hankalia ohjelmoida itsekään.</p>
 <section id="muunneltu-eulerin-menetelma">
 <h2>Muunneltu Eulerin menetelmä<a class="headerlink" href="#muunneltu-eulerin-menetelma" title="Permalink to this headline">#</a></h2>
@@ -440,13 +488,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Eulerin menetelmä</p>
+            <p class="prev-next-title">Eulerin menetelmä (KESKEN)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="toisen.html" title="next page">
+    <a class='right-next' id="next-link" href="kompleksiluvut1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Toisen kertaluvun differentiaaliyhtälöt</p>
+        <p class="prev-next-title">Kompleksiluvut</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

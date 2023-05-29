@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Eulerin menetelmä &#8212; Differentiaaliyhtälöt</title>
+    <title>Eulerin menetelmä (KESKEN) &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Muita menetelmiä" href="rungekutta.html" />
+    <link rel="next" title="Muita menetelmiä (KESKEN)" href="rungekutta.html" />
     <link rel="prev" title="&lt;no title&gt;" href="numeeriset.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -117,7 +117,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Perusteita
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
    Mikä on differentiaaliyhtälö?
@@ -128,6 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
    Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Yhtälötyyppejä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="separoituvat.html">
    Separoituvat differentiaaliyhtälöt
@@ -143,14 +155,38 @@ const thebe_selector_output = ".output, .cell_output"
    Ratkaisu yritteellä
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numeerisia menetelmiä
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Eulerin menetelmä
+   Eulerin menetelmä (KESKEN)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rungekutta.html">
-   Muita menetelmiä
+   Muita menetelmiä (KESKEN)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kompleksiset ratkaisut
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut1.html">
+   Kompleksiluvut
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut2.html">
+   Kompleksilukujen esitysmuotoja
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,9 +194,21 @@ const thebe_selector_output = ".output, .cell_output"
    Toisen kertaluvun differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Differentiaaliyhtälöryhmiä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
-   Differentiaaliyhtälöryhmät
+   Differentiaaliyhtälöryhmät (KESKEN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ryhmat_matriiseilla.html">
+   Yhtälöryhmät matriisimuodossa
   </a>
  </li>
 </ul>
@@ -322,7 +370,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Eulerin menetelmä</h1>
+                <h1>Eulerin menetelmä (KESKEN)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -347,8 +395,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="eulerin-menetelma">
-<h1>Eulerin menetelmä<a class="headerlink" href="#eulerin-menetelma" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="eulerin-menetelma-kesken">
+<h1>Eulerin menetelmä (KESKEN)<a class="headerlink" href="#eulerin-menetelma-kesken" title="Permalink to this headline">#</a></h1>
 <p>Tarkastellaan yhtälöä <span class="math notranslate nohighlight">\(y'=f(t,y), y(0)=y_0\)</span>. Eulerin menetelmä on algoritmi, jolla yhtälön arvolle voidaan löytää likiarvo, joka vastaa haluttua muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoa, vaikka varsinaista funktion <span class="math notranslate nohighlight">\(y(t)\)</span> lauseketta ei saataisi selville. Tiedossa on oltava jokin alkuarvo <span class="math notranslate nohighlight">\(y_0\)</span>, josta lähtien funktion muita arvoja aletaan arvioida.</p>
 <p>Eulerin menetelmässä derivaatta ilmastaan erotusosamäärällä:</p>
 <p><span class="math notranslate nohighlight">\(y'(t)\approx\frac{y(t+h)-y(t)}{h}\)</span></p>
@@ -422,7 +470,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="rungekutta.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Muita menetelmiä</p>
+        <p class="prev-next-title">Muita menetelmiä (KESKEN)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

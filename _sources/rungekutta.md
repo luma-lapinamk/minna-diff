@@ -1,4 +1,4 @@
-# Muita menetelmiä
+# Muita menetelmiä (KESKEN)
 
 Eulerin algoritmi ei välttämättä toimi kovin tarkasti kaikkien differentiaaliyhtälöiden ratkaisuissa. Siitä on kehitetty erilaisia muunnoksia, joista tässä esitellään kaksi. Muunnokset onnistuvat esimerkiksi Pythonin valmiilla toiminnoilla. Algoritmit eivät tosin ole hankalia ohjelmoida itsekään.
 
