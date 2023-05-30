@@ -1,4 +1,4 @@
-# Eulerin menetelmä
+# Eulerin menetelmä (KESKEN)
 
 Tarkastellaan yhtälöä $y'=f(t,y), y(0)=y_0$. Eulerin menetelmä on algoritmi, jolla yhtälön arvolle voidaan löytää likiarvo, joka vastaa haluttua muuttujan $t$ arvoa, vaikka varsinaista funktion $y(t)$ lauseketta ei saataisi selville. Tiedossa on oltava jokin alkuarvo $y_0$, josta lähtien funktion muita arvoja aletaan arvioida.
 

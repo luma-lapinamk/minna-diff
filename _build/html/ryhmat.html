@@ -50,12 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Yhtälöryhmät matriisimuodossa" href="ryhmat_matriiseilla.html" />
     <link rel="prev" title="Toisen kertaluvun differentiaaliyhtälöt" href="toisen.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,7 +115,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Perusteita
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kasite.html">
    Mikä on differentiaaliyhtälö?
@@ -127,6 +131,13 @@ const thebe_selector_output = ".output, .cell_output"
    Eri tyyppiset differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Yhtälötyyppejä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="separoituvat.html">
    Separoituvat differentiaaliyhtälöt
@@ -142,6 +153,13 @@ const thebe_selector_output = ".output, .cell_output"
    Ratkaisu yritteellä
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numeerisia menetelmiä
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="euler.html">
    Eulerin menetelmä
@@ -152,14 +170,43 @@ const thebe_selector_output = ".output, .cell_output"
    Muita menetelmiä
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kompleksiset ratkaisut
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut1.html">
+   Kompleksiluvut
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kompleksiluvut2.html">
+   Kompleksilukujen esitysmuotoja
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="toisen.html">
    Toisen kertaluvun differentiaaliyhtälöt
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Differentiaaliyhtälöryhmiä
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Differentiaaliyhtälöryhmät
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ryhmat_matriiseilla.html">
+   Yhtälöryhmät matriisimuodossa
   </a>
  </li>
 </ul>
@@ -313,11 +360,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#yhtaloryhmat-matriisimuodossa">
-   Yhtälöryhmät matriisimuodossa
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sovelluksia">
    Sovelluksia
   </a>
@@ -349,11 +391,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#yhtaloryhman-ratkaisu">
    Yhtälöryhmän ratkaisu
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#yhtaloryhmat-matriisimuodossa">
-   Yhtälöryhmät matriisimuodossa
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -394,19 +431,6 @@ title="Print to PDF"
 <p>Yhtälö <span class="math notranslate nohighlight">\(y(t)\)</span> saadaan ratkaistua sijoittamalla ratkaisu <span class="math notranslate nohighlight">\(x(t)\)</span> ja sen derivaatta <span class="math notranslate nohighlight">\(x'(t)=C_1 e^t + 4 C_2 e^{4t}\)</span> yhtälöön <span class="math notranslate nohighlight">\(y=-x'+3x\)</span></p>
 <p><span class="math notranslate nohighlight">\(y(t)= -C_1 e^t -4 C_2 e^{4t} +3 C_1 e^t +3 C_2 e^{4t}\)</span></p>
 <p><span class="math notranslate nohighlight">\(y(t)= 2C_1 e^t - C_2 e^{4t}\)</span></p>
-</div>
-</section>
-<section id="yhtaloryhmat-matriisimuodossa">
-<h2>Yhtälöryhmät matriisimuodossa<a class="headerlink" href="#yhtaloryhmat-matriisimuodossa" title="Permalink to this headline">#</a></h2>
-<p>Yksinkertaisia differentiaaliyhtälöryhmiä voidaan ratkaista tietokoneella samaan tapaan kuin tavallisiakin yhtälöryhmiä. Tehokas tapa on ilmaista yhtälöryhmä tietokoneelle matriisimuodossa. Ensimmäisen kertaluvun lineaariselle vakiokertoimiselle differentiaaliyhtälölle muodostetaan tällöin matriisiyhtälöt</p>
-<p><span class="math notranslate nohighlight">\(\mathbf{x}'(t)=\mathbf{A}\mathbf{x}(t)+\mathbf{f}(t), \mathbf{x}(0)=\mathbf{x_0}\)</span>,</p>
-<p>missä <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> sisältää tuntemattomien funktioiden derivaatat, <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> yhtälöissä olevat funktioiden kertoimet ja <span class="math notranslate nohighlight">\(\mathbf{f}(t)\)</span> yhtälöiden epähomogeeniset termit. Mahdolliset alkuarvot ovat vektorissa <span class="math notranslate nohighlight">\(\mathbf{x_0}\)</span>.</p>
-<p><strong>Esim.</strong> Muunna matriisimuotoon yhtälöryhmä</p>
-<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}\)</span>.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Ratkaisu</p>
-<p>Yhtälöryhmää <span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}\)</span> vastaa matriisiyhtälö</p>
-<p><span class="math notranslate nohighlight">\(\begin{bmatrix} x_1' \\ x_2' \\\ x_3' \end{bmatrix} = \begin{bmatrix}-2 &amp; 3 &amp; 0 \\ 0 &amp; -4 &amp; 0 \\ 1 &amp; 0 &amp; 4 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} + \begin{bmatrix} t \\ 5t\\ t^2\end{bmatrix}\)</span>.</p>
 </div>
 </section>
 <section id="sovelluksia">
@@ -493,6 +517,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Toisen kertaluvun differentiaaliyhtälöt</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="ryhmat_matriiseilla.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Yhtälöryhmät matriisimuodossa</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

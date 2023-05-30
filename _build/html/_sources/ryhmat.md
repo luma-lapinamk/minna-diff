@@ -31,27 +31,6 @@ $y(t)= 2C_1 e^t - C_2 e^{4t}$
 
 :::
 
-## Yhtälöryhmät matriisimuodossa
-
-Yksinkertaisia differentiaaliyhtälöryhmiä voidaan ratkaista tietokoneella samaan tapaan kuin tavallisiakin yhtälöryhmiä. Tehokas tapa on ilmaista yhtälöryhmä tietokoneelle matriisimuodossa. Ensimmäisen kertaluvun lineaariselle vakiokertoimiselle differentiaaliyhtälölle muodostetaan tällöin matriisiyhtälöt
-
-$\mathbf{x}'(t)=\mathbf{A}\mathbf{x}(t)+\mathbf{f}(t), \mathbf{x}(0)=\mathbf{x_0}$,
-
-missä $\mathbf{x}(t)$ sisältää tuntemattomien funktioiden derivaatat, $\mathbf{A}$ yhtälöissä olevat funktioiden kertoimet ja $\mathbf{f}(t)$ yhtälöiden epähomogeeniset termit. Mahdolliset alkuarvot ovat vektorissa $\mathbf{x_0}$.
-
-**Esim.** Muunna matriisimuotoon yhtälöryhmä
-
-$\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}$.
-
-:::{admonition} Ratkaisu
-:class: tip, dropdown
-
-Yhtälöryhmää $\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation}$ vastaa matriisiyhtälö
-
-$\begin{bmatrix} x_1' \\ x_2' \\\ x_3' \end{bmatrix} = \begin{bmatrix}-2 & 3 & 0 \\ 0 & -4 & 0 \\ 1 & 0 & 4 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} + \begin{bmatrix} t \\ 5t\\ t^2\end{bmatrix}$.
-
-
-:::
 
 ## Sovelluksia
 

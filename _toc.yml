@@ -3,17 +3,30 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: kasite
-- file: integroituvat
-- file: separoituvat
-- file: lineaariset
-- file: yritteet
-- file: numeeriset
-- file: euler
-- file: rungekutta
-- file: toisen
-- file: ryhmat
+parts:
+  - caption: Perusteita
+    chapters:
+    - file: kasite
+    - file: integroituvat
+  - caption: Yhtälötyyppejä
+    chapters:
+    - file: separoituvat
+    - file: lineaariset
+    - file: yritteet
+  - caption: Numeerisia menetelmiä
+    chapters:
+    - file: numeeriset
+    - file: euler
+    - file: rungekutta
+  - caption: Kompleksiset ratkaisut
+    chapters:
+    - file: kompleksiluvut1
+    - file: kompleksiluvut2
+    - file: toisen
+  - caption: Differentiaaliyhtälöryhmiä
+    chapters:
+    - file: ryhmat
+    - file: ryhmat_matriiseilla
 
 
 # malli
