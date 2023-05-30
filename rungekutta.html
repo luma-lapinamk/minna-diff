@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Muita menetelmiä (KESKEN) &#8212; Differentiaaliyhtälöt</title>
+    <title>Muita menetelmiä &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Kompleksiluvut" href="kompleksiluvut1.html" />
-    <link rel="prev" title="Eulerin menetelmä (KESKEN)" href="euler.html" />
+    <link rel="prev" title="Eulerin menetelmä" href="euler.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -164,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="euler.html">
-   Eulerin menetelmä (KESKEN)
+   Eulerin menetelmä
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Muita menetelmiä (KESKEN)
+   Muita menetelmiä
   </a>
  </li>
 </ul>
@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
-   Differentiaaliyhtälöryhmät (KESKEN)
+   Differentiaaliyhtälöryhmät
   </a>
  </li>
  <li class="toctree-l1">
@@ -375,7 +375,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Muita menetelmiä (KESKEN)</h1>
+                <h1>Muita menetelmiä</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -405,55 +405,49 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="muita-menetelmia-kesken">
-<h1>Muita menetelmiä (KESKEN)<a class="headerlink" href="#muita-menetelmia-kesken" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="muita-menetelmia">
+<h1>Muita menetelmiä<a class="headerlink" href="#muita-menetelmia" title="Permalink to this headline">#</a></h1>
 <p>Eulerin algoritmi ei välttämättä toimi kovin tarkasti kaikkien differentiaaliyhtälöiden ratkaisuissa. Siitä on kehitetty erilaisia muunnoksia, joista tässä esitellään kaksi. Muunnokset onnistuvat esimerkiksi Pythonin valmiilla toiminnoilla. Algoritmit eivät tosin ole hankalia ohjelmoida itsekään.</p>
 <section id="muunneltu-eulerin-menetelma">
 <h2>Muunneltu Eulerin menetelmä<a class="headerlink" href="#muunneltu-eulerin-menetelma" title="Permalink to this headline">#</a></h2>
-<p>Eulerin algoritmia voidaan käyttää myös siten, että käyrän tangentin kulmakerroin lasketaan välien alkupisteiden lisäksi myös pisteiden puolivälissä. Tangenteista lasketaan keskiarvo, ja siirtymän suuntana käytetään tätä keskiarvoa.</p>
-<p>Muunnellun Eulerin menetelmän askel kohdasta <span class="math notranslate nohighlight">\(t_{n-1}\)</span> kohtaan <span class="math notranslate nohighlight">\(t_n\)</span> lasketaan seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+hf(t_{n-1}+\frac{h}{2},y_{n-1}+\frac{h}{2}f(t_{n-1},y_{n-1}))\)</span></p>
-<p>Käytännössä laskukaava puretaan välivaiheisiin, joista saadut tulokset on helppo sijoittaa lopulliseen kaavaan.</p>
-<p><strong>Esim.</strong> Ratkaise alkuarvotehtävä <span class="math notranslate nohighlight">\(y'=-ty, y(0)=1\)</span> muunnellulla Eulerin menetelmällä. Laske funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvot, jotka vastaavat muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoja <span class="math notranslate nohighlight">\(t_1=0.05\)</span> ja <span class="math notranslate nohighlight">\(t_2=0.1\)</span>.</p>
+<p>Eulerin algoritmia voidaan käyttää myös siten, että funktion derivaatta lasketaan välien alkupisteiden lisäksi myös pisteiden puolivälissä. Derivaatasta lasketaan keskiarvo, ja siirtymän suuntana käytetään tätä keskiarvoa. Menetelmä onnistuu seuraavien välivaiheiden avulla:</p>
+<ul class="simple">
+<li><p>Arvioi, mikä on funktion <span class="math notranslate nohighlight">\(y(x)\)</span> pisteiden <span class="math notranslate nohighlight">\(x\)</span> ja <span class="math notranslate nohighlight">\(x+h\)</span> puolivälissä. Tämä tapahtuu laskutoimituksella</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(y(x+\frac{h}{2})\approx y(x)+\frac{h}{2} f(x,y)\)</span></p>
+<ul class="simple">
+<li><p>Laske edellisen perusteella derivaatta, jota tässä lyhennetään <span class="math notranslate nohighlight">\(k\)</span>, kyseisessä pisteessä:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(k=f'(x+\frac{h}{2},y(x+\frac{h}{2})\)</span></p>
+<ul class="simple">
+<li><p>Etene pisteeseen <span class="math notranslate nohighlight">\(y(x+h)\)</span> laskemalla <span class="math notranslate nohighlight">\(y(x+h)=y(x)+kh\)</span></p></li>
+</ul>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Eräs differentiaaliyhtälö on <span class="math notranslate nohighlight">\(y'=-2x-y\)</span> ja lisäksi tiedetään alkuarvo <span class="math notranslate nohighlight">\(y(0)=-1\)</span>. Selvitä muunnellulla Eulerin menetelmällä funktion arvo <span class="math notranslate nohighlight">\(y(0.1)\)</span> askelpituudella <span class="math notranslate nohighlight">\(h=0.1\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Yhtälö voidaan esittää muodossa <span class="math notranslate nohighlight">\(f(t,y)=-ty\)</span>. Lasketaan arvo <span class="math notranslate nohighlight">\(y(0.05)\)</span> välivaiheiden kautta seuraavasti:</p>
-<p>Aluksi lasketaan <span class="math notranslate nohighlight">\(\frac{h}{2}f(t_0,y_0)=\frac{0.05}{2}\cdot (-0 \cdot 1) = 0\)</span>.</p>
-<p>Seuraava vaihe on laskea <span class="math notranslate nohighlight">\(f(t_0+\frac{h}{2},y(t_0)+\frac{h}{2}\cdot 0) = -(0+\frac{0.05}{2})\cdot 1 = -0.025.\)</span></p>
-<p>Lopuksi lasketaan <span class="math notranslate nohighlight">\(y(0.05) = 1 + 0.05\cdot(-0.025) = 0.99875\)</span>.</p>
-<p>Lasketaan vielä arvo seuraavassa pisteessä <span class="math notranslate nohighlight">\(t_2\)</span>:</p>
-<p>Ensin lasketaan <span class="math notranslate nohighlight">\(\frac{h}{2} f(t_1,y_1)= \frac{0.05}{2} \cdot (-0.05 \cdot 0.99875) = -0.00125\)</span>.</p>
-<p>Sitten lasketaan <span class="math notranslate nohighlight">\(f(t_1+\frac{h}{2},y(t_1)+\frac{h}{2}\cdot (-0.00125))\)</span></p>
-<p><span class="math notranslate nohighlight">\(= -(0.05+\frac{0.05}{2})\cdot (0.99875-0.00125\cdot\frac{0.05}{2}) = -0.07490\)</span>.</p>
-<p>Lopuksi lasketaan <span class="math notranslate nohighlight">\(y(0.1) = 0.99875 + 0.05\cdot(-0.07490) = 0.99501\)</span>.</p>
-<p>Käytännössä tällainen tehtävä suoritettaisiin tietokoneella, ja välivaiheiden tulokset tallennettaisiin useampien desimaalien tarkkuudella kuin tässä.</p>
+<ul class="simple">
+<li><p>Funktion derivaatta on nyt <span class="math notranslate nohighlight">\(f(x,y)=-2x-y\)</span>. Arvioidaan tämän avulla ensin <span class="math notranslate nohighlight">\(y(0.05)\)</span>:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(y(0.05) \approx y(0) + 0.05 \cdot f(0,y(0))\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(0.05) \approx y(0) + 0.05 \cdot (-2\cdot 0-y(0))\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(0.05) \approx -1 + 0.05 \cdot (-2\cdot 0-(-1))\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(0.05) \approx -1 + 0.05\cdot 1 = -0.95\)</span></p>
+<ul class="simple">
+<li><p>Seuraavaksi lasketaan funktion derivaatta pisteessä <span class="math notranslate nohighlight">\(x=0.05\)</span>:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(k=f(0.05,y(0.05)=-2\cdot 0.05-(-0.95)=0.85\)</span></p>
+<ul class="simple">
+<li><p>Seuraavaksi lasketaan <span class="math notranslate nohighlight">\(y(0.1)=y(0)+k\cdot 0.05\)</span>:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(y(0.1)=-1+0.1\cdot 0.855=-0.915\)</span></p>
+</div>
 </div>
 </section>
 <section id="runge-kutta-menetelma">
 <h2>Runge-Kutta -menetelmä<a class="headerlink" href="#runge-kutta-menetelma" title="Permalink to this headline">#</a></h2>
-<p>Runge-Kutta -menetelmä on muunnos Eulerin algoritmista. Menetelmästä on olemassa erilaisia muunnoksia. Tässä tarkastellaan menetelmän perusversiota. Idea on samanlainen kuin muunnellussa Eulerin menetelmässä, mutta jokaisella välillä lasketaankin nyt neljä tangentin kulmakerrointa <span class="math notranslate nohighlight">\(k_1, k_2, k_3\)</span> ja <span class="math notranslate nohighlight">\(k_4\)</span>, ja siirtymän suunta on näiden kulmakertoimien painotettu keskiarvo. Laskukaavat voidaan esittää seuraavasti:</p>
-<p><span class="math notranslate nohighlight">\(k_1=f(t_{n-1},y_{n-1})\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=f(t_{n-1}+h/2, y_{n-1}+(h/2) k_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=f(t_{n-1}+h/2, y_{n-1}+(h/2) k_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4=f(t_{n-1}+h, y_{n-1}+h k_3)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+ (h/6)(k_1+2k_2+2k_3+k_4)\)</span></p>
-<p><strong>Esim.</strong> Ratkaise alkuarvotehtävä <span class="math notranslate nohighlight">\(y'=-ty, y(0)=1\)</span> Runge-Kutta -menetelmällä. Laske funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvot, jotka vastaavat muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoja <span class="math notranslate nohighlight">\(0.05\)</span> ja <span class="math notranslate nohighlight">\(0.1\)</span>.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Ratkaisu</p>
-<p>Yhtälö voidaan esittää muodossa <span class="math notranslate nohighlight">\(f(t,y)=-ty\)</span>. Tällöin Runge-Kutta -menetelmän laskukaavat ovat seuraavat:</p>
-<p><span class="math notranslate nohighlight">\(k_1=-t_{n-1}y_{n-1}\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=-(t_{n-1}+h/2)(y_{n-1}+(h/2) k_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=-(t_{n-1}+h/2) (y_{n-1}+(h/2) k_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4= -(t_{n-1}+h)(y_{n-1}+h k_3)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n=y_{n-1}+(h/6)(k_1+2k_2+2k_3+k_4)\)</span></p>
-<p>Lasketaan arvo <span class="math notranslate nohighlight">\(y(0.05)\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(k_1=-0\cdot 1 = 0\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_2=-(0+0.025)(1+0.025\cdot 0) = -0.025\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_3=-(0+0.025) (1+0.025\cdot(-0.025)) = -0.024984375\)</span></p>
-<p><span class="math notranslate nohighlight">\(k_4=-(0+0.05)(1+0.05\cdot(-0.024984375)) = -0.0499375390625\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_1=1+(0.05/6)(0+2\cdot(-0.025)+2\cdot(-0.024984375)-0.0499375390625) = 0.9987508\)</span></p>
-<p>Arvon <span class="math notranslate nohighlight">\(y(0.1)\)</span> laskeminen jää vapaaehtoiseksi harjoitustehtäväksi!</p>
-</div>
+<p>Runge-Kutta -menetelmä on muunnos Eulerin algoritmista. Menetelmästä on olemassa erilaisia muunnoksia. Tässä tarkastellaan menetelmän perusversiota. Idea on samanlainen kuin muunnellussa Eulerin menetelmässä, mutta jokaisella välillä lasketaankin nyt neljä tangentin kulmakerrointa <span class="math notranslate nohighlight">\(k_1, k_2, k_3\)</span> ja <span class="math notranslate nohighlight">\(k_4\)</span>, ja siirtymän suunta on näiden kulmakertoimien painotettu keskiarvo. Menetelmään voi perehtyä halutessaan tarkemmin esimerkiksi opintojaksolla laadittavan seminaarityön yhteydessä.</p>
 </section>
 </section>
 
@@ -488,7 +482,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Eulerin menetelmä (KESKEN)</p>
+            <p class="prev-next-title">Eulerin menetelmä</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="kompleksiluvut1.html" title="next page">
@@ -507,7 +501,7 @@ title="Print to PDF"
   
     By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

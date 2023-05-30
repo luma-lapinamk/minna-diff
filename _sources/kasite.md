@@ -83,7 +83,7 @@ Yhtälö on tosi millä tahansa arvolla $x$, joten annettu funktio toteuttaa dif
 
 Osoita, että funktio $y=Ce^{2x^2}-\frac{5}{4}$ on yleinen ratkaisu differentiaaliyhtälölle $y'=4xy+5x$. Selvitä lisäksi, mikä yksittäisratkaisu toteuttaa ehdon $y(0)=1$.
 
-:::{admonitio} Ratkaisu
+:::{admonition} Ratkaisu
 :class: tip, dropdown
 
 Muodostetaan funktion $y$ derivaatta: $y'=4x C e^{2x^2}$ eli $y'=4Cx e^{2x^2}$

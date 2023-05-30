@@ -68,30 +68,28 @@ Yhtälön täydellinen ratkaisu on $y=y_h+y_t=Ce^{4x}-\frac{5}{4}x-\frac{5}{16}$
 
 ::::{admonition} Esimerkki
 
-Ratkaise differentiaaliyhtälö $y'+4y=1+t+3e^{3t}$.
+Ratkaise differentiaaliyhtälö $y'+y=-2+t+5e^{3t}$.
 
 :::{admonition} Ratkaisu
 :class: tip, dropdown
 
-Ratkaistaan ensin homogeeninen yhtälö $y'=-4y$. Ratkaisukaavan mukaan ratkaisu tälle on $y_h=C_1e^{-4t}$.
+Ratkaistaan ensin homogeeninen yhtälö $y'=-y$. Ratkaisukaavan mukaan ratkaisu tälle on $y_h=C_1e^{-t}$.
 
-Muodostetaan yrite funktion $g(t)=1+t+3e^{3t}$ avulla. Termit $1+t$ muodostavat ensimmäisen asteen polynomifunktion, joten yritteeseen tulee osa $A+Bt$. Viimeistä termiä vastaava yritefunktio on $Ce^{3t}$. Yritteeksi sopii siis $A+Bt+Ce^{3t}$. Funktion derivaatta on $B+3Ce^{3t}$. Sijoitetaan nämä alkuperäiseen yhtälöön:
+Muodostetaan yrite funktion $g(t)=-2+t+5e^{3t}$ avulla. Termit $2+t$ muodostavat ensimmäisen asteen polynomifunktion, joten yritteeseen tulee osa $A+Bt$. Viimeistä termiä vastaava yritefunktio on $Ce^{3t}$. Yritteeksi sopii siis $A+Bt+Ce^{3t}$. Funktion derivaatta on $B+3Ce^{3t}$. Sijoitetaan nämä alkuperäiseen yhtälöön ja sievennetään:
 
-$B+3Ce^{3t}+4(A+Bt+Ce^{3t})=1+t+3e^{3t}$
+$B+3Ce^{3t}+A+Bt+Ce^{3t}=-2+t+5e^{3t}$
 
-$B+3Ce^{3t}+4A+4Bt+4Ce^{3t}=1+t+3e^{3t}$
-
-$B+4A + 4Bt + 7Ce^{3t} = 1+t+3e^{3t}$
+$A+B + Bt + 4Ce^{3t} = -2+t+5e^{3t}$
 
 Muodostetaan yhtälöryhmä:
 
-$\begin{equation} \begin{cases} B+4A=1 \\ 4B=1 \\ 7C=3 \end{cases} \end{equation}$
+$\begin{equation} \begin{cases} A+B=-2 \\ B=1 \\ 4C=5 \end{cases} \end{equation}$
 
-Toisesta yhtälöstä saadaan heti $B=\frac{1}{4}$ ja kolmannesta yhtälöstä $C=\frac{3}{7}$. 
+Toisesta yhtälöstä saadaan heti $B=1$ ja kolmannesta yhtälöstä $C=\frac{5}{4}$. 
 
-Ensimmäisestä yhtälöstä ratkeaa jo tiedossa olevan $B$:n avulla $A=\frac{1}{4}\left(1-\frac{1}{4}\right) = \frac{1}{4} \cdot \frac{3}{4} = \frac{3}{16}$.
+Ensimmäisestä yhtälöstä ratkeaa jo tiedossa olevan $B$:n avulla $A=-2-1=-3$.
 
-Differentiaaliyhtälön ratkaisu on siis $y=y_h+y_t=Ce^{-4t}+\frac{3}{7}e^{3t}+\frac{1}{4}t+\frac{3}{16}$.
+Differentiaaliyhtälön ratkaisu on siis $y=y_h+y_t=C_1e^{-t}+\frac{5}{4}e^{3t}+t-3$.
 
 :::
 

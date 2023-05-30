@@ -164,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="euler.html">
-   Eulerin menetelmä (KESKEN)
+   Eulerin menetelmä
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rungekutta.html">
-   Muita menetelmiä (KESKEN)
+   Muita menetelmiä
   </a>
  </li>
 </ul>
@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
-   Differentiaaliyhtälöryhmät (KESKEN)
+   Differentiaaliyhtälöryhmät
   </a>
  </li>
  <li class="toctree-l1">
@@ -471,6 +471,23 @@ title="Print to PDF"
 <div class="admonition-esimerkki admonition">
 <p class="admonition-title">Esimerkki</p>
 <p>Osoita, että funktio <span class="math notranslate nohighlight">\(y=Ce^{2x^2}-\frac{5}{4}\)</span> on yleinen ratkaisu differentiaaliyhtälölle <span class="math notranslate nohighlight">\(y'=4xy+5x\)</span>. Selvitä lisäksi, mikä yksittäisratkaisu toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Muodostetaan funktion <span class="math notranslate nohighlight">\(y\)</span> derivaatta: <span class="math notranslate nohighlight">\(y'=4x C e^{2x^2}\)</span> eli <span class="math notranslate nohighlight">\(y'=4Cx e^{2x^2}\)</span></p>
+<p>Sijoitetaan <span class="math notranslate nohighlight">\(y\)</span> ja <span class="math notranslate nohighlight">\(y'\)</span> annettuun differentiaaliyhtälöön:</p>
+<p><span class="math notranslate nohighlight">\(4Cx e^{2x^2}=4x(Ce^{2x^2}-\frac{5}{4})+5x\)</span></p>
+<p><span class="math notranslate nohighlight">\(4Cx e^{2x^2}=4Cxe^{2x^2}-\frac{20x}{4}+5x\)</span></p>
+<p><span class="math notranslate nohighlight">\(4Cx e^{2x^2}=4Cxe^{2x^2}-5x+5x\)</span></p>
+<p><span class="math notranslate nohighlight">\(4Cx e^{2x^2}=4Cxe^{2x^2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(0=0\)</span></p>
+<p>Jälleen yhtälö on tosi kaikilla <span class="math notranslate nohighlight">\(x\)</span>:n arvoilla. Yksittäisratkaisu etsitään ratkaisemalla vakio <span class="math notranslate nohighlight">\(C\)</span> yhtälöstä <span class="math notranslate nohighlight">\(y(0)=1\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(Ce^{2\cdot ^2}-\frac{5}{4}=1\)</span></p>
+<p><span class="math notranslate nohighlight">\(Ce^0-\frac{5}{4}=1\)</span></p>
+<p><span class="math notranslate nohighlight">\(C\cdot 1 - \frac{5}{4}=1\)</span></p>
+<p><span class="math notranslate nohighlight">\(C=1+\frac{5}{4}\)</span></p>
+<p><span class="math notranslate nohighlight">\(C=\frac{9}{4}\)</span></p>
+<p>Kysytty yksittäisratkaisu on siis <span class="math notranslate nohighlight">\(y=\frac{9}{4}e^{2x^2}-\frac{5}{4}\)</span></p>
+</div>
 </div>
 </section>
 </section>
@@ -525,7 +542,7 @@ title="Print to PDF"
   
     By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

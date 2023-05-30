@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Eulerin menetelmä (KESKEN) &#8212; Differentiaaliyhtälöt</title>
+    <title>Eulerin menetelmä &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Muita menetelmiä (KESKEN)" href="rungekutta.html" />
+    <link rel="next" title="Muita menetelmiä" href="rungekutta.html" />
     <link rel="prev" title="&lt;no title&gt;" href="numeeriset.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -164,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Eulerin menetelmä (KESKEN)
+   Eulerin menetelmä
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rungekutta.html">
-   Muita menetelmiä (KESKEN)
+   Muita menetelmiä
   </a>
  </li>
 </ul>
@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
-   Differentiaaliyhtälöryhmät (KESKEN)
+   Differentiaaliyhtälöryhmät
   </a>
  </li>
  <li class="toctree-l1">
@@ -334,60 +334,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eulerin-menetelma-ja-derivaatta">
-   Eulerin menetelmä ja derivaatta
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Eulerin menetelmä (KESKEN)</h1>
+                <h1>Eulerin menetelmä</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eulerin-menetelma-ja-derivaatta">
-   Eulerin menetelmä ja derivaatta
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -395,42 +358,31 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="eulerin-menetelma-kesken">
-<h1>Eulerin menetelmä (KESKEN)<a class="headerlink" href="#eulerin-menetelma-kesken" title="Permalink to this headline">#</a></h1>
-<p>Tarkastellaan yhtälöä <span class="math notranslate nohighlight">\(y'=f(t,y), y(0)=y_0\)</span>. Eulerin menetelmä on algoritmi, jolla yhtälön arvolle voidaan löytää likiarvo, joka vastaa haluttua muuttujan <span class="math notranslate nohighlight">\(t\)</span> arvoa, vaikka varsinaista funktion <span class="math notranslate nohighlight">\(y(t)\)</span> lauseketta ei saataisi selville. Tiedossa on oltava jokin alkuarvo <span class="math notranslate nohighlight">\(y_0\)</span>, josta lähtien funktion muita arvoja aletaan arvioida.</p>
-<p>Eulerin menetelmässä derivaatta ilmastaan erotusosamäärällä:</p>
-<p><span class="math notranslate nohighlight">\(y'(t)\approx\frac{y(t+h)-y(t)}{h}\)</span></p>
-<p>Tarkalleenhan derivaatta on erotusosamäärän raja-arvo, jossa <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
-<p>Sijoitetaan äskeinen derivaatan lauseke yhtälöön:</p>
-<p><span class="math notranslate nohighlight">\(\frac{y(t+h)-y(t)}{h}=f(t,y(t))\)</span></p>
-<p>Yhtälöstä on helppo ratkaista <span class="math notranslate nohighlight">\(y(t+h)\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(y(t+h)=y(t)+hf(t,y(t))\)</span>.</p>
-<p>Merkitään funktion arvoja eri ajan hetkillä seuraavasti: <span class="math notranslate nohighlight">\(y_0=y(0), y_1=y(h), y_2=y(2h), \ldots y_n=y(nh)\)</span>. Ajan arvoja merkitään vastaavasti <span class="math notranslate nohighlight">\(t_0=0, t_1=h, t_2=2h, \ldots t_n=nh\)</span>.</p>
-<p>Tehtävä ratkaistaan laskemalla funktion arvoja perustuen aiempien hetkien arvoihin:</p>
-<p><span class="math notranslate nohighlight">\(y_1 = y_0 + hf(t_0, y_0)\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_2 = y_1 + hf(t_1, y_1)\)</span></p>
-<p><span class="math notranslate nohighlight">\(\ldots\)</span></p>
-<p><span class="math notranslate nohighlight">\(y_n = y_{n-1}+ hf(t_{n-1},y_{n-1})\)</span></p>
-<p>Askelpituuden <span class="math notranslate nohighlight">\(h\)</span> valintaan ei ole mitään yleistä sääntöä. Usein pieni askelpituus on parempi kuin suurempi askelpituus.</p>
-<p><strong>Esim.</strong> Funktio <span class="math notranslate nohighlight">\(y=y(t)\)</span> on differentiaaliyhtälön <span class="math notranslate nohighlight">\(y'=\sqrt{t+y}\)</span> yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>. Selvitä, mikä on funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvo, kun <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="eulerin-menetelma">
+<h1>Eulerin menetelmä<a class="headerlink" href="#eulerin-menetelma" title="Permalink to this headline">#</a></h1>
+<p>Funktion <span class="math notranslate nohighlight">\(y(x)\)</span> lauseketta ei aina saada ratkaistua differentiaaliyhtälöstä. Tämä ei johdu siitä, että olisi huono matematiikassa, vaan siitä että lauseketta ei ole olemassa tai sitä ei mitenkään pysty selvittämään. Tällöin voidaan kuitenkin laskea funktion <span class="math notranslate nohighlight">\(y(x)\)</span> arvoja eri muuttujan arvoilla. Tämä tieto voi hyvinkin riittää. Esimerkiksi jos differentiaaliyhtälö kuvastaa sekoitusongelman säiliössä olevan aineen määrää, riittää tietää lukuarvona, paljonko ainetta on tiettynä kellonaikana.</p>
+<p>Funktion arvoja saadaan selville erilaisilla numeerisilla menetelmillä. Peruslähtökohta differentiaaliyhtälöissä on Eulerin menetelmä tai Eulerin algoritmi.</p>
+<p>Eulerin menetelmässä derivaatta ilmastaan erotusosamäärällä: <span class="math notranslate nohighlight">\(y'(x)\approx\frac{y(x+h)-y(x)}{h}\)</span></p>
+<p>Tarkalleen määriteltynähän derivaatta on erotusosamäärän raja-arvo, jossa <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
+<p>Sijoitetaan äskeinen derivaatan lauseke yhtälöön: <span class="math notranslate nohighlight">\(\frac{y(x+h)-y(x)}{h}=y'(x)\)</span></p>
+<p>Yhtälöstä on helppo ratkaista <span class="math notranslate nohighlight">\(y(x+h)=y(x)+hy'(x)\)</span></p>
+<p>Yhtälön merkitys on se, että pienillä muuttujan muutoksilla <span class="math notranslate nohighlight">\(h\)</span> voidaan ajatella, että funktio hetkellisesti käyttäytyy kuten suora, jonka kulmakerroin on <span class="math notranslate nohighlight">\(y'(x)\)</span>. Pisteestä <span class="math notranslate nohighlight">\(y(x)\)</span> päästään seuraavaan pisteeseen <span class="math notranslate nohighlight">\(y(x+h)\)</span> tätä suoraa pitkin. Derivaatta pitää laskea uudelleen jokaisessa pisteessä.</p>
+<p>Eulerin algoritmia käytettäessä pitää tietää funktiolle jokin alkuarvo <span class="math notranslate nohighlight">\(y(x_0)\)</span>, josta lähteä liikkeelle. Lisäksi tietenkin pitää olla tiedossa funktion derivaatta <span class="math notranslate nohighlight">\(y'(x)\)</span>. Differentiaaliyhtälössä tämä derivaatta yleensä riippuu myös itse funktiosta <span class="math notranslate nohighlight">\(y(x)\)</span>. Siksi derivaattaa merkitään usein funktiona <span class="math notranslate nohighlight">\(f(x,y)\)</span>.</p>
+<p>Askelpituuden <span class="math notranslate nohighlight">\(h\)</span> valintaan ei ole mitään sääntöä. Yleensä pieni askelpituus tuottaa paremmin tuloksen. Haluttuun arvoon <span class="math notranslate nohighlight">\(x\)</span> pitäisi päätyä kertomalla askelpituus jollakin kokonaisluvulla. Esimerkiksi jos lähtöpiste on <span class="math notranslate nohighlight">\(x_0=1\)</span> ja funktion arvo halutaan tietää pisteessä <span class="math notranslate nohighlight">\(x=1.3\)</span>, niin askelpituudeksi ei kannata valita <span class="math notranslate nohighlight">\(h=0.2\)</span> mutta sen sijaan esimerkiksi <span class="math notranslate nohighlight">\(h=0.1\)</span> tai <span class="math notranslate nohighlight">\(h=0.05\)</span> voi toimia. Pienellä askelpituudella laskutoimitus kannattaa tietenkin automatisoida ohjelmoimalla tai käyttämällä haluamansa ohjelmointikielen valmiita työkaluja.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Tiedossa on differentiaaliyhtälö <span class="math notranslate nohighlight">\(y'=x+y\)</span> ja eräs funktion arvo <span class="math notranslate nohighlight">\(y(0)=1\)</span>. Laske, ratkaisematta differentiaaliyhtälöä, mitä on <span class="math notranslate nohighlight">\(y(1.2)\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Funktiosta tiedetään alkuarvo <span class="math notranslate nohighlight">\(y_0 = 1\)</span>. Valitaan askelpituudeksi esim. <span class="math notranslate nohighlight">\(h=0.5\)</span>. Lasketaan funktion arvoja:</p>
-<p><span class="math notranslate nohighlight">\(y(0.5) = y_1 = y_0+h\sqrt{t_0 + y_0} = 1 + 0.5\cdot \sqrt{0+1} =1 + 0.5 = 1.5\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(1) = y_2 = y_1 + h\sqrt{t_1 + y_1} = 1.5 + 0.5\sqrt{0.5+1.5} = 1.5+0.5\sqrt{2} \approx 2.20711\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(1.5) = y_3 = 2.20711 + 0.5 \sqrt{1+2.20711} \approx 3.10253\)</span></p>
-<p><span class="math notranslate nohighlight">\(y(2) = y_4 = 3.10253 + 0.5 \sqrt{1.5+3.10253} \approx 4.17521\)</span>.</p>
+<p>Funktion derivaatta on <span class="math notranslate nohighlight">\(f(x,y)=x+y\)</span>. Valitaan askelpituudeksi nyt <span class="math notranslate nohighlight">\(h=0.4\)</span>, koska silloin päästään kolmella askeleella haluttuun pisteeseen. Lasketaan askel kerrallaan:</p>
+<p><span class="math notranslate nohighlight">\(y(0.4) = y(0)+0.4\cdot f(0,y(0)) = 1 + 0.4\cdot (0+1) = 1+0.4=1.4\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(0.8) = y(0.4)+0.4\cdot f(0.4,y(0.4)) \)</span></p>
+<p><span class="math notranslate nohighlight">\( \dots = 1.4 + 0.4\cdot (0.4+1.4) = 1.4+0.72=2.12\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(1.2) = y(0.8)+0.4\cdot f(0.8,y(0.8)) \)</span></p>
+<p><span class="math notranslate nohighlight">\( \dots = 2.12 + 0.4\cdot (0.8+2.12) = 2.12+1.168=3.38\)</span></p>
+<p>Funktion todellinen arvo kyseisessä pisteessä on noin 4.440, joka saadaan ratkaisemalla differentiaaliyhtälö ja sijoittamalla ratkaisuun annettu muuttujan arvo. Lähemmäs oikeaa arvoa päästäisiin pienentämällä askelpituutta. Tätä kokeillaan oppitunnilla.</p>
 </div>
-<section id="eulerin-menetelma-ja-derivaatta">
-<h2>Eulerin menetelmä ja derivaatta<a class="headerlink" href="#eulerin-menetelma-ja-derivaatta" title="Permalink to this headline">#</a></h2>
-<p>Eulerin menetelmän avulla voi myös arvioida funktion kulkua sen derivaatan avulla. Differentiaaliyhtälössähän tuntematon <span class="math notranslate nohighlight">\(y'\)</span> kertoo jokaisessa pisteessä funktion muutosnopeuden. Pienillä askelväleillä voidaan ajatella, että funktio hetkellisesti käyttäytyy kuten suora, jonka kulmakerroin on <span class="math notranslate nohighlight">\(y'\)</span>. Tällöin funktion arvon muutos saadaan laskemalla kulmakertoimen määritelmästä lähtien: <span class="math notranslate nohighlight">\(y'=\frac{\Delta y}{\Delta t}\)</span>, joten <span class="math notranslate nohighlight">\(\Delta y = y' \Delta t\)</span>.</p>
-<p>Tarkastellaan edellistä esimerkkiä hieman toisella tavalla, välittämättä edellä esitellystä Eulerin algorismista, tarkastellen pelkästään funktion muutosnopeutta.</p>
-<p><strong>Esim.</strong> Funktio <span class="math notranslate nohighlight">\(y=y(t)\)</span> on differentiaaliyhtälön <span class="math notranslate nohighlight">\(y'=\sqrt{t+y}\)</span> yksittäisratkaisu, joka toteuttaa ehdon <span class="math notranslate nohighlight">\(y(0)=1\)</span>. Selvitä, mikä on funktion <span class="math notranslate nohighlight">\(y(t)\)</span> arvo, kun <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
-<p>Pisteessä <span class="math notranslate nohighlight">\(t=0\)</span> funktion arvo on <span class="math notranslate nohighlight">\(y(0)=1\)</span>, ja funktion kasvunopeus on <span class="math notranslate nohighlight">\(y'(0)=\sqrt{0+1}=1\)</span>. Toisin sanoen kun siirrytään seuraavaan pisteeseen <span class="math notranslate nohighlight">\(t=0.5\)</span>, funktion arvon muutos <span class="math notranslate nohighlight">\(\Delta y\)</span> on kasvunopeuden ja muutoksen <span class="math notranslate nohighlight">\(\Delta t\)</span> tulo <span class="math notranslate nohighlight">\(1 \cdot 0.5=0.5\)</span>.</p>
-<p>Näin ollen päästiin pisteeseen <span class="math notranslate nohighlight">\(y(0.5)=y(0)+\Delta y = 1+0.5 = 1.5\)</span>. Derivaatan arvo tässä pisteessä on <span class="math notranslate nohighlight">\(y'(0.5)=\sqrt{0.5+1.5}=\sqrt{2} \approx 1.414\)</span>. Funktion arvon muutos on siis seuraavaan pisteeseen siirryttäessä <span class="math notranslate nohighlight">\(\Delta y = 1.414\cdot 0.5 \approx 0.707\)</span>.</p>
-<p>Seuraava piste on siis <span class="math notranslate nohighlight">\(y(1)=y(0.5)+y'(0.5)\cdot \Delta x = 1.5+0.707 = 2.207\)</span>. Tässä pisteessä derivaatta on <span class="math notranslate nohighlight">\(y'(1)=\sqrt{1+2.207} \approx 1.791\)</span>.</p>
-<p>Seuraava piste on <span class="math notranslate nohighlight">\(y(1.5)=2.207+0.5\cdot 1.791 = 3.103\)</span>. Jälleen lasketaan derivaatta <span class="math notranslate nohighlight">\(y'(1.5) = \sqrt{1.5+3.103} \approx 2.145\)</span>. Viimeinen piste on <span class="math notranslate nohighlight">\(y(2)=3.103+0.5\cdot 2.145 \approx 4.176\)</span>.</p>
-</section>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -470,7 +422,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="rungekutta.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Muita menetelmiä (KESKEN)</p>
+        <p class="prev-next-title">Muita menetelmiä</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -483,7 +435,7 @@ title="Print to PDF"
   
     By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>
