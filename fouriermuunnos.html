@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tehtäviä: Differentiaaliyhtälön käsite ja sovelluksia &#8212; Differentiaaliyhtälöt</title>
+    <title>Fourier-muunnos &#8212; Differentiaaliyhtälöt</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,6 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Differentiaaliyhtälöryhmät" href="ryhmat.html" />
+    <link rel="prev" title="Toisen kertaluvun differentiaaliyhtälöt" href="toisen.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -176,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
   Kompleksiset ratkaisut
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="kompleksiluvut1.html">
    Kompleksiluvut
@@ -190,6 +192,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="toisen.html">
    Toisen kertaluvun differentiaaliyhtälöt
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Fourier-muunnos
   </a>
  </li>
 </ul>
@@ -295,7 +302,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/tehtavia_kasite.md"
+        <a href="_sources/fouriermuunnos.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -332,23 +339,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kertaus-sinifunktioista">
+   Kertaus sinifunktioista
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#esimerkkeja-fourier-muunnoksesta">
+   Esimerkkejä Fourier-muunnoksesta
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tehtäviä: Differentiaaliyhtälön käsite ja sovelluksia</h1>
+                <h1>Fourier-muunnos</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kertaus-sinifunktioista">
+   Kertaus sinifunktioista
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#esimerkkeja-fourier-muunnoksesta">
+   Esimerkkejä Fourier-muunnoksesta
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -356,31 +410,48 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tehtavia-differentiaaliyhtalon-kasite-ja-sovelluksia">
-<h1>Tehtäviä: Differentiaaliyhtälön käsite ja sovelluksia<a class="headerlink" href="#tehtavia-differentiaaliyhtalon-kasite-ja-sovelluksia" title="Permalink to this headline">#</a></h1>
-<p>Lähteitä:</p>
-<ul class="simple">
-<li><p>Majaniemi: Matematiikka II. 1995.</p></li>
-<li><p>Lehtonen, Potinkara, Soininen, Öistämö: Teknillinen matematiikka 4. 1989.</p></li>
-</ul>
-<ol>
-<li><p>Selvitä, toteuttavatko annetut ratkaisut seuraavat differentiaaliyhtälöt:</p>
-<p>a) <span class="math notranslate nohighlight">\(y=\frac{2}{x}+1, y''+\frac{2}{x}y'=0\)</span></p>
-<p>b) <span class="math notranslate nohighlight">\(y=\frac{C_1}{x}+C_2 x+c_3, y''+\frac{3}{x}y''=0\)</span></p>
-<p>c) <span class="math notranslate nohighlight">\(y=C \sin{x}-\frac{x}{2} \cos{x}, y''+y=\sin{x}\)</span></p>
-<p>d) <span class="math notranslate nohighlight">\(y=C_1e^{-x}+C_2 xe^{-x}, y''+2y'+y=0\)</span></p>
-<p>e) <span class="math notranslate nohighlight">\(y=\sin{2x}, y''+y'+y=0\)</span></p>
-</li>
-<li></li>
-<li><p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(xy'=1\)</span> siten, että <span class="math notranslate nohighlight">\(y(1)=2\)</span>.</p></li>
-<li><p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(y'=\sin{2x}\)</span> siten, että <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</p></li>
-<li><p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(x+y'=x^2\)</span>siten, että <span class="math notranslate nohighlight">\(y(1)=2\)</span>.</p></li>
-<li><p>Ratkaise yhtälö <span class="math notranslate nohighlight">\(x^2 y''=1\)</span> siten, että <span class="math notranslate nohighlight">\(y(1)=1\)</span> ja <span class="math notranslate nohighlight">\(y'(1)=1\)</span>.</p></li>
-<li><p>Kummastakin päästään tuetun palkin pituus on 4 m ja sitä kuormittaa parabeelin muotoinen kuorma siten, että kuormitustiheys kohdassa <span class="math notranslate nohighlight">\(x\)</span> palkin vasemmasta päästä mitattuna on <span class="math notranslate nohighlight">\(q(x)=1-\frac{1}{4} (x-2)^2\)</span>. Kokeile vaikka GeoGebralla, miltä kuormitus näyttää!</p>
-<p>Mekaniikassa taivutusmomentti <span class="math notranslate nohighlight">\(M(x)\)</span> on määritelty siten, että sen toinen derivaatta on <span class="math notranslate nohighlight">\(-q(x)\)</span>. Lisäksi palkin taipumaviiva <span class="math notranslate nohighlight">\(y(x)\)</span> on määritelty siten, että <span class="math notranslate nohighlight">\(y''(x)=-\frac{M}{EI}\)</span>, missä <span class="math notranslate nohighlight">\(E\)</span> ja <span class="math notranslate nohighlight">\(I\)</span> ovat palkin materiaaliin ja muotoon liittyviä vakioita. Selvitä taivutusmomentin ja taipumaviivan yhtälö.</p>
-</li>
-<li><p>Pystysuorassa heittoliikkeessä kiihtyvyys <span class="math notranslate nohighlight">\(a=-9.81\)</span> ja <span class="math notranslate nohighlight">\(a''=y(t)\)</span>. Määritä matkan <span class="math notranslate nohighlight">\(y(t)\)</span> lauseke, kun hetkellä <span class="math notranslate nohighlight">\(t=0\)</span> kappaleella on alkunopeus <span class="math notranslate nohighlight">\(v_0\)</span> ja alkukorkeus <span class="math notranslate nohighlight">\(y_0\)</span>.</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="fourier-muunnos">
+<h1>Fourier-muunnos<a class="headerlink" href="#fourier-muunnos" title="Permalink to this headline">#</a></h1>
+<p>Fourier-muunnos on yleinen menetelmä kohinaa sisältävän datan analysoimiseen ja käsittelyyn. Sitä käytetään esimerkiksi digitaalisen musiikin pakkaamisessa ja sille on paljon sovelluksia myös esim. lääketieteessä ja teollisuudessa,</p>
+<p>Oletetaan, että <span class="math notranslate nohighlight">\(f(t)\)</span> on jokin ajasta <span class="math notranslate nohighlight">\(t\)</span> riippuva funktio. Fourier-muunnos perustuu integraalilaskentaan, joten funktion <span class="math notranslate nohighlight">\(f(t)\)</span> pitää olla integroituva. Muunnoksen tuloksena on toinen funktio <span class="math notranslate nohighlight">\(F(\omega)\)</span>, jossa muuttujana on taajuus <span class="math notranslate nohighlight">\(\omega\)</span>. Esimerkiksi jostakin soittimesta kuuluva ääni voidaan esittää äänenvoimakkuuden vaihteluna <span class="math notranslate nohighlight">\(f(t)\)</span> ajan suhteen, mutta toisaalta myös siten, että ilmaistaan funktion <span class="math notranslate nohighlight">\(F(w)\)</span> avulla, mitä taajuuksia <span class="math notranslate nohighlight">\(\omega\)</span> ääni sisältää.</p>
+<p>Muunnoksen perustana on fakta, että minkä tahansa epälineaarisen funktion voi esittää erilaisten sinifunktioiden summana. Funktio <span class="math notranslate nohighlight">\(f(t)\)</span> siis puretaan useiksi sinifunktioiksi, joilla on erilainen taajuus ja amplitudi. Nämä sinifunktiot ovat suoraan nähtävissä funktiosta <span class="math notranslate nohighlight">\(F(\omega)\)</span>, vaikka itse funktiosta <span class="math notranslate nohighlight">\(f(t)\)</span> niitä ei voi havaita mitenkään.</p>
+<p>Fourier-muunnoksen avulla saadaan tietoa siitä, mistä funktio <span class="math notranslate nohighlight">\(f(t)\)</span> muodostuu, vaikka funktion lauseketta ei tiedettäisi. Kuvitellaan jokin monimutkainen teollisuuslaite, jonka tehtävänä on tuottaa juuri tietynlaista sähkövirtaa <span class="math notranslate nohighlight">\(f(t)\)</span>. Eräänä päivänä laitteen tuottama virta ei olekaan halutunlaista. Mistä kohdasta kallista laitetta pitäisi alkaa purkaa? Ehkä laitteessa on useita eri osia, joista kukin toimii juuri tietyllä taajuudella. Muutetaan signaali <span class="math notranslate nohighlight">\(f(t)\)</span> muotoon <span class="math notranslate nohighlight">\(F(\omega)\)</span> ja selvitetään sen avulla, onko jokin tavanomaisista taajuuksista kadonnut tai onko niitä ilmestynyt lisää.</p>
+<p>Äänidatan käsittelyssä muokataan nimenomaan funktiota <span class="math notranslate nohighlight">\(F(\omega)\)</span>. Datasta voidaan esimerkiksi poistaa korkeita taajuuksia vastaavat sinifunktiot, jotka vastaavat korkeita ääniä. Kohinan poisto puolestaan tarkoittaa sitä, että datasta poistetaan kaikki taajuudet, joita vastaavan sinifunktion amplitudi on pienempi kuin jokin valittu kynnysarvo. Muokkaamisen jälkeen funktio palautetaan takaisin muotoon <span class="math notranslate nohighlight">\(f(t)\)</span>.</p>
+<p>Laskukaava matemaattiselle toimenpiteelle on seuraava: <span class="math notranslate nohighlight">\(F(\omega)=\int_{-\infty}^{\infty} f(t) e^{-i \omega t}~\text{d}t\)</span></p>
+<p>Oikealle datalle ei voi käyttää oppikirjojen integraalikaavoja, vaan käytetään ns. numeerista integrointia. Menetelmästä käytetään nimistyä FFT (Fast Fourier transform). Numeeriset menetelmät vaativat, että signaalin data on kelvollista: datapisteitä pitää olla riittävän tiheässä datassa esiintyviin taajuuksiin nähden. Datapisteiden määrä ja tiheys määrittäävät myös sen, kuinka suurta taajuusaluetta voidaan käsitellä.</p>
+<section id="kertaus-sinifunktioista">
+<h2>Kertaus sinifunktioista<a class="headerlink" href="#kertaus-sinifunktioista" title="Permalink to this headline">#</a></h2>
+<p>Sinifunktion perusmuoto on <span class="math notranslate nohighlight">\(f(t)= A \sin{\omega t}\)</span>, missä <span class="math notranslate nohighlight">\(A\)</span> on funktion amplitudi eli aallon korkeus, <span class="math notranslate nohighlight">\(\omega\)</span> on ns. kulmataajuus ja <span class="math notranslate nohighlight">\(t\)</span> aika. Sinifunktiolla on aallonpituus <span class="math notranslate nohighlight">\(\lambda\)</span>, joka kuvaa aallon peräkkäisten huippujen välistä aikaa.</p>
+<p>Aallonpituus ja kulmataajuus ovat yhteydessä siten, että <span class="math notranslate nohighlight">\(\lambda=2\pi/\omega\)</span> ja <span class="math notranslate nohighlight">\(\omega=2\pi/\lambda\)</span>. Kulmataajuuden yksikkö on rad/s. Usein kuitenkin käytetään aaltojen taajuutta, eli sitä kuinka monta aaltojaksoa yhteen sekuntiin mahtuu. Sitä mitataan hertseinä (Hz). Taajuus saadaan jakamalla kulmataajuus luvulla <span class="math notranslate nohighlight">\(2\pi\)</span>.
+ 
+<img alt="Esimerkki sinifunktiosta" src="_images/sini_esim.png" /></p>
+<p>Kuvan sinifunktiossa aallonpituus on <span class="math notranslate nohighlight">\(\lambda=20\)</span> s ja amplitudi <span class="math notranslate nohighlight">\(A=2\)</span>. Tällöin kulmataajuus on <span class="math notranslate nohighlight">\(\omega=2\pi/20\)</span> eli <span class="math notranslate nohighlight">\(\pi/10\)</span>, ja funktion lausekkeeksi muodostuu <span class="math notranslate nohighlight">\(f(t)=2 \sin{(\frac{\pi}{10}t)}\)</span>.</p>
+</section>
+<section id="esimerkkeja-fourier-muunnoksesta">
+<h2>Esimerkkejä Fourier-muunnoksesta<a class="headerlink" href="#esimerkkeja-fourier-muunnoksesta" title="Permalink to this headline">#</a></h2>
+<p>Seuraavassa on esitelty käytännössä, miten Fourier-muunnosta sovelletaan. Tarkempia yksityiskohtia ja tarvittavia koodeja käsitellään oppitunnilla. Lisämateriaalia on saatavilla opintojakson toteutuksen Moodle-työtilasta.</p>
+<p><strong>Esimerkki 1: Funktion jaksollisuuksien löytäminen</strong></p>
+<p>Tutkitaan kuvan signaalia. Vaaka-akselilla on aika ja pystyakselilla signaalin voimakkuus. Koska signaalissa on eri korkuisia, mutta säännöllisesti toistuvia piikkejä, voidaan arvella, että signaali koostuu useasta erilaisesta jaksollisesta funktiosta. Tutkitaan tarkemmin näitä jaksollisuuksia erikseen.</p>
+<p><img alt="Tarkasteltava signaali" src="_images/fourier_esim1a.png" /></p>
+<p>Tehdään tietokoneella Fourier-muunnos, jolla saadaan näkyville taajuudet, joita signaalissa esiintyy, ja niiden painokertoimet. Esitetään tulos kuvana, jonka vaaka-akselilla on taajuus (1/s) ja pystyakselilla amplitudi. Kuva koostuu kolmesta piikistä, joten signaali muodostuu on kolmesta sinifunktiosta. Kuvasta nähdään, että niiden sinifunktioiden taajuudet, joista ensimmäisen kuvan signaali koostuu, ovat selvästi 5 Hz (painokerroin 3), 8 Hz (painokerroin 4) ja 10 Hz (painokerroin 1).</p>
+<p><img alt="Muunnettu signaali" src="_images/fourier_esim1b.png" /></p>
+<p>Lopuksi tarkistetaan, ovatko painokertoimet ja taajuudet oikein. Piirretään samaan kuvaan kaikki kolme sinifunktiota: <span class="math notranslate nohighlight">\(5 \sin⁡{(2\pi \cdot 5t)}\)</span>, <span class="math notranslate nohighlight">\(4 \sin⁡{(2\pi \cdot 8t)}\)</span>, <span class="math notranslate nohighlight">\(\sin⁡{(2\pi \cdot 10t)}\)</span>, sekä niiden summa. Kuvasta nähdään, että yhteenlaskettuna nämä kolme sinifunktiota muodostavat saman funktion kuin alkuperäisessä kuvassa.</p>
+<p><img alt="Signaali sinifunktioiden summana" src="_images/fourier_esim1c.png" /></p>
+<p><strong>Esimerkki 2: Kohinan poistaminen signaalista</strong></p>
+<p>Seuraavassa kuvassa on aikasignaali, jossa selvästi esiintyy satunnaista kohinaa eli häiriöitä, jotka haluttaisiin poistaa.</p>
+<p><img alt="Kohinainen signaali" src="_images/fourier_esim2a.png" /></p>
+<p>Fourier-muunnoksen avulla löydetään signaalista seuraavat taajuudet:</p>
+<p><img alt="Muunnettu kohinainen signaali" src="_images/fourier_esim2b.png" /></p>
+<p>Kaksi korkeinta piikkiä vastaavat signaalin varsinaisia taajuuksia, ja matalammat piikit tarkoittavat kohinaa. Voidaan siis muodostaa alkuperäistä signaalia vastaava, mutta kohinaton signaali: <span class="math notranslate nohighlight">\(2.106 \sin⁡{(2\pi \cdot 2t)}+6.129 \sin⁡{(2\pi \cdot 7t)}\)</span>. Alkuperäinen ja kohinasta siistitty signaali ovat seuraavassa kuvassa.</p>
+<p><img alt="Kohinaton signaali" src="_images/fourier_esim2c.png" /></p>
+<p><strong>Esimerkki 3: Taajuuksien poisto signaalista</strong></p>
+<p>Seuraavassa kuvassa on signaali, jossa on samassa ”harvoja” ja ”tiheitä” aaltoja. Jos halutaan tarkastella tarkemmin pelkästään tiheämpää siniaaltoa, voidaan signaalista poistaa harvakseltaan esiintyvät matalan taajuuden aallot. Signaalissa on mukana myös hieman satunnaista kohinaa.</p>
+<p><img alt="Kahta taajuutta sisältävä signaali" src="_images/fourier_esim3a.png" /></p>
+<p>Fourier-muunnoksen avulla saadaan selville signaalissa esiintyvät taajuudet:</p>
+<p><img alt="Muunnettu kahden taajuuden signaali" src="_images/fourier_esim3b.png" /></p>
+<p>Muodostetaan näiden tietojen perusteella signaali, joka sisältää ainoastaan tiheimmän aallon, ilman matalamman taajuuden vaihtelua ja kohinaa: <span class="math notranslate nohighlight">\(3.963 \sin⁡{(2\pi \cdot 10t)}\)</span>. Seuraavassa kuvassa tämä signaali on piirretty samaan kuvaan alkuperäisen signaalin kanssa.</p>
+<p><img alt="Yhden taajuuden sisältävä signaali" src="_images/fourier_esim3c.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -410,6 +481,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="toisen.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Toisen kertaluvun differentiaaliyhtälöt</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ryhmat.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Differentiaaliyhtälöryhmät</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
