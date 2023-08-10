@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -202,6 +204,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="ryhmat.html">
    Differentiaaliyhtälöryhmät
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ryhmat_matriiseilla.html">
+   Yhtälöryhmät matriisimuodossa
   </a>
  </li>
 </ul>
@@ -439,9 +446,10 @@ title="Print to PDF"
 <p>Muunna summamuotoon kompleksiluvut <span class="math notranslate nohighlight">\(3 \angle 20^{\circ}\)</span>, <span class="math notranslate nohighlight">\(6 \angle 160^{\circ}\)</span>, <span class="math notranslate nohighlight">\(5\angle 180^{\circ}\)</span> ja <span class="math notranslate nohighlight">\(4 \angle 90^{\circ}\)</span>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p><span class="math notranslate nohighlight">\(3 \angle 20^{\circ}=3 \cos{20^{\circ}} + 3\cos{20^{\circ}}~i \approx 2.82 + 1.03 i\)</span></p>
-<p><span class="math notranslate nohighlight">\(6 \angle 160^{\circ}=6 \cos{160^{\circ}} + 6\cos{160^{\circ}}~i \approx -5.64 + 2.05 i\)</span></p>
-<p><span class="math notranslate nohighlight">\(5 \angle 180^{\circ}=5 \cos{180^{\circ}} + 5\cos{180^{\circ}}~i = -5 + 0i = -5\)</span></p>
+<p><span class="math notranslate nohighlight">\(3 \angle 20^{\circ}=3 \cos{20^{\circ}} + 3\sin{20^{\circ}}~i \approx 2.82 + 1.03 i\)</span></p>
+<p><span class="math notranslate nohighlight">\(6 \angle 160^{\circ}=6 \cos{160^{\circ}} + 6\sin{160^{\circ}}~i \approx -5.64 + 2.05 i\)</span></p>
+<p><span class="math notranslate nohighlight">\(5 \angle 180^{\circ}=5 \cos{180^{\circ}} + 5\sin{180^{\circ}}~i = -5 + 0i = -5\)</span></p>
+<p><span class="math notranslate nohighlight">\(4 \angle 90^{\circ}=4 \cos{0^{\circ}} + 4\sin{90^{\circ}}~i = 0 + 4i = 4i\)</span></p>
 </div>
 </div>
 </section>
@@ -471,7 +479,7 @@ title="Print to PDF"
 </section>
 <section id="eksponenttimuoto">
 <h2>Eksponenttimuoto<a class="headerlink" href="#eksponenttimuoto" title="Permalink to this headline">#</a></h2>
-<p>Kompleksilukuja voidaan esittää myös eksponenttimuodossa eli <span class="math notranslate nohighlight">\(e\)</span>-kantaisina potenssilukuina. Tällöin voidaan suorittaa monimutkisia kompleksilukujen laskutoimituksia käyttämällä yksinkertaisia potenssilukujen laskusääntöjä. Muunnos kulmamuodosta eksponenttimuotoon tapahtuu seuraavasti:</p>
+<p>Kompleksilukuja voidaan esittää myös eksponenttimuodossa eli <span class="math notranslate nohighlight">\(e\)</span>-kantaisina potenssilukuina. Tällöin voidaan suorittaa monimutkaisia kompleksilukujen laskutoimituksia käyttämällä yksinkertaisia potenssilukujen laskusääntöjä. Muunnos kulmamuodosta eksponenttimuotoon tapahtuu seuraavasti:</p>
 <p><span class="math notranslate nohighlight">\(z=|z| \angle \varphi \Leftrightarrow z = |z|e^{i \varphi}\)</span></p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Laskusääntöjen perustelua</p>
@@ -547,7 +555,7 @@ title="Print to PDF"
   
     By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

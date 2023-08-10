@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -418,9 +420,67 @@ title="Print to PDF"
 <p>Differentiaaliyhtälöistä voidaan muodostaa yhtälöryhmiä samaan tapaan kuin muunkinlaisista yhtälöistä. Esimerkiksi kemianteollisuuden prosesseissa on mukana monta yhtä aikaa muuttuvaa osaa, kuten paine, lämpötila, aineiden konsentraatio ja muut olosuhteet. Jonkin tekijän muutos vaikuttaa muihin tekijöihin. Niinpä prosessin kuvaamiseen tarvitaan useampaa kuin yhtä differentiaaliyhtälöä.</p>
 <section id="yhtaloryhman-ratkaisu">
 <h2>Yhtälöryhmän ratkaisu<a class="headerlink" href="#yhtaloryhman-ratkaisu" title="Permalink to this headline">#</a></h2>
-<p>Tarkastellaan yksinkertaisena esimerkkinä ilmiötä, johon liittyy ajasta <span class="math notranslate nohighlight">\(t\)</span> riippuvat funktiot <span class="math notranslate nohighlight">\(y(t)\)</span> ja <span class="math notranslate nohighlight">\(x(t)\)</span>. Tässä on tärkeää huomata, että <span class="math notranslate nohighlight">\(x\)</span> on nyt funktion eikä muuttujan nimi. Funktiot vaikuttavat toisiinsa siten, että</p>
+<p>Tarkastellaan ilmiötä, johon liittyy ajasta <span class="math notranslate nohighlight">\(t\)</span> riippuvat funktiot <span class="math notranslate nohighlight">\(x_1(t)\)</span> ja <span class="math notranslate nohighlight">\(x_2(t)\)</span>. Tässä on tärkeää huomata, että <span class="math notranslate nohighlight">\(x\)</span> on nyt funktion eikä muuttujan nimi. Funktioita voidaan nimetä myös eri kirjaimilla kuten <span class="math notranslate nohighlight">\(x(t), y(t), z(t), \dots\)</span>.</p>
+<p>Oletetaan, että funktiot <span class="math notranslate nohighlight">\(x_1(t), x_2(t), \dots\)</span> sekä niiden derivaatat riippuvat toisistaan sekä muuttujasta <span class="math notranslate nohighlight">\(t\)</span>. Oletetaan lisäksi, että riippuvuus on lineaarista siten, että funktiot, derivaatat ja muuttuja esiintyvät yhtälössä ainoastaan vakioilla kerrottuina, eivät esimerkiksi muodossa <span class="math notranslate nohighlight">\(x_1 x_2\)</span> tai <span class="math notranslate nohighlight">\((x_2')^2\)</span>. Lisäksi derivaatat ovat ensimmäisiä derivaattoja <span class="math notranslate nohighlight">\(x_1'(t), x_2'(t)\)</span> jne. Tällöin yhtälöryhmän ratkaisussa voidaan käyttää samoja menetelmiä kuin yleensäkin: sijoitus- ja eliminaatiomenetelmää. Voit halutessasi kerrata ne <a class="reference external" href="https://luma-lapinamk.github.io/minna-lineaarialgebra/yhtaloryhmat_kertaus.html">Lineaarialgebran</a> oppimateriaalista.</p>
+<p>Yleisesti yhtälöryhmän ratkaisussa pyritään vähentämään yhtälöissä esiintyviä tuntemattomia, kunnes jokin tuntemattomista saadaan selville. Differentiaaliyhtälöryhmästä pitäisi saada muokattua  yhtälö, jossa esiintyy jokin funktio <span class="math notranslate nohighlight">\(x_n\)</span> ja mahdollisesti sen derivaatta <span class="math notranslate nohighlight">\(x_n'\)</span> ja tuntematon <span class="math notranslate nohighlight">\(t\)</span>, mutta ei mitään muuta funktiota <span class="math notranslate nohighlight">\(x_m\)</span> eikä sen derivaattaa <span class="math notranslate nohighlight">\(x_m'\)</span>. Differentiaaliyhtälöryhmien ratkaisemisessa tarvitaan myös puolittain derivointia ja integrointia. Tutustu seuraaviin esimerkkeihin!</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise <strong>eliminaatiomenetelmällä</strong> ohjeen mukaan differentiaaliyhtälöpari</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation}\begin{cases}x_1'-x_1+x_2'=2t+1 \\ 2x_1'+x_1+2x_2'=t\end{cases}\end{equation}\)</span></p>
+<ul class="simple">
+<li><p>Aloita kertomalla ylempi yhtälö luvulla -2.</p></li>
+<li><p>Laske sitten yhtälöt yhteen puolittain.</p></li>
+<li><p>Saat differentiaaliyhtälön, jossa tuntemattomana on vain <span class="math notranslate nohighlight">\(x_1\)</span>.</p></li>
+<li><p>Ratkaise <span class="math notranslate nohighlight">\(x_1\)</span>. Sen jälkeen sijoita se jompaankumpaan yhtälöön ja ratkaise <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+</ul>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Kertomalla ylempi yhtälö luvulla -2 yhtälöpari muuttuu muotoon</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation}\begin{cases}-2x_1'+2x_1-2x_2=-4t-2 \\ 2x_1'+x_1+2x_2'=t\end{cases}\end{equation}\)</span></p>
+<p>Lasketaan yhtälöt yhteen, jolloin jäljelle jää yhtälö:</p>
+<p><span class="math notranslate nohighlight">\(3x_1=-3t-2\)</span></p>
+<p>Ratkaistaan yhtälöstä <span class="math notranslate nohighlight">\(x_1\)</span> eli funktio <span class="math notranslate nohighlight">\(x_1(t)\)</span> jakamalla yhtälön molemmat puolet luvulla 3:</p>
+<p><span class="math notranslate nohighlight">\(x_1(t)=-t-\frac{2}{3}\)</span></p>
+<p>Funktio <span class="math notranslate nohighlight">\(x_1(t)\)</span> on nyt ratkaistu. Ylemmässä yhtälössä esiintyy myös sen derivaatta, joten lasketaan se:</p>
+<p><span class="math notranslate nohighlight">\(x_1'(t)=-1\)</span></p>
+<p>Ratkaistaan alkuperäisen differentiaaliyhtälöparin ylemmästä yhtälöstä <span class="math notranslate nohighlight">\(x_2'\)</span> (sen voisi ratkaista myös alemmasta yhtälöstä, mutta ensimmäisessä yhtälössä ratkaisu on lyhyempi):</p>
+<p><span class="math notranslate nohighlight">\(x_2'=2t+1-x_1'+x_1\)</span></p>
+<p>Sijoitetaan yhtälöön äsken ratkaistut <span class="math notranslate nohighlight">\(x_1(t)\)</span> ja <span class="math notranslate nohighlight">\(x_1'(t)\)</span> ja sievennetään:</p>
+<p><span class="math notranslate nohighlight">\(x_2'(t)=2t+1-(-1)+(-t-\frac{2}{3})\)</span></p>
+<p><span class="math notranslate nohighlight">\(x_2'(t)=2t+1+1-t-\frac{2}{3}\)</span></p>
+<p><span class="math notranslate nohighlight">\(x_2'(t)=t+\frac{4}{3}\)</span></p>
+<p>Kyseessä on integroituva differentiaaliyhtälö, joten <span class="math notranslate nohighlight">\(x_2(t)\)</span> ratkeaa integroimalla yhtälön molemmat puolet:</p>
+<p><span class="math notranslate nohighlight">\(x_2(t)=\int t+\frac{4}{3} \,dt + C\)</span></p>
+<p><span class="math notranslate nohighlight">\(x_2(t)=\frac{1}{2}t^2+\frac{4}{3}t+C\)</span></p>
+</div>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise <strong>sijoitusmenetelmällä</strong> ohjeen mukaan differentiaaliyhtälöpari</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation}\begin{cases} x_2'=2x_2-2x_1 \\ x_1'=-x_2+3x_1 \end{cases}\end{equation}\)</span></p>
+<ul class="simple">
+<li><p>Ratkaise alemmasta yhtälöstä <span class="math notranslate nohighlight">\(x_2\)</span> ilmaistuna funktion <span class="math notranslate nohighlight">\(x_1\)</span> avulla.</p></li>
+<li><p>Derivoi ratkaisun molemmat puolet, jolloin saat derivaatan <span class="math notranslate nohighlight">\(x_2'\)</span> ilmaistuna derivaatan <span class="math notranslate nohighlight">\(x_1'\)</span> avulla.</p></li>
+<li><p>Sijoita <span class="math notranslate nohighlight">\(x_2\)</span> ja <span class="math notranslate nohighlight">\(x_2'\)</span> ylempään yhtälöön, jolloin saat ratkaistavissa olevan differentiaaliyhtälön.</p></li>
+</ul>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Ratkaisu</p>
+<p>Alemmasta yhtälöstä saadaan <span class="math notranslate nohighlight">\(x_2=3x_1-x_1'\)</span>. On tärkeää huomata, että nyt tiedossa ei ole funktion <span class="math notranslate nohighlight">\(x_2(t)\)</span> lauseke, vaan funktion <span class="math notranslate nohighlight">\(x_2(t)\)</span> riippuvuus funktiosta <span class="math notranslate nohighlight">\(x_1(t)\)</span> ja sen derivaatasta.</p>
+<p>Derivoidaan yhtälön <span class="math notranslate nohighlight">\(x_2=3x_1-x_1'\)</span> molemmat puolet. Derivaatoillekaan ei saada vielä muuttujan <span class="math notranslate nohighlight">\(t\)</span> avulla ilmaistuja lausekkeita, vaan lopputuloksena on ainoastaan derivaatan <span class="math notranslate nohighlight">\(x_2'(t)\)</span> riippuvuus funktion <span class="math notranslate nohighlight">\(x_1(t)\)</span> derivaatoista. Derivointi tapahtuu yksinkertaisesta lisäämällä funktion nimen perään derivaatan tunnus ‘ ja jos sellainen on jo valmiiksi, niin toinenkin.</p>
+<p><span class="math notranslate nohighlight">\(x_2'=3x_1'-x_1''\)</span></p>
+<p>Sijoitetaan tämä riippuvuus differentialiyhtälöparin ensimmäiseen yhtälöön ja sievennetään:</p>
+<p><span class="math notranslate nohighlight">\(x_2'=2x_2-2x_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(3x_1'-x_1''=2(3x_1-x_1')-2x_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(3x_1'-x_1''=6x_1-2x_1'-2x_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(3x_1'-x_1''=4x_1-2x_1'\)</span></p>
+<p><span class="math notranslate nohighlight">\(-x_1''+5x_1'-4x_1=0\)</span></p>
+<p>Nyt tuloksena on toisen kertaluvun differentiaaliyhtälö. Se voitaisiin ratkaista aiemmin opituilla menetelmillä. Tällöin saataisiin ratkaisu <span class="math notranslate nohighlight">\(x_1(t)\)</span>, jonka lauseketta käyttäen saataisiin selville myös <span class="math notranslate nohighlight">\(x_2(t)\)</span>.</p>
+</div>
+</div>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Ratkaise yhtälöpari</p>
 <p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation} \)</span></p>
-<p>Yhtälöryhmän voi ratkaista eliminointimenetelmällä. Ratkaisun ideana on eliminoida yhtälöistä joko <span class="math notranslate nohighlight">\(x\)</span> tai <span class="math notranslate nohighlight">\(y\)</span> käyttäen apuna puolittain derivoimista. Erään mahdollisen ratkaisun yksityiskohdat ovat alla.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
 <p>Ratkaisemalla alempi yhtälö funktion <span class="math notranslate nohighlight">\(y\)</span> suhteen saadaan <span class="math notranslate nohighlight">\(y=-x'+3x\)</span>. Kun tämä yhtälö derivoidaan molemmin puolin, niin saadaan <span class="math notranslate nohighlight">\(y'=-x''+3x'\)</span>. Sijoittamalla nämä kaksi yhtälöä yhtälöparin ylempään yhtälöön päädytään sellaiseen differentiaaliyhtälöön, jossa on vain yksi tuntematon funktio:</p>
@@ -432,6 +492,7 @@ title="Print to PDF"
 <p><span class="math notranslate nohighlight">\(y(t)= -C_1 e^t -4 C_2 e^{4t} +3 C_1 e^t +3 C_2 e^{4t}\)</span></p>
 <p><span class="math notranslate nohighlight">\(y(t)= 2C_1 e^t - C_2 e^{4t}\)</span></p>
 </div>
+</div>
 </section>
 <section id="sovelluksia">
 <h2>Sovelluksia<a class="headerlink" href="#sovelluksia" title="Permalink to this headline">#</a></h2>
@@ -440,46 +501,27 @@ title="Print to PDF"
 <p>Merkitään petojen määrää ajan <span class="math notranslate nohighlight">\(t\)</span> funktiona <span class="math notranslate nohighlight">\(y(t)\)</span> ja saaliiden määrää <span class="math notranslate nohighlight">\(x(t)\)</span>. Jos petoja ei olisi, niin saaliiden määrä kasvaisi eksponentiaalisesti yhtälön <span class="math notranslate nohighlight">\(x'=ax, a &gt; 0\)</span> mukaisesti. Jos taas saaliita ei olisi, niin petojen määrä vähenisi eksponentiaalisesti yhtälön <span class="math notranslate nohighlight">\(y'=-by, b &gt; 0\)</span> mukaisesti. Jos taas sekä petojen että saaliiden määrä on suurempi kuin nolla, niin ns. <a class="reference external" href="https://fi.wikipedia.org/wiki/Lotkan%E2%80%93Volterran_yht%C3%A4l%C3%B6">Lotka-Volterra</a> -mallin mukaan yhtälöiksi muodostuvat</p>
 <p>(1) <span class="math notranslate nohighlight">\(x'=ax-cxy\)</span>,</p>
 <p>(2) <span class="math notranslate nohighlight">\(y'=-by+dxy\)</span></p>
-<p>joissa vakiot <span class="math notranslate nohighlight">\(c &gt; 0, d &gt; 0\)</span> liittyvät petojen ja saaliiden välisiin kohtaamisiin. Tällaisessa kohtaamisessahan saalis saattaa tulla syödyksi ja peto taas voi saada populaation kasvuun tarpeellista ravintoa. Kohtaamisten lukumäärän oletetaan mallissa riippuvan petojen ja saaliiden määrän tulosta <span class="math notranslate nohighlight">\(xy\)</span>.</p>
+<p>joissa vakiot <span class="math notranslate nohighlight">\(c &gt; 0, d &gt; 0\)</span> liittyvät petojen ja saaliiden välisiin kohtaamisiin. Tällaisessa kohtaamisessahan saalis saattaa tulla syödyksi ja peto taas voi saada populaation kasvattamiseen tarvittavaa ravintoa. Kohtaamisten lukumäärän oletetaan mallissa riippuvan petojen ja saaliiden määrän tulosta <span class="math notranslate nohighlight">\(xy\)</span>.</p>
 <p>Kyseistä differentiaaliyhtälöä ei voi ratkaista analyyttisesti. Tietokoneella ratkaisu kyllä onnistuu.</p>
-<p><strong>Virtausongelmat</strong></p>
-<p>Kuvitellaan, että teollisuuden prosessissa on peräkkäin kolme vesisäiliötä. Säiliöissä on aluksi puhdasta vettä 100, 300 ja 20 litraa. Ensimmäisen säiliöön syötetään suolaa nopeudella 10 l/s. Suola sekoittuu tasaisesti veteen. Suolavettä virtaa ensimmäisestä seuraavaan säiliöön, edelleen siitä seuraavaan säiliöön ja lopulta ulos samalla nopeudella 10 l/s.</p>
-<p>Tällaista tilannetta voidaan kuvailla seuraavalla differentiaaliyhtälöryhmällä:</p>
-<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} m_1'=-\frac{1}{10}m_1 \\ m_2'=\frac{1}{10}m_1-\frac{1}{30} m_2 \\ m_3'=\frac{1}{30} m_2 -\frac{1}{2}m_3\end{cases}\end{equation}\)</span></p>
-<p>Suolan massan eri säiliöissä ajan funktiona voi ratkaista eliminoimalla tuntemattomia. Esimerkkiratkaisu on esitetty alla. Esimerkkiratkaisussa on käytetty alkuehtoja <span class="math notranslate nohighlight">\(m_1(0)=3~\)</span> kg ja <span class="math notranslate nohighlight">\(m_2(0)=m_3(0)=0~\)</span> kg.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Ratkaisu</p>
-<p>Tuntematon <span class="math notranslate nohighlight">\(m_1\)</span> saadaan selville keskimmäisestä yhtälöstä:</p>
-<p><span class="math notranslate nohighlight">\(m_1=10m_2'+\frac{1}{3}m_2\)</span></p>
-<p>Sijoitetaan oikean puolen lauseke ja sen derivaatta ensimmäiseen yhtälöön. Sieventämällä saadaan toisen kertaluvun differentiaaliyhtälö:</p>
-<p><span class="math notranslate nohighlight">\(10 m_2''+\frac{4}{3}m_2'+\frac{1}{30}m_2=0\)</span></p>
-<p>Tätä yhtälöä vastaavan karakteristisen yhtälön <span class="math notranslate nohighlight">\(10m^2+\frac{4}{3}m+\frac{1}{30}=0\)</span> juuret ovat <span class="math notranslate nohighlight">\(-\frac{1}{10}\)</span> ja <span class="math notranslate nohighlight">\(-\frac{1}{30}\)</span>, joten ensimmäisen säiliön suolamäärän yhtälöksi saadaan</p>
-<p><span class="math notranslate nohighlight">\(m_1(t)=C_1 e^{-\frac{1}{10}t}+C_2 e^{-\frac{1}{30}t}\)</span></p>
-<p>Alkuehdosta <span class="math notranslate nohighlight">\(m_1(0)=3\)</span> saadaan vakioille ehto <span class="math notranslate nohighlight">\(C_1+C_2=3\)</span>.</p>
-<p>Seuraavaksi ratkaisu <span class="math notranslate nohighlight">\(m_1\)</span> voidaan sijoittaa yhtälöön <span class="math notranslate nohighlight">\(m_2'=\frac{1}{10}m_1-\frac{1}{30}m_2\)</span>. Tällöin saadaan lineaarinen epähomogeeninen yhtälö</p>
-<p><span class="math notranslate nohighlight">\(m_2'+\frac{1}{30}m_2=\frac{1}{10} (C_1 e^{-\frac{1}{10}t}+C_2 e^{-\frac{1}{30}t})\)</span>.</p>
-<p>Vastaavan homogeenisen yhtälön ratkaisu on <span class="math notranslate nohighlight">\(m_{2h}=C_3 e^{-\frac{1}{30}}t\)</span>, ja erikoisratkaisu saadaan yritteellä <span class="math notranslate nohighlight">\(m_{2y}=C_4 e^{-\frac{1}{10}t} + C_5 e^{-\frac{1}{30}t}\)</span>. Kun ratkaisu <span class="math notranslate nohighlight">\(m_2=m_{2h}+m_{2y}\)</span> ja sen derivaatta sijoitetaan yhtälöön <span class="math notranslate nohighlight">\(m_2'=\frac{1}{10}m_1-\frac{1}{30}m_2\)</span>, saadaan pitkän mutta suoraviivaisen laskutoimituksen jälkeen yhtälöt muotoon</p>
-<p><span class="math notranslate nohighlight">\(m_1=3e^{-\frac{1}{10}t}, m_2=-\frac{9}{2}e^{-\frac{1}{30}t}+\frac{9}{2}e^{-\frac{1}{10}t}\)</span>.</p>
-<p>Vastaavalla tavalla muokataan kolmas yhtälö muotoon <span class="math notranslate nohighlight">\(m_3'+\frac{1}{2}m_3=-\frac{9}{60}e^{-\frac{1}{30}t}+\frac{9}{60}e^{-\frac{1}{10}t}\)</span>, josta saadaan ratkaisu</p>
-<p><span class="math notranslate nohighlight">\(m_3=C_6 e^{-\frac{1}{2}t}+C_7 e^{-\frac{1}{30}t}+C_8 e^{-\frac{1}{10}t}\)</span>.</p>
-<p>Sijoittamalla ratkaisu ja sen derivaatta kolmanteen yhtälöön sekä hyödyntämällä alkuehtoa <span class="math notranslate nohighlight">\(m_3(0)=0\)</span> saadaan ratkaistua vakiot <span class="math notranslate nohighlight">\(C_6=\frac{3}{56}, C_7=-\frac{9}{28}\)</span> ja <span class="math notranslate nohighlight">\(C_8=\frac{3}{8}\)</span>.</p>
-</div>
+<p><strong>Sekoitusongelmat</strong></p>
+<p>Differentiaaliyhtälöryhmiin voi päätyä, jos on tarve tarkastella aineiden virtausta esimerkiksi säiliöstä toiseen. Säiliöissä voi olla esimerkiksi teollisuudessa käytettäviä kemikaaleja tai säiliöt voivat olla ihan tavallisia järviä. Säiliöt ovat yhteydessä toisiinsa esimerkiksi putkien tai jokien välityksellä. Säiliöihin voi virrata ainetta muista säiliöistä tai ulkopuolelta (esim. sadevetenä järveen) ja säiliöstä voi virrata ainetta toisiin säiliöihin tai kokonaan ulos systeemistä.</p>
+<p>Kuvassa on esimerkki, jossa on kolme säiliöstä. Niistä kahteen virtaa ainetta ulkopuolelta ja kahdesta poistuu ulos systeemistä. Muutoin virtaus tapahtuu säiliöiden välillä. Tällaisia systeemejä voidaan mallintaa muodostamalla lauseke jokaisessa säiliössä olevan aineen määrän muuttumiselle. Muuttumista integroimalla päästään lopulta säilöissä olevan aineen määrään. Tällaisia ongelmia kutsutaan virtaus- tai sekoitusongelmiksi. Ongelmissa  voi olla mukana myös aineiden pitoisuuksia, esimerkiksi kuvan säiliöihin virtaavissa aineissa voisi olla erilaisia suolapitoisuuksia, ja tällöin tavoitteena olisi laskea säiliöissä olevan suolan, eikä suolaveden, massa. Oppitunneilla harjoitellaan tällaisten ongelmien ratkaisua.</p>
+<p><img alt="Sekoitusongelma" src="_images/sailiot.png" /></p>
 </section>
 <section id="korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu">
 <h2>Korkeamman kertaluvun differentiaaliyhtälön ratkaisu<a class="headerlink" href="#korkeamman-kertaluvun-differentiaaliyhtalon-ratkaisu" title="Permalink to this headline">#</a></h2>
-<p>Laskentaohjelmat muuttavat korkeamman kertaluvun differentiaaliyhtälöt useaksi ensimmäisen kertaluvun differentiaaliyhtälöksi. Menetelmä tällaiseen muunnokseen on seuraava:</p>
-<ul class="simple">
-<li><p>Määrittele apumuuttujat <span class="math notranslate nohighlight">\(x_1, x_2, \ldots x_n\)</span> siten, että <span class="math notranslate nohighlight">\(x_1=y, x_2=y', \ldots x_n=y^{(n-1)}\)</span></p></li>
-<li><p>Muodosta apumuuttujien derivaatat: <span class="math notranslate nohighlight">\(x_1'=y', x_2'=y'', \ldots x_n' = y^{(n)}\)</span></p></li>
-<li><p>Ratkaise alkuperäinen yhtälö derivaatan <span class="math notranslate nohighlight">\(y^{(n)}\)</span> suhteen: <span class="math notranslate nohighlight">\(y^{(n)}=x_n=f(x_1, \ldots , x_n)\)</span></p></li>
-<li><p>Muodosta differentiaaliyhtälöryhmä <span class="math notranslate nohighlight">\(x_1'=x_2, x_2'=x_3, \ldots x_n'=f(x_1, \ldots , x_n)\)</span></p></li>
-</ul>
-<p>Muodostunut differentiaaliyhtälöryhmä voidaan jälleen ratkaista eliminaatiomenetelmällä. Siten yhtälöryhmästä katoaa funktioita, kunnes jäljellä on vain yhden tuntemattoman funktion sisältävä differentiaaliyhtälö.</p>
-<p><strong>Esim.</strong> Muunna differentiaaliyhtälö <span class="math notranslate nohighlight">\(y''+2y'-3y= 2\sin t\)</span> ryhmäksi ensimmäisen kertaluvun differentiaaliyhtälöitä.</p>
+<p>Laskentaohjelmat muuttavat korkeamman kertaluvun differentiaaliyhtälöt useaksi ensimmäisen kertaluvun differentiaaliyhtälöksi. Yhtälöitä tulee niin monta kuin on differentiaaliyhtälön kertaluku. Tarkastellaan tässä, miten muunnos tapahtuu.</p>
+<p>Oletetaan, että differentiaaliyhtälössä esiintyy tuntematon funktio <span class="math notranslate nohighlight">\(x(t)\)</span> ja sen derivaattoja. Määritellään funktio uudelleen apumuuttujalla <span class="math notranslate nohighlight">\(x_1=x\)</span>. Tuntemattoman funktion derivaatta <span class="math notranslate nohighlight">\(x'(t)\)</span> nimetään uudelleen <span class="math notranslate nohighlight">\(x_2=x'\)</span>. Näin tehdään niin kauan, että on nimetty kaikki paitsi korkein differentiaaliyhtälössä esiintyvä derivaatta. Esimerkiksi toisen kertaluvun differentiaaliyhtälössä riittää nämä kaksi apumuuttujaa <span class="math notranslate nohighlight">\(x_1\)</span> ja <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<p>Seuraavaksi derivoidaan kaikki apumuuttujat. Toisen kertaluvun differentiaaliyhtälössä nämä derivaatat ovat <span class="math notranslate nohighlight">\(x_1'=x'\)</span> ja <span class="math notranslate nohighlight">\(x_2'=x''\)</span>. Sijoitetaan nämä alkuperäiseen differentiaaliyhtälöön. Näin saadaan yksi differentiaaliyhtälö muodostuvaan differentiaaliyhtälöpariin. Toinen differentiaaliyhtälö saadaan määritelmästä <span class="math notranslate nohighlight">\(x_1'=x_2\)</span>. Muodostunut differentiaaliyhtälöpari voidaan ratkaista aiemmin esitellyillä menetelmillä.</p>
+<div class="admonition-esimerkki admonition">
+<p class="admonition-title">Esimerkki</p>
+<p>Muunna differentiaaliyhtälö <span class="math notranslate nohighlight">\(x''+2x'-4x=3t\)</span> ryhmäksi ensimmäisen kertaluvun differentiaaliyhtälöitä.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ratkaisu</p>
-<p>Määritellään apumuuttujat <span class="math notranslate nohighlight">\(x_1=y\)</span> ja <span class="math notranslate nohighlight">\(x_2=y'\)</span>. Näiden derivaatat ovat <span class="math notranslate nohighlight">\(x_1'=y'\)</span> ja <span class="math notranslate nohighlight">\(x_2'=y''\)</span>. Nyt alkuperäinen yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(x_2'=-2 x_2+x_1+\sin t\)</span> ja lisäksi voidaan muodostaa yhtälö <span class="math notranslate nohighlight">\(x_1'=x_2\)</span>. Saadaan siis yhtälöpari</p>
-<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} x_1'=x_2 \\ x_2' = -2x_2 -3x_1 +2 \sin t\end{cases} \end{equation}\)</span></p>
+<p>Määritellään apumuuttujat <span class="math notranslate nohighlight">\(x_1=x\)</span> ja <span class="math notranslate nohighlight">\(x_2=x'\)</span>. Näiden derivaatat ovat <span class="math notranslate nohighlight">\(x_1'=x'\)</span> ja <span class="math notranslate nohighlight">\(x_2'=x''\)</span>. Nyt alkuperäinen yhtälö muuttuu muotoon <span class="math notranslate nohighlight">\(x_2'+ 2 x_2+-4x_1=3t\)</span> ja lisäksi voidaan muodostaa yhtälö <span class="math notranslate nohighlight">\(x_1'=x_2\)</span>. Saadaan siis yhtälöpari</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} \begin{cases} x_1'=x_2 \\x_2'+ 2 x_2-4x_1=3t\end{cases} \end{equation}\)</span></p>
+<p>Yhtälöparin ratkaisua ei tarkastella tässä.</p>
+</div>
 </div>
 </section>
 </section>
@@ -534,7 +576,7 @@ title="Print to PDF"
   
     By LUMA-tiimi, Lapin AMK / Minna Korhonen<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

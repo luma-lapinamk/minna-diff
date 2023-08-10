@@ -4,11 +4,107 @@ Differentiaaliyhtälöistä voidaan muodostaa yhtälöryhmiä samaan tapaan kuin
 
 ## Yhtälöryhmän ratkaisu
 
-Tarkastellaan yksinkertaisena esimerkkinä ilmiötä, johon liittyy ajasta $t$ riippuvat funktiot $y(t)$ ja $x(t)$. Tässä on tärkeää huomata, että $x$ on nyt funktion eikä muuttujan nimi. Funktiot vaikuttavat toisiinsa siten, että 
+Tarkastellaan ilmiötä, johon liittyy ajasta $t$ riippuvat funktiot $x_1(t)$ ja $x_2(t)$. Tässä on tärkeää huomata, että $x$ on nyt funktion eikä muuttujan nimi. Funktioita voidaan nimetä myös eri kirjaimilla kuten $x(t), y(t), z(t), \dots$.
+
+Oletetaan, että funktiot $x_1(t), x_2(t), \dots$ sekä niiden derivaatat riippuvat toisistaan sekä muuttujasta $t$. Oletetaan lisäksi, että riippuvuus on lineaarista siten, että funktiot, derivaatat ja muuttuja esiintyvät yhtälössä ainoastaan vakioilla kerrottuina, eivät esimerkiksi muodossa $x_1 x_2$ tai $(x_2')^2$. Lisäksi derivaatat ovat ensimmäisiä derivaattoja $x_1'(t), x_2'(t)$ jne. Tällöin yhtälöryhmän ratkaisussa voidaan käyttää samoja menetelmiä kuin yleensäkin: sijoitus- ja eliminaatiomenetelmää. Voit halutessasi kerrata ne [Lineaarialgebran](https://luma-lapinamk.github.io/minna-lineaarialgebra/yhtaloryhmat_kertaus.html) oppimateriaalista.
+
+Yleisesti yhtälöryhmän ratkaisussa pyritään vähentämään yhtälöissä esiintyviä tuntemattomia, kunnes jokin tuntemattomista saadaan selville. Differentiaaliyhtälöryhmästä pitäisi saada muokattua  yhtälö, jossa esiintyy jokin funktio $x_n$ ja mahdollisesti sen derivaatta $x_n'$ ja tuntematon $t$, mutta ei mitään muuta funktiota $x_m$ eikä sen derivaattaa $x_m'$. Differentiaaliyhtälöryhmien ratkaisemisessa tarvitaan myös puolittain derivointia ja integrointia. Tutustu seuraaviin esimerkkeihin!
+
+::::{admonition} Esimerkki
+
+Ratkaise **eliminaatiomenetelmällä** ohjeen mukaan differentiaaliyhtälöpari
+
+$\begin{equation}\begin{cases}x_1'-x_1+x_2'=2t+1 \\ 2x_1'+x_1+2x_2'=t\end{cases}\end{equation}$
+
+- Aloita kertomalla ylempi yhtälö luvulla -2.
+- Laske sitten yhtälöt yhteen puolittain.
+- Saat differentiaaliyhtälön, jossa tuntemattomana on vain $x_1$.
+- Ratkaise $x_1$. Sen jälkeen sijoita se jompaankumpaan yhtälöön ja ratkaise $x_2$.
+
+:::{admonition} Ratkaisu
+:class: tip, dropdown
+
+Kertomalla ylempi yhtälö luvulla -2 yhtälöpari muuttuu muotoon
+
+$\begin{equation}\begin{cases}-2x_1'+2x_1-2x_2=-4t-2 \\ 2x_1'+x_1+2x_2'=t\end{cases}\end{equation}$
+
+Lasketaan yhtälöt yhteen, jolloin jäljelle jää yhtälö:
+
+$3x_1=-3t-2$
+
+Ratkaistaan yhtälöstä $x_1$ eli funktio $x_1(t)$ jakamalla yhtälön molemmat puolet luvulla 3:
+
+$x_1(t)=-t-\frac{2}{3}$
+
+Funktio $x_1(t)$ on nyt ratkaistu. Ylemmässä yhtälössä esiintyy myös sen derivaatta, joten lasketaan se:
+
+$x_1'(t)=-1$
+
+Ratkaistaan alkuperäisen differentiaaliyhtälöparin ylemmästä yhtälöstä $x_2'$ (sen voisi ratkaista myös alemmasta yhtälöstä, mutta ensimmäisessä yhtälössä ratkaisu on lyhyempi):
+
+$x_2'=2t+1-x_1'+x_1$
+
+Sijoitetaan yhtälöön äsken ratkaistut $x_1(t)$ ja $x_1'(t)$ ja sievennetään:
+
+$x_2'(t)=2t+1-(-1)+(-t-\frac{2}{3})$
+
+$x_2'(t)=2t+1+1-t-\frac{2}{3}$
+
+$x_2'(t)=t+\frac{4}{3}$
+
+Kyseessä on integroituva differentiaaliyhtälö, joten $x_2(t)$ ratkeaa integroimalla yhtälön molemmat puolet:
+
+$x_2(t)=\int t+\frac{4}{3} \,dt + C$
+
+$x_2(t)=\frac{1}{2}t^2+\frac{4}{3}t+C$
+
+:::
+
+::::
+
+::::{admonition} Esimerkki
+
+Ratkaise **sijoitusmenetelmällä** ohjeen mukaan differentiaaliyhtälöpari
+
+$\begin{equation}\begin{cases} x_2'=2x_2-2x_1 \\ x_1'=-x_2+3x_1 \end{cases}\end{equation}$
+
+- Ratkaise alemmasta yhtälöstä $x_2$ ilmaistuna funktion $x_1$ avulla.
+- Derivoi ratkaisun molemmat puolet, jolloin saat derivaatan $x_2'$ ilmaistuna derivaatan $x_1'$ avulla.
+- Sijoita $x_2$ ja $x_2'$ ylempään yhtälöön, jolloin saat ratkaistavissa olevan differentiaaliyhtälön.
+
+:::{admonition} Ratkaisu
+:class: tip, dropdown
+
+Alemmasta yhtälöstä saadaan $x_2=3x_1-x_1'$. On tärkeää huomata, että nyt tiedossa ei ole funktion $x_2(t)$ lauseke, vaan funktion $x_2(t)$ riippuvuus funktiosta $x_1(t)$ ja sen derivaatasta.
+
+Derivoidaan yhtälön $x_2=3x_1-x_1'$ molemmat puolet. Derivaatoillekaan ei saada vielä muuttujan $t$ avulla ilmaistuja lausekkeita, vaan lopputuloksena on ainoastaan derivaatan $x_2'(t)$ riippuvuus funktion $x_1(t)$ derivaatoista. Derivointi tapahtuu yksinkertaisesta lisäämällä funktion nimen perään derivaatan tunnus ' ja jos sellainen on jo valmiiksi, niin toinenkin.
+
+$x_2'=3x_1'-x_1''$
+
+Sijoitetaan tämä riippuvuus differentialiyhtälöparin ensimmäiseen yhtälöön ja sievennetään:
+
+$x_2'=2x_2-2x_1$
+
+$3x_1'-x_1''=2(3x_1-x_1')-2x_1$
+
+$3x_1'-x_1''=6x_1-2x_1'-2x_1$
+
+$3x_1'-x_1''=4x_1-2x_1'$
+
+$-x_1''+5x_1'-4x_1=0$
+
+Nyt tuloksena on toisen kertaluvun differentiaaliyhtälö. Se voitaisiin ratkaista aiemmin opituilla menetelmillä. Tällöin saataisiin ratkaisu $x_1(t)$, jonka lauseketta käyttäen saataisiin selville myös $x_2(t)$. 
+
+:::
+
+::::
+
+
+::::{admonition} Esimerkki
+
+Ratkaise yhtälöpari
 
 $\begin{equation} \begin{cases} y'=2y-2x \\ x'=-y+3x \end{cases} \end{equation} $
-
-Yhtälöryhmän voi ratkaista eliminointimenetelmällä. Ratkaisun ideana on eliminoida yhtälöistä joko $x$ tai $y$ käyttäen apuna puolittain derivoimista. Erään mahdollisen ratkaisun yksityiskohdat ovat alla.
 
 :::{admonition} Ratkaisu
 :class: tip, dropdown
@@ -31,6 +127,8 @@ $y(t)= 2C_1 e^t - C_2 e^{4t}$
 
 :::
 
+::::
+
 
 ## Sovelluksia
 
@@ -44,75 +142,40 @@ Merkitään petojen määrää ajan $t$ funktiona $y(t)$ ja saaliiden määrää
 
 (2) $y'=-by+dxy$
 
-joissa vakiot $c > 0, d > 0$ liittyvät petojen ja saaliiden välisiin kohtaamisiin. Tällaisessa kohtaamisessahan saalis saattaa tulla syödyksi ja peto taas voi saada populaation kasvuun tarpeellista ravintoa. Kohtaamisten lukumäärän oletetaan mallissa riippuvan petojen ja saaliiden määrän tulosta $xy$.
+joissa vakiot $c > 0, d > 0$ liittyvät petojen ja saaliiden välisiin kohtaamisiin. Tällaisessa kohtaamisessahan saalis saattaa tulla syödyksi ja peto taas voi saada populaation kasvattamiseen tarvittavaa ravintoa. Kohtaamisten lukumäärän oletetaan mallissa riippuvan petojen ja saaliiden määrän tulosta $xy$.
 
 Kyseistä differentiaaliyhtälöä ei voi ratkaista analyyttisesti. Tietokoneella ratkaisu kyllä onnistuu.
 
-**Virtausongelmat**
+**Sekoitusongelmat**
 
-Kuvitellaan, että teollisuuden prosessissa on peräkkäin kolme vesisäiliötä. Säiliöissä on aluksi puhdasta vettä 100, 300 ja 20 litraa. Ensimmäisen säiliöön syötetään suolaa nopeudella 10 l/s. Suola sekoittuu tasaisesti veteen. Suolavettä virtaa ensimmäisestä seuraavaan säiliöön, edelleen siitä seuraavaan säiliöön ja lopulta ulos samalla nopeudella 10 l/s. 
+Differentiaaliyhtälöryhmiin voi päätyä, jos on tarve tarkastella aineiden virtausta esimerkiksi säiliöstä toiseen. Säiliöissä voi olla esimerkiksi teollisuudessa käytettäviä kemikaaleja tai säiliöt voivat olla ihan tavallisia järviä. Säiliöt ovat yhteydessä toisiinsa esimerkiksi putkien tai jokien välityksellä. Säiliöihin voi virrata ainetta muista säiliöistä tai ulkopuolelta (esim. sadevetenä järveen) ja säiliöstä voi virrata ainetta toisiin säiliöihin tai kokonaan ulos systeemistä. 
 
-Tällaista tilannetta voidaan kuvailla seuraavalla differentiaaliyhtälöryhmällä:
+Kuvassa on esimerkki, jossa on kolme säiliöstä. Niistä kahteen virtaa ainetta ulkopuolelta ja kahdesta poistuu ulos systeemistä. Muutoin virtaus tapahtuu säiliöiden välillä. Tällaisia systeemejä voidaan mallintaa muodostamalla lauseke jokaisessa säiliössä olevan aineen määrän muuttumiselle. Muuttumista integroimalla päästään lopulta säilöissä olevan aineen määrään. Tällaisia ongelmia kutsutaan virtaus- tai sekoitusongelmiksi. Ongelmissa  voi olla mukana myös aineiden pitoisuuksia, esimerkiksi kuvan säiliöihin virtaavissa aineissa voisi olla erilaisia suolapitoisuuksia, ja tällöin tavoitteena olisi laskea säiliöissä olevan suolan, eikä suolaveden, massa. Oppitunneilla harjoitellaan tällaisten ongelmien ratkaisua.
 
-$\begin{equation} \begin{cases} m_1'=-\frac{1}{10}m_1 \\ m_2'=\frac{1}{10}m_1-\frac{1}{30} m_2 \\ m_3'=\frac{1}{30} m_2 -\frac{1}{2}m_3\end{cases}\end{equation}$
-
-Suolan massan eri säiliöissä ajan funktiona voi ratkaista eliminoimalla tuntemattomia. Esimerkkiratkaisu on esitetty alla. Esimerkkiratkaisussa on käytetty alkuehtoja $m_1(0)=3~$ kg ja $m_2(0)=m_3(0)=0~$ kg.
-
-:::{admonition} Ratkaisu
-:class: tip, dropdown
-
-Tuntematon $m_1$ saadaan selville keskimmäisestä yhtälöstä:
-
-$m_1=10m_2'+\frac{1}{3}m_2$
-
-Sijoitetaan oikean puolen lauseke ja sen derivaatta ensimmäiseen yhtälöön. Sieventämällä saadaan toisen kertaluvun differentiaaliyhtälö:
-
-$10 m_2''+\frac{4}{3}m_2'+\frac{1}{30}m_2=0$
-
-Tätä yhtälöä vastaavan karakteristisen yhtälön $10m^2+\frac{4}{3}m+\frac{1}{30}=0$ juuret ovat $-\frac{1}{10}$ ja $-\frac{1}{30}$, joten ensimmäisen säiliön suolamäärän yhtälöksi saadaan
-
-$m_1(t)=C_1 e^{-\frac{1}{10}t}+C_2 e^{-\frac{1}{30}t}$
-
-Alkuehdosta $m_1(0)=3$ saadaan vakioille ehto $C_1+C_2=3$.
-
-Seuraavaksi ratkaisu $m_1$ voidaan sijoittaa yhtälöön $m_2'=\frac{1}{10}m_1-\frac{1}{30}m_2$. Tällöin saadaan lineaarinen epähomogeeninen yhtälö 
-
-$m_2'+\frac{1}{30}m_2=\frac{1}{10} (C_1 e^{-\frac{1}{10}t}+C_2 e^{-\frac{1}{30}t})$.
-
-Vastaavan homogeenisen yhtälön ratkaisu on $m_{2h}=C_3 e^{-\frac{1}{30}}t$, ja erikoisratkaisu saadaan yritteellä $m_{2y}=C_4 e^{-\frac{1}{10}t} + C_5 e^{-\frac{1}{30}t}$. Kun ratkaisu $m_2=m_{2h}+m_{2y}$ ja sen derivaatta sijoitetaan yhtälöön $m_2'=\frac{1}{10}m_1-\frac{1}{30}m_2$, saadaan pitkän mutta suoraviivaisen laskutoimituksen jälkeen yhtälöt muotoon
-
-$m_1=3e^{-\frac{1}{10}t}, m_2=-\frac{9}{2}e^{-\frac{1}{30}t}+\frac{9}{2}e^{-\frac{1}{10}t}$.
-
-Vastaavalla tavalla muokataan kolmas yhtälö muotoon $m_3'+\frac{1}{2}m_3=-\frac{9}{60}e^{-\frac{1}{30}t}+\frac{9}{60}e^{-\frac{1}{10}t}$, josta saadaan ratkaisu
-
-$m_3=C_6 e^{-\frac{1}{2}t}+C_7 e^{-\frac{1}{30}t}+C_8 e^{-\frac{1}{10}t}$.
-
-Sijoittamalla ratkaisu ja sen derivaatta kolmanteen yhtälöön sekä hyödyntämällä alkuehtoa $m_3(0)=0$ saadaan ratkaistua vakiot $C_6=\frac{3}{56}, C_7=-\frac{9}{28}$ ja $C_8=\frac{3}{8}$.
-
-:::
+![Sekoitusongelma](sailiot.png "Sekoitusongelma")
 
 
 ## Korkeamman kertaluvun differentiaaliyhtälön ratkaisu
 
-Laskentaohjelmat muuttavat korkeamman kertaluvun differentiaaliyhtälöt useaksi ensimmäisen kertaluvun differentiaaliyhtälöksi. Menetelmä tällaiseen muunnokseen on seuraava:
+Laskentaohjelmat muuttavat korkeamman kertaluvun differentiaaliyhtälöt useaksi ensimmäisen kertaluvun differentiaaliyhtälöksi. Yhtälöitä tulee niin monta kuin on differentiaaliyhtälön kertaluku. Tarkastellaan tässä, miten muunnos tapahtuu.
 
-- Määrittele apumuuttujat $x_1, x_2, \ldots x_n$ siten, että $x_1=y, x_2=y', \ldots x_n=y^{(n-1)}$
+Oletetaan, että differentiaaliyhtälössä esiintyy tuntematon funktio $x(t)$ ja sen derivaattoja. Määritellään funktio uudelleen apumuuttujalla $x_1=x$. Tuntemattoman funktion derivaatta $x'(t)$ nimetään uudelleen $x_2=x'$. Näin tehdään niin kauan, että on nimetty kaikki paitsi korkein differentiaaliyhtälössä esiintyvä derivaatta. Esimerkiksi toisen kertaluvun differentiaaliyhtälössä riittää nämä kaksi apumuuttujaa $x_1$ ja $x_2$.
 
-- Muodosta apumuuttujien derivaatat: $x_1'=y', x_2'=y'', \ldots x_n' = y^{(n)}$
+Seuraavaksi derivoidaan kaikki apumuuttujat. Toisen kertaluvun differentiaaliyhtälössä nämä derivaatat ovat $x_1'=x'$ ja $x_2'=x''$. Sijoitetaan nämä alkuperäiseen differentiaaliyhtälöön. Näin saadaan yksi differentiaaliyhtälö muodostuvaan differentiaaliyhtälöpariin. Toinen differentiaaliyhtälö saadaan määritelmästä $x_1'=x_2$. Muodostunut differentiaaliyhtälöpari voidaan ratkaista aiemmin esitellyillä menetelmillä. 
 
-- Ratkaise alkuperäinen yhtälö derivaatan $y^{(n)}$ suhteen: $y^{(n)}=x_n=f(x_1, \ldots , x_n)$
+::::{admonition} Esimerkki
 
-- Muodosta differentiaaliyhtälöryhmä $x_1'=x_2, x_2'=x_3, \ldots x_n'=f(x_1, \ldots , x_n)$
-
-Muodostunut differentiaaliyhtälöryhmä voidaan jälleen ratkaista eliminaatiomenetelmällä. Siten yhtälöryhmästä katoaa funktioita, kunnes jäljellä on vain yhden tuntemattoman funktion sisältävä differentiaaliyhtälö. 
-
-**Esim.** Muunna differentiaaliyhtälö $y''+2y'-3y= 2\sin t$ ryhmäksi ensimmäisen kertaluvun differentiaaliyhtälöitä.
+Muunna differentiaaliyhtälö $x''+2x'-4x=3t$ ryhmäksi ensimmäisen kertaluvun differentiaaliyhtälöitä.
 
 :::{admonition} Ratkaisu
 :class: tip, dropdown
 
-Määritellään apumuuttujat $x_1=y$ ja $x_2=y'$. Näiden derivaatat ovat $x_1'=y'$ ja $x_2'=y''$. Nyt alkuperäinen yhtälö muuttuu muotoon $x_2'=-2 x_2+x_1+\sin t$ ja lisäksi voidaan muodostaa yhtälö $x_1'=x_2$. Saadaan siis yhtälöpari
+Määritellään apumuuttujat $x_1=x$ ja $x_2=x'$. Näiden derivaatat ovat $x_1'=x'$ ja $x_2'=x''$. Nyt alkuperäinen yhtälö muuttuu muotoon $x_2'+ 2 x_2+-4x_1=3t$ ja lisäksi voidaan muodostaa yhtälö $x_1'=x_2$. Saadaan siis yhtälöpari
 
-$\begin{equation} \begin{cases} x_1'=x_2 \\ x_2' = -2x_2 -3x_1 +2 \sin t\end{cases} \end{equation}$
+$\begin{equation} \begin{cases} x_1'=x_2 \\x_2'+ 2 x_2-4x_1=3t\end{cases} \end{equation}$
+
+Yhtälöparin ratkaisua ei tarkastella tässä.
 
 :::
+
+::::

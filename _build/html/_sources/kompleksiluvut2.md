@@ -50,11 +50,13 @@ Muunna summamuotoon kompleksiluvut $3 \angle 20^{\circ}$, $6 \angle 160^{\circ}$
 :::{admonition} Ratkaisu
 :class: tip, dropdown
 
-$3 \angle 20^{\circ}=3 \cos{20^{\circ}} + 3\cos{20^{\circ}}~i \approx 2.82 + 1.03 i$
+$3 \angle 20^{\circ}=3 \cos{20^{\circ}} + 3\sin{20^{\circ}}~i \approx 2.82 + 1.03 i$
 
-$6 \angle 160^{\circ}=6 \cos{160^{\circ}} + 6\cos{160^{\circ}}~i \approx -5.64 + 2.05 i$
+$6 \angle 160^{\circ}=6 \cos{160^{\circ}} + 6\sin{160^{\circ}}~i \approx -5.64 + 2.05 i$
 
-$5 \angle 180^{\circ}=5 \cos{180^{\circ}} + 5\cos{180^{\circ}}~i = -5 + 0i = -5$
+$5 \angle 180^{\circ}=5 \cos{180^{\circ}} + 5\sin{180^{\circ}}~i = -5 + 0i = -5$
+
+$4 \angle 90^{\circ}=4 \cos{0^{\circ}} + 4\sin{90^{\circ}}~i = 0 + 4i = 4i$
 
 :::
 
@@ -100,7 +102,7 @@ $\left(\frac{3}{7} \angle(30^{\circ}-110^{\circ}) \right)^3 = \left(\frac{3}{7} 
 
 ## Eksponenttimuoto
 
-Kompleksilukuja voidaan esittää myös eksponenttimuodossa eli $e$-kantaisina potenssilukuina. Tällöin voidaan suorittaa monimutkisia kompleksilukujen laskutoimituksia käyttämällä yksinkertaisia potenssilukujen laskusääntöjä. Muunnos kulmamuodosta eksponenttimuotoon tapahtuu seuraavasti:
+Kompleksilukuja voidaan esittää myös eksponenttimuodossa eli $e$-kantaisina potenssilukuina. Tällöin voidaan suorittaa monimutkaisia kompleksilukujen laskutoimituksia käyttämällä yksinkertaisia potenssilukujen laskusääntöjä. Muunnos kulmamuodosta eksponenttimuotoon tapahtuu seuraavasti:
 
 $z=|z| \angle \varphi \Leftrightarrow z = |z|e^{i \varphi}$
 
@@ -143,19 +145,3 @@ $f(0)=e^{-i \cdot 0} (\cos{0}+i\sin{0}) = 1\cdot (1+0) = 1$
 Näin ollen yhtälö $\frac{\cos{\varphi}+i\sin{\varphi}}{e^{i \varphi}}=1$ on aina tosi ja siten myös $\cos{\varphi}+i\sin{\varphi}=e^{i \varphi}$ on aina tosi.
 
 :::
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
